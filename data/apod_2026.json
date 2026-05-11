@@ -1,0 +1,98 @@
+{
+  "_source": "https://apod.nasa.gov/apod/",
+  "_license": "Public domain (NASA imagery)",
+  "_note": "Curated 13-pick rotation, one per summer week. APOD does not return future dates via API, so these are hand-selected evergreen kid-friendly entries.",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "The Pale Blue Dot",
+      "credit": "NASA / JPL \u00b7 Voyager 1, 1990",
+      "img": "https://apod.nasa.gov/apod/image/2002/PaleBlueDot_Voyager1_960.jpg",
+      "kid": "From 4 billion miles away, Voyager 1 turned its camera back at Earth. We're the tiny speck in the sunbeam. Everyone you've ever known has lived right here."
+    },
+    {
+      "week": 2,
+      "title": "Jupiter's Great Red Spot",
+      "credit": "NASA / Juno spacecraft",
+      "img": "https://apod.nasa.gov/apod/image/1707/JupiterRedSpot_JunoEichstadt_1080.jpg",
+      "kid": "A storm bigger than Earth that has been spinning on Jupiter for at least 350 years. Juno flew right over it and took this picture."
+    },
+    {
+      "week": 3,
+      "title": "The Sombrero Galaxy",
+      "credit": "NASA / Hubble Space Telescope",
+      "img": "https://apod.nasa.gov/apod/image/2005/Sombrero_HubblePestana_960.jpg",
+      "kid": "A galaxy shaped like a Mexican hat, 28 million light-years away. It has 2,000 globular clusters \u2014 that's a lot of star families."
+    },
+    {
+      "week": 4,
+      "title": "Saturn from Cassini",
+      "credit": "NASA / JPL / Cassini, 2013",
+      "img": "https://apod.nasa.gov/apod/image/1311/saturnPIA17172_1080.jpg",
+      "kid": "Cassini flew through Saturn's shadow and took 323 photos to make this picture. Earth is the tiny dot just inside the rings."
+    },
+    {
+      "week": 5,
+      "title": "Crab Nebula",
+      "credit": "NASA / ESA / Hubble",
+      "img": "https://apod.nasa.gov/apod/image/0512/crabmosaic_hst_big.jpg",
+      "kid": "The leftovers of a star that exploded in the year 1054. Chinese astronomers saw the explosion in daylight. The nebula is still flying apart."
+    },
+    {
+      "week": 6,
+      "title": "Earthrise from Apollo 8",
+      "credit": "NASA \u00b7 Bill Anders, December 1968",
+      "img": "https://apod.nasa.gov/apod/image/2001/EarthriseApollo8_NasaAnders_960.jpg",
+      "kid": "The most famous photo of Earth. Apollo 8 was the first crew to orbit the Moon, and they looked back and saw home rising over the lunar surface."
+    },
+    {
+      "week": 7,
+      "title": "Pillars of Creation",
+      "credit": "NASA / ESA / Hubble",
+      "img": "https://apod.nasa.gov/apod/image/1501/pillars2014_hubble_2638.jpg",
+      "kid": "Towers of cold gas where new stars are being born, in the Eagle Nebula. The biggest pillar is 4 light-years tall \u2014 bigger than the distance to the nearest star."
+    },
+    {
+      "week": 8,
+      "title": "Mars from Perseverance",
+      "credit": "NASA / JPL / Perseverance Rover",
+      "img": "https://apod.nasa.gov/apod/image/2104/PerseveranceDelta_NASA_1080.jpg",
+      "kid": "A robot's-eye view of Mars. Perseverance landed in 2021 in an ancient lake bed to look for fossils of microscopic life."
+    },
+    {
+      "week": 9,
+      "title": "The Milky Way Over Idaho",
+      "credit": "NASA Astronomy Picture of the Day",
+      "img": "https://apod.nasa.gov/apod/image/2207/MilkyWayCraters_Tezel_1080.jpg",
+      "kid": "Our home galaxy from a dark-sky site. There are about 100 billion stars in the picture. Most of them have planets. Some of those planets probably have life."
+    },
+    {
+      "week": 10,
+      "title": "Total Solar Eclipse",
+      "credit": "NASA / Aubrey Gemignani, 2017",
+      "img": "https://apod.nasa.gov/apod/image/1708/TotalEclipse_Aubrey_960.jpg",
+      "kid": "The Moon perfectly covers the Sun. You can only see the Sun's corona \u2014 its outer atmosphere \u2014 during the few minutes of totality. Idaho was in the path in 2017."
+    },
+    {
+      "week": 11,
+      "title": "The Andromeda Galaxy",
+      "credit": "NASA / JPL / GALEX",
+      "img": "https://apod.nasa.gov/apod/image/1208/m31_ssro_3878.jpg",
+      "kid": "The closest big galaxy to ours, 2.5 million light-years away. In about 4 billion years it will collide with the Milky Way. They'll merge into one giant galaxy."
+    },
+    {
+      "week": 12,
+      "title": "Lunar Surface Up Close",
+      "credit": "NASA \u00b7 Apollo 17, 1972",
+      "img": "https://apod.nasa.gov/apod/image/2012/Apollo17Pan_Schmitt_1024.jpg",
+      "kid": "Footprints on the Moon. Apollo 17 was the last time humans walked on another world. The footprints are still there \u2014 there's no wind or rain to wash them away."
+    },
+    {
+      "week": 13,
+      "title": "The Whirlpool Galaxy",
+      "credit": "NASA / ESA / Hubble Heritage",
+      "img": "https://apod.nasa.gov/apod/image/0504/M51_hst.jpg",
+      "kid": "A spiral galaxy eating a smaller galaxy. The smaller one is being pulled apart by gravity. Galaxies do this all the time over billions of years."
+    }
+  ]
+}

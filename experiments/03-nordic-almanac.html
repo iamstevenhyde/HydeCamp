@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camp Hyde · Nordic Almanac Experiment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  /* ════════════════════════════════════════════
+     EXPERIMENT 03 · NORDIC ALMANAC
+     Hay catalog meets a Skandinavian household planner.
+     ════════════════════════════════════════════ */
+
+  :root {
+    --bone: #F7F4EE;
+    --bone-warm: #EFE9DD;
+    --paper: #FCFAF5;
+    --sage: #93A187;
+    --sage-deep: #6B7F62;
+    --rose: #C5A09A;
+    --rose-deep: #A77F78;
+    --slate: #4D5560;
+    --charcoal: #2D3033;
+    --line: #D8D0BE;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--bone);
+    color: var(--charcoal);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 50px 40px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding-bottom: 28px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    line-height: 1;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+  }
+  .brand em {
+    font-style: italic;
+    color: var(--rose-deep);
+  }
+  .brand .sub {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--slate);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+  .nav-strip {
+    display: flex;
+    gap: 22px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.82rem;
+    color: var(--slate);
+    font-weight: 500;
+  }
+  .nav-strip a {
+    text-decoration: none;
+    color: var(--slate);
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+  .nav-strip a.active {
+    color: var(--charcoal);
+    border-bottom-color: var(--rose-deep);
+  }
+
+  /* ── WEEK HEAD ── */
+  .week-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 40px;
+    margin-bottom: 36px;
+  }
+  .week-head .num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(4rem, 9vw, 7rem);
+    line-height: 0.85;
+    color: var(--rose-deep);
+    letter-spacing: -0.04em;
+  }
+  .week-head .num .of {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-size: 0.7rem;
+    color: var(--slate);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-top: 10px;
+  }
+  .week-head .title-block .kicker {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .week-head .title-block .title {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    line-height: 1;
+    color: var(--charcoal);
+    letter-spacing: -0.015em;
+  }
+  .week-head .nav-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  .week-head .nav-buttons button {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--slate);
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+  .week-head .nav-buttons button:hover {
+    background: var(--charcoal); color: var(--bone);
+    border-color: var(--charcoal);
+  }
+
+  /* ── HERO STRIP (POLAROID) ── */
+  .hero-strip {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 36px;
+    align-items: center;
+    margin-bottom: 60px;
+    padding: 28px 32px;
+    background: var(--paper);
+    border-radius: 4px;
+  }
+  .polaroid {
+    background: var(--paper);
+    padding: 12px 12px 36px;
+    box-shadow:
+      0 1px 2px rgba(45,48,51,0.08),
+      0 10px 24px -8px rgba(45,48,51,0.18);
+    transform: rotate(-2.5deg);
+    transition: transform 0.4s;
+    position: relative;
+  }
+  .polaroid:hover { transform: rotate(0deg) scale(1.02); }
+  .polaroid img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.92) contrast(1.02);
+  }
+  .polaroid .caption {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    right: 12px;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    text-align: center;
+    line-height: 1.1;
+  }
+  .hero-text .lbl {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .hero-text h2 {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .hero-text p {
+    color: var(--slate);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 580px;
+  }
+
+  /* ── LAYOUT ── */
+  .stage {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+
+  /* ── SCHEDULE ── */
+  .schedule-h {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .schedule-h h3 {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.7rem;
+    color: var(--charcoal);
+  }
+  .schedule-h .legend-strip {
+    display: flex;
+    gap: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--slate);
+  }
+  .legend-strip .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: 1px;
+  }
+  .d-sage { background: var(--sage); }
+  .d-rose { background: var(--rose); }
+  .d-slate { background: var(--slate); }
+  .d-stone { background: #D4A776; }
+
+  .schedule {
+    display: grid;
+    grid-template-columns: 60px repeat(5, 1fr);
+    column-gap: 0;
+  }
+  .day-h {
+    padding: 0 0 16px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 600;
+    text-align: left;
+  }
+  .day-h.today { color: var(--rose-deep); }
+  .day-h .date {
+    display: block;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--charcoal);
+    letter-spacing: -0.02em;
+    text-transform: none;
+    margin-top: 6px;
+  }
+  .day-h.today .date { color: var(--rose-deep); }
+  .time-h {
+    padding: 16px 12px 16px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--slate);
+    text-align: right;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid var(--line);
+  }
+  .cell {
+    padding: 14px 14px 14px 18px;
+    border-top: 1px solid var(--line);
+    min-height: 76px;
+    position: relative;
+    transition: background 0.18s;
+  }
+  .cell::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px; bottom: 18px;
+    width: 3px;
+    background: var(--sage);
+    border-radius: 2px;
+  }
+  .cell.t-routine::before   { background: #D4A776; }
+  .cell.t-reading::before   { background: var(--sage); }
+  .cell.t-education::before { background: #94A8B8; }
+  .cell.t-lunch::before     { background: var(--rose); }
+  .cell.t-screen::before    { background: #D4A776; }
+  .cell.t-outdoor::before   { background: var(--sage); }
+  .cell.t-fieldtrip::before { background: var(--sage-deep); }
+  .cell.t-free::before      { background: var(--rose-deep); }
+  .cell.t-camp::before      { background: var(--rose-deep); }
+  .cell.t-trip::before      { background: var(--slate); }
+  .cell.t-school::before    { background: var(--line); }
+  .cell.t-blank::before     { background: transparent; }
+  .cell:hover { background: var(--paper); }
+  .cell .label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1.3;
+  }
+  .cell .type-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--slate);
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+  .cell.t-blank .label { color: var(--slate); opacity: 0.4; font-style: italic; }
+  .cell.today-col {
+    background: linear-gradient(180deg, rgba(197,160,154,0.06), transparent);
+  }
+
+  /* ── SIDEBAR ── */
+  .side .block + .block { margin-top: 38px; }
+  .side h4 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .side .observation {
+    padding: 12px 0;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    align-items: center;
+    border-bottom: 1px dashed var(--line);
+  }
+  .side .observation:last-child { border-bottom: none; }
+  .side .observation svg {
+    width: 28px; height: 28px;
+    color: var(--sage-deep);
+    flex-shrink: 0;
+  }
+  .side .observation .name {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+  .side .observation .meta {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .calendar-list .item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+    align-items: baseline;
+  }
+  .calendar-list .item:last-child { border-bottom: none; }
+  .calendar-list .item .when {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--rose-deep);
+  }
+  .calendar-list .item .what {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    line-height: 1.3;
+  }
+
+  .state-tile {
+    background: var(--bone-warm);
+    padding: 22px 24px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .state-tile .lbl {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .state-tile .name {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--charcoal);
+    line-height: 1;
+    margin: 10px 0 6px;
+    letter-spacing: -0.02em;
+  }
+  .state-tile .cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--slate);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 30px 40px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.72rem;
+    color: var(--slate);
+    letter-spacing: 0.05em;
+  }
+  footer em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--rose-deep);
+  }
+
+  @media (max-width: 900px) {
+    .hero-strip { grid-template-columns: 1fr; }
+    .stage { grid-template-columns: 1fr; }
+    .week-head { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <div class="brand">
+    Camp <em>Hyde</em>
+    <span class="sub">Summer Almanac · MMXXVI · Boise</span>
+  </div>
+  <nav class="nav-strip">
+    <a class="active">Schedule</a>
+    <a>STEM</a>
+    <a>Art</a>
+    <a>Field Trips</a>
+  </nav>
+</header>
+
+<div class="week-head">
+  <div class="num">03<span class="of">of thirteen</span></div>
+  <div class="title-block">
+    <div class="kicker" id="wkRange">JUNE 1 — JUNE 5</div>
+    <div class="title" id="wkTitle">Water &amp; Wonder</div>
+  </div>
+  <div class="nav-buttons">
+    <button title="Previous week">←</button>
+    <button title="Next week">→</button>
+  </div>
+</div>
+
+<div class="hero-strip">
+  <div class="polaroid">
+    <img id="apodImg" src="" alt="">
+    <div class="caption" id="apodTitle">—</div>
+  </div>
+  <div class="hero-text">
+    <div class="lbl">From the Field Library</div>
+    <h2 id="apodHead">—</h2>
+    <p id="apodDesc">—</p>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="almanac">
+    <div class="schedule-h">
+      <h3>The Week</h3>
+      <div class="legend-strip">
+        <span><span class="dot d-sage"></span>Outdoor &amp; reading</span>
+        <span><span class="dot d-rose"></span>Meal &amp; creative</span>
+        <span><span class="dot d-slate"></span>Education</span>
+        <span><span class="dot d-stone"></span>Screen &amp; routine</span>
+      </div>
+    </div>
+    <div class="schedule" id="grid"></div>
+  </div>
+
+  <div class="side">
+    <div class="block">
+      <h4>State of the Week</h4>
+      <div class="state-tile">
+        <div class="lbl">Capital</div>
+        <div class="name" id="stateName">Idaho</div>
+        <div class="cap" id="stateCap">Boise</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h4>This Week's Field Notes</h4>
+      <div class="observation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12 C 5 8, 9 6, 13 7 L 19 5 L 18 9 L 21 11 L 17 12 L 13 16 C 11 18, 7 18, 3 14 Z"/>
+          <circle cx="16" cy="9" r="0.5" fill="currentColor"/>
+        </svg>
+        <div>
+          <div class="name" id="birdName">Mountain Quail</div>
+          <div class="meta">Bird of the Week</div>
+        </div>
+      </div>
+      <div class="observation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 9 C 12 6, 13 4, 13 4 M12 9 C 12 6, 11 4, 11 4 M15 12 C 18 12, 20 11, 20 11 M9 12 C 6 12, 4 11, 4 11 M14 14 C 16 16, 18 17, 18 17 M10 14 C 8 16, 6 17, 6 17"/>
+        </svg>
+        <div>
+          <div class="name" id="plantName">Wild Lupine</div>
+          <div class="meta">Plant of the Week</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h4>Summer Calendar</h4>
+      <div class="calendar-list">
+        <div class="item"><div class="when">May 21</div><div class="what">School lets out</div></div>
+        <div class="item"><div class="when">Jun 5</div><div class="what">Camping trip</div></div>
+        <div class="item"><div class="when">Jun 15</div><div class="what">Sports camp begins</div></div>
+        <div class="item"><div class="when">Jun 22</div><div class="what">Fallon &amp; June Lake</div></div>
+        <div class="item"><div class="when">Jul 2</div><div class="what">Family trip</div></div>
+        <div class="item"><div class="when">Aug 12</div><div class="what">School resumes</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- container -->
+
+<footer>
+  Experiment 03 · <em>Nordic Almanac</em> · Instrument Serif + Manrope · Bone &amp; Sage &amp; Dusty Rose
+</footer>
+
+<script src="../data/legacy_catalogs.js"></script>
+<script src="../data/spines.js"></script>
+<script>
+const DAYS = ['Mon','Tue','Wed','Thu','Fri'];
+const HOURS = ['8','9','10','11','12','1','2','3'];
+
+function stripEmoji(s) {
+  if (!s) return '';
+  return s.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2700}-\u{27BF}️‍]/gu, '').replace(/\s+/g,' ').trim();
+}
+
+const WK_START = new Date('2026-06-01T00:00:00');
+const WK_NUM = 3;
+const today = new Date();
+
+function dayDate(i) { const d = new Date(WK_START); d.setDate(d.getDate()+i); return d; }
+function dayKey(d) { return d.toISOString().slice(0,10); }
+function sameDay(a,b) { return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate(); }
+
+function getCellData(dayIdx, slotIdx) {
+  const dd = dayDate(dayIdx);
+  const ddKey = dayKey(dd);
+  if (SPECIAL_DAY_EVENTS[ddKey]) return SPECIAL_DAY_EVENTS[ddKey];
+  return DEFAULT_SCHEDULE[dayIdx][slotIdx];
+}
+
+function el(tag,cls,html) { const e=document.createElement(tag); if (cls) e.className=cls; if (html!=null) e.innerHTML=html; return e; }
+
+function renderGrid() {
+  const g = document.getElementById('grid');
+  g.innerHTML = '';
+  // Header row
+  g.appendChild(el('div','day-h',''));
+  for (let i=0; i<5; i++) {
+    const dd = dayDate(i);
+    const isT = sameDay(dd, today);
+    g.appendChild(el('div', 'day-h' + (isT ? ' today' : ''),
+      `${DAYS[i]}<span class="date">${dd.getDate()}</span>`));
+  }
+  // Time rows
+  for (let s=0; s<HOURS.length; s++) {
+    const ampm = s < 4 ? 'am' : 'pm';
+    g.appendChild(el('div', 'time-h', `${HOURS[s]}${ampm}`));
+    for (let d=0; d<5; d++) {
+      const data = getCellData(d, s);
+      const dd = dayDate(d);
+      const isT = sameDay(dd, today);
+      const cell = el('div', `cell t-${data.type || 'blank'}${isT ? ' today-col' : ''}`,
+        `<div class="label">${stripEmoji(data.text) || '—'}</div>
+         <div class="type-tag">${(data.type || '').toLowerCase()}</div>`);
+      g.appendChild(cell);
+    }
+  }
+}
+
+function renderHeader() {
+  const apod = APOD_WEEKS.weeks[WK_NUM - 1];
+  document.getElementById('apodImg').src = apod.img;
+  document.getElementById('apodTitle').textContent = apod.title;
+  document.getElementById('apodHead').textContent = apod.title;
+  document.getElementById('apodDesc').textContent = apod.kid;
+
+  const bird = CORPORA.birds_backyard[(WK_NUM - 1) * 11 % CORPORA.birds_backyard.length];
+  document.getElementById('birdName').textContent = bird.name;
+  const plant = CORPORA.plants[(WK_NUM - 1) * 7 % CORPORA.plants.length];
+  document.getElementById('plantName').textContent = plant;
+
+  const tour = ['Idaho','Nevada','Oregon','Wyoming','Montana','California','Washington','Utah'];
+  const stateName = tour[WK_NUM - 1] || 'Idaho';
+  const pair = STATE_CAPITALS.pairs.find(p => p.state === stateName);
+  document.getElementById('stateName').textContent = stateName;
+  document.getElementById('stateCap').textContent = (pair ? pair.capital : '—');
+}
+
+renderHeader();
+renderGrid();
+</script>
+</body>
+</html>

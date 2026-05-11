@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camp Hyde · Riso Poster Experiment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,900&family=DM+Mono:wght@400;500&family=Caprasimo&display=swap" rel="stylesheet">
+<style>
+  /* ════════════════════════════════════════════
+     EXPERIMENT 01 · RISOGRAPH CAMP POSTER
+     Maximalist. Two-color overprint. Sticker cells.
+     ════════════════════════════════════════════ */
+
+  :root {
+    --cherry: #E63946;
+    --cyan: #1098C7;
+    --canary: #F4D35E;
+    --ink: #0B1418;
+    --paper: #F4EDD2;
+    --paper-dark: #E8DCAE;
+    --grass: #4A6741;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    background: var(--paper);
+    background-image:
+      /* halftone dots (cherry) */
+      radial-gradient(circle at 1px 1px, rgba(230,57,70,0.12) 1px, transparent 1.5px),
+      /* halftone dots (cyan, offset) */
+      radial-gradient(circle at 5px 5px, rgba(16,152,199,0.10) 1px, transparent 1.5px);
+    background-size: 8px 8px, 12px 12px;
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── BIG POSTER HEADER ── */
+  header {
+    padding: 30px 36px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sunburst {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 280px;
+    height: 280px;
+    color: var(--canary);
+    transform: rotate(-12deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .sunburst svg { width: 100%; height: 100%; }
+  .wordmark {
+    position: relative;
+    z-index: 1;
+    font-family: 'Caprasimo', serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.88;
+    color: var(--cherry);
+    letter-spacing: -0.03em;
+    text-shadow: 4px 4px 0 var(--cyan), 8px 8px 0 var(--ink);
+  }
+  .wordmark .small {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--ink);
+    text-shadow: none;
+    margin-top: 14px;
+  }
+  .wordmark em {
+    font-style: italic;
+    color: var(--cyan);
+    text-shadow: 4px 4px 0 var(--cherry), 8px 8px 0 var(--ink);
+  }
+  .corner-stamp {
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    z-index: 2;
+    transform: rotate(8deg);
+    border: 3px solid var(--cherry);
+    color: var(--cherry);
+    padding: 8px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--paper);
+  }
+
+  /* ── BIG WEEK BANNER ── */
+  .week-banner {
+    background: var(--cherry);
+    color: var(--paper);
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 30px;
+    align-items: center;
+    position: relative;
+    border-top: 4px solid var(--ink);
+    border-bottom: 4px solid var(--ink);
+  }
+  .week-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(11,20,24,0.18) 1px, transparent 1.5px);
+    background-size: 4px 4px;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .wk-number {
+    font-family: 'Caprasimo', serif;
+    font-size: 7rem;
+    line-height: 0.85;
+    color: var(--canary);
+    text-shadow: 4px 4px 0 var(--ink);
+  }
+  .wk-title-block { position: relative; z-index: 1; }
+  .wk-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+  .wk-title {
+    font-family: 'Caprasimo', serif;
+    font-style: italic;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .wk-bird {
+    background: var(--cyan);
+    color: var(--paper);
+    padding: 10px 16px;
+    transform: rotate(-3deg);
+    border: 3px solid var(--ink);
+    box-shadow: 5px 5px 0 var(--ink);
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    z-index: 1;
+    position: relative;
+  }
+  .wk-bird .lbl {
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .wk-bird .nm {
+    font-family: 'Caprasimo', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    margin-top: 4px;
+    line-height: 1;
+  }
+
+  /* ── LAYOUT ── */
+  .stage {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 36px 60px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 36px;
+  }
+
+  /* ── SCHEDULE: STICKER GRID ── */
+  .grid-wrap {
+    position: relative;
+  }
+  .grid-wrap h2 {
+    font-family: 'Caprasimo', serif;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+    color: var(--cyan);
+  }
+  .grid-wrap h2 em {
+    color: var(--cherry);
+    font-style: italic;
+  }
+  .schedule {
+    display: grid;
+    grid-template-columns: 80px repeat(5, 1fr);
+    gap: 8px;
+  }
+  .day-head {
+    background: var(--ink);
+    color: var(--canary);
+    padding: 14px 8px;
+    text-align: center;
+    font-family: 'Caprasimo', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1;
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--cherry);
+  }
+  .day-head .date {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--paper);
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+  .time-lbl {
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    font-size: 0.78rem;
+    color: var(--ink);
+    padding: 8px 8px 0 0;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 74px;
+  }
+  .time-lbl .num {
+    font-family: 'Caprasimo', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--cherry);
+    margin-right: 4px;
+    line-height: 1;
+  }
+  .cell {
+    background: var(--paper);
+    border: 2.5px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    padding: 9px 11px;
+    min-height: 74px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.25;
+    color: var(--ink);
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: default;
+    position: relative;
+  }
+  .cell:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+  .cell.t-routine   { background: var(--canary); }
+  .cell.t-reading   { background: var(--paper-dark); }
+  .cell.t-education { background: #B0DEF4; border-color: var(--cyan); }
+  .cell.t-lunch     { background: #FAB7BF; border-color: var(--cherry); }
+  .cell.t-screen    { background: var(--paper-dark); }
+  .cell.t-outdoor   { background: #B5D4A2; border-color: var(--grass); }
+  .cell.t-fieldtrip { background: var(--cyan); color: var(--paper); border-color: var(--ink); }
+  .cell.t-free      { background: var(--cherry); color: var(--paper); border-color: var(--ink); }
+  .cell.t-camp      { background: var(--cherry); color: var(--canary); }
+  .cell.t-trip      { background: var(--cyan); color: var(--canary); }
+  .cell.t-school    { background: #C0C0BF; color: #444; }
+  .cell.t-blank     { background: var(--paper); opacity: 0.6; }
+
+  /* Sticker tilts — apply via nth-child for variety */
+  .cell:nth-child(6n+1) { transform: rotate(-0.6deg); }
+  .cell:nth-child(6n+3) { transform: rotate(0.5deg); }
+  .cell:nth-child(6n+5) { transform: rotate(-0.3deg); }
+  .cell:hover { transform: translate(-2px,-2px) rotate(0deg); }
+
+  .cell .tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 3px;
+  }
+  .cell.today-col {
+    box-shadow: 4px 4px 0 var(--cherry), 8px 8px 0 var(--ink);
+  }
+
+  /* ── SIDEBAR STACK ── */
+  .stack > div + div { margin-top: 24px; }
+  .spotlight-poster {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    border: 3px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--canary);
+    overflow: hidden;
+    transform: rotate(0.8deg);
+  }
+  .spotlight-poster .img-wrap {
+    position: relative;
+    background: var(--ink);
+    height: 200px;
+    overflow: hidden;
+  }
+  .spotlight-poster .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: screen;
+    filter: contrast(1.4) saturate(1.3) hue-rotate(-10deg);
+  }
+  .spotlight-poster .img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 2px 2px, var(--cherry) 1px, transparent 1.5px) 0 0 / 5px 5px,
+      radial-gradient(circle at 3px 3px, var(--cyan) 1px, transparent 1.5px) 1px 1px / 7px 7px;
+    mix-blend-mode: multiply;
+    opacity: 0.35;
+  }
+  .spotlight-poster .body {
+    padding: 16px 18px 18px;
+  }
+  .spotlight-poster .kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    color: var(--canary);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .spotlight-poster .title {
+    font-family: 'Caprasimo', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.05;
+    color: var(--cherry);
+    margin-bottom: 10px;
+  }
+  .spotlight-poster .desc {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    opacity: 0.9;
+  }
+
+  .meta-card {
+    background: var(--canary);
+    border: 3px solid var(--ink);
+    box-shadow: 5px 5px 0 var(--cherry);
+    padding: 16px 18px;
+    transform: rotate(-0.7deg);
+  }
+  .meta-card h3 {
+    font-family: 'Caprasimo', serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .meta-card .state {
+    font-family: 'Caprasimo', serif;
+    font-size: 3rem;
+    color: var(--cherry);
+    line-height: 0.85;
+    text-shadow: 2px 2px 0 var(--ink);
+  }
+  .meta-card .cap {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--ink);
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .events-card {
+    background: var(--cyan);
+    color: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: 5px 5px 0 var(--ink);
+    padding: 16px 18px;
+    transform: rotate(0.6deg);
+  }
+  .events-card h3 {
+    font-family: 'Caprasimo', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--canary);
+    margin-bottom: 12px;
+  }
+  .events-card ul { list-style: none; padding: 0; font-family: 'DM Mono', monospace; font-size: 0.82rem; line-height: 1.85; }
+  .events-card ul li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: baseline;
+    border-bottom: 1px dashed rgba(244,237,210,0.3);
+    padding: 4px 0;
+  }
+  .events-card ul li:last-child { border-bottom: none; }
+  .events-card .when {
+    font-family: 'Caprasimo', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--canary);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 36px 50px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+  footer .swatch {
+    display: inline-flex;
+    gap: 6px;
+    margin: 0 12px;
+    vertical-align: middle;
+  }
+  footer .swatch span {
+    width: 14px; height: 14px;
+    border: 1.5px solid var(--ink);
+    display: inline-block;
+  }
+
+  @media (max-width: 900px) {
+    .stage { grid-template-columns: 1fr; }
+    .wk-number { font-size: 4.5rem; }
+    .schedule { grid-template-columns: 64px repeat(5, 1fr); font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sunburst">
+    <svg viewBox="0 0 200 200" fill="currentColor">
+      <g><circle cx="100" cy="100" r="35"/>
+      <g stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none">
+        <line x1="100" y1="20" x2="100" y2="50"/>
+        <line x1="100" y1="150" x2="100" y2="180"/>
+        <line x1="20" y1="100" x2="50" y2="100"/>
+        <line x1="150" y1="100" x2="180" y2="100"/>
+        <line x1="44" y1="44" x2="65" y2="65"/>
+        <line x1="135" y1="135" x2="156" y2="156"/>
+        <line x1="44" y1="156" x2="65" y2="135"/>
+        <line x1="135" y1="65" x2="156" y2="44"/>
+      </g></g>
+    </svg>
+  </div>
+  <div class="corner-stamp">Exp · 01 · Riso</div>
+  <h1 class="wordmark">CAMP<br><em>HYDE</em>
+    <span class="small">SUMMER MMXXVI · BOISE · 43.6°N</span>
+  </h1>
+</header>
+
+<div class="week-banner" id="wkBanner">
+  <div class="wk-number" id="wkNum">03</div>
+  <div class="wk-title-block">
+    <div class="wk-kicker" id="wkKicker">WEEK OF JUNE 1–5</div>
+    <div class="wk-title" id="wkTitle">Water & Wonder</div>
+  </div>
+  <div class="wk-bird">
+    <div class="lbl">Bird of the Week</div>
+    <div class="nm" id="wkBird">Mountain Quail</div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="grid-wrap">
+    <h2>The <em>Plan</em>, more or less.</h2>
+    <div class="schedule" id="grid"></div>
+  </div>
+
+  <div class="stack">
+    <div class="spotlight-poster">
+      <div class="img-wrap"><img id="apodImg" src="" alt=""></div>
+      <div class="body">
+        <div class="kicker" id="apodKicker">Astronomy Picture · This Week</div>
+        <div class="title" id="apodTitle">—</div>
+        <div class="desc" id="apodDesc">—</div>
+      </div>
+    </div>
+
+    <div class="meta-card">
+      <h3>State of the Week</h3>
+      <div class="state" id="stateName">Idaho</div>
+      <div class="cap" id="stateCap">CAPITAL · BOISE</div>
+    </div>
+
+    <div class="events-card">
+      <h3>Big Stuff</h3>
+      <ul>
+        <li><span class="when">May 21</span><span>School out</span><span></span></li>
+        <li><span class="when">Jun 5</span><span>Camping trip</span><span></span></li>
+        <li><span class="when">Jun 15</span><span>Sports camp begins</span><span></span></li>
+        <li><span class="when">Jun 22</span><span>Fallon &amp; June Lake</span><span></span></li>
+        <li><span class="when">Jul 2</span><span>Family trip</span><span></span></li>
+        <li><span class="when">Aug 12</span><span>School resumes</span><span></span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Experiment 01 · Risograph Camp Poster · Bricolage Grotesque + Caprasimo + DM Mono
+  <span class="swatch">
+    <span style="background:#E63946"></span>
+    <span style="background:#1098C7"></span>
+    <span style="background:#F4D35E"></span>
+    <span style="background:#0B1418"></span>
+  </span>
+  Cherry · Cyan · Canary · Ink
+</footer>
+
+<script src="../data/legacy_catalogs.js"></script>
+<script src="../data/spines.js"></script>
+<script>
+const DAYS = ['Mon','Tue','Wed','Thu','Fri'];
+const HOURS = ['8','9','10','11','12','1','2','3'];
+const AMPM = ['AM','AM','AM','AM','PM','PM','PM','PM'];
+
+function stripEmoji(s) {
+  if (!s) return '';
+  return s.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2700}-\u{27BF}️‍]/gu, '').replace(/\s+/g,' ').trim();
+}
+
+// Use Week 3 (Water & Wonder) as the showcase week
+const WK_START = new Date('2026-06-01T00:00:00');
+const WK_NUM = 3;
+const today = new Date();
+
+function dayDate(i) { const d = new Date(WK_START); d.setDate(d.getDate()+i); return d; }
+function dayKey(d) { return d.toISOString().slice(0,10); }
+function sameDay(a,b) { return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate(); }
+
+function getCellData(dayIdx, slotIdx) {
+  const dd = dayDate(dayIdx);
+  const ddKey = dayKey(dd);
+  if (SPECIAL_DAY_EVENTS[ddKey]) return SPECIAL_DAY_EVENTS[ddKey];
+  return DEFAULT_SCHEDULE[dayIdx][slotIdx];
+}
+
+function renderGrid() {
+  const g = document.getElementById('grid');
+  g.innerHTML = '';
+  // Header row
+  g.appendChild(elDiv('time-lbl', ''));
+  for (let i=0; i<5; i++) {
+    const dd = dayDate(i);
+    const h = elDiv('day-head', '');
+    h.innerHTML = `${DAYS[i]}<span class="date">${dd.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase()}</span>`;
+    g.appendChild(h);
+  }
+  // Time rows
+  for (let s=0; s<HOURS.length; s++) {
+    const t = elDiv('time-lbl', '');
+    t.innerHTML = `<span class="num">${HOURS[s]}</span>${AMPM[s]}`;
+    g.appendChild(t);
+    for (let d=0; d<5; d++) {
+      const data = getCellData(d, s);
+      const cell = elDiv('cell t-' + (data.type || 'blank'), '');
+      cell.innerHTML = `<div class="tag">${(data.type || '').slice(0,4).toUpperCase() || '—'}</div>${stripEmoji(data.text) || '—'}`;
+      g.appendChild(cell);
+    }
+  }
+}
+
+function elDiv(cls, txt) { const e = document.createElement('div'); e.className = cls; if (txt) e.textContent = txt; return e; }
+
+function renderHeader() {
+  // Week banner stays as static — Week 3 showcase
+  // APOD
+  const apod = APOD_WEEKS.weeks[WK_NUM - 1];
+  document.getElementById('apodImg').src = apod.img;
+  document.getElementById('apodTitle').textContent = apod.title;
+  document.getElementById('apodDesc').textContent = apod.kid;
+  // Bird of the week
+  const bird = CORPORA.birds_backyard[(WK_NUM - 1) * 11 % CORPORA.birds_backyard.length];
+  document.getElementById('wkBird').textContent = bird.name;
+  // State
+  const tour = ['Idaho','Nevada','Oregon','Wyoming','Montana','California','Washington','Utah'];
+  const stateName = tour[WK_NUM - 1] || 'Idaho';
+  const pair = STATE_CAPITALS.pairs.find(p => p.state === stateName);
+  document.getElementById('stateName').textContent = stateName;
+  document.getElementById('stateCap').textContent = 'CAPITAL · ' + (pair ? pair.capital.toUpperCase() : '—');
+}
+
+renderHeader();
+renderGrid();
+</script>
+</body>
+</html>

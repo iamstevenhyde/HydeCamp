@@ -1,0 +1,2206 @@
+{
+  "_source": "https://github.com/uberspot/OpenTriviaQA",
+  "_license": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "q": "The does \u201ccheetah\u201d mean translated from Sanskrit?",
+      "a": "Spotted One",
+      "choices": [
+        "Fast",
+        "Spotted One",
+        "Lightning",
+        "Stealth cat"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is the name of the active volcano situated in Skamania County, Washington, USA, 50 miles (80 km) northeast of Portland, Oregon?",
+      "a": "Mount St. Helens",
+      "choices": [
+        "Mount St. Augustus",
+        "Mount St. Paul",
+        "Mount St. Georges",
+        "Mount St. Helens"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these is NOT a species of crocodile?",
+      "a": "African Crocodile",
+      "choices": [
+        "Nile Crocodile",
+        "Mugger Crocodile",
+        "American Crocodile",
+        "African Crocodile"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What element is the atmosphere of Jupiter mostly comprised of?",
+      "a": "Hydrogen",
+      "choices": [
+        "Neon",
+        "Helium",
+        "Hydrogen",
+        "Argon"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of these equations can describe the Theorem of Pythagoras?",
+      "a": "a^2+b^2=c^2",
+      "choices": [
+        "sqrt(pi)=t^3",
+        "a^2+b^2=c^2",
+        "e^(pi*i)=-1",
+        "a^3+b^3=c^3"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of the following is used as a cleansing remedy?",
+      "a": "Crab Apple",
+      "choices": [
+        "Cherry Plum",
+        "Gentian",
+        "None of these",
+        "Crab Apple"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of these statements is true about elephants?",
+      "a": "They are able to digest 40% of their food.",
+      "choices": [
+        "All of these",
+        "Their diet consists of 80% tree leaves.",
+        "They are able to digest 40% of their food.",
+        "They spend 8-10 hours a day eating."
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is the speed of light in vacuum?",
+      "a": "300 000 km/s",
+      "choices": [
+        "500 000 km/s",
+        "300 000 km/s",
+        "200 000 km/s",
+        "400 000 km/s"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "The absolute hardness of a diamond  measures 1500, on which scale?",
+      "a": "Mohs scale of mineral hardness",
+      "choices": [
+        "Grubers scale of mineral hardness",
+        "Hans scale of mineral hardness",
+        "Abels scale of mineral hardness",
+        "Mohs scale of mineral hardness"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which one of these is not a Greek Mediterranean island?",
+      "a": "Minorca",
+      "choices": [
+        "Minorca",
+        "Lemnos",
+        "Crete",
+        "Santorini"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is the capital city of Switzerland?",
+      "a": "Bern",
+      "choices": [
+        "Bonn",
+        "Bern",
+        "Berlin",
+        "Zurich"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What would be the Earth like without evaporation?",
+      "a": "Warmer",
+      "choices": [
+        "Cooler",
+        "None of these",
+        "Greener",
+        "Warmer"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What type of government does Sweden have?",
+      "a": "Constitutional monarchy",
+      "choices": [
+        "Absolute monarchy",
+        "Constitutional monarchy",
+        "None of these",
+        "Presidential republic"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is the name of the most active volcano in Mexico, located mostly in the Mexican state of Jalisco?",
+      "a": "Colima",
+      "choices": [
+        "Nevado de Toluca",
+        "Barcena",
+        "Colima",
+        "Las Cumbres"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Trans-fats are definitely unwholesome. Which of these foods is poorest in trans fatty acids?",
+      "a": "sunflower oil",
+      "choices": [
+        "margarine",
+        "vegetable shortenings",
+        "sunflower oil",
+        "cookies"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "It is thought that Triceratops was able to run how fast?",
+      "a": "15 mph",
+      "choices": [
+        "40 mph",
+        "15 mph",
+        "20 mph",
+        "30 mph"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is the weight range of normal mature platypuses?",
+      "a": "From 0.7 to 2.4 kg",
+      "choices": [
+        "Between 3.2 and 4.6 kg",
+        "From 2.5 to 5.5 kg",
+        "Between 0.5 to 2.8 kg",
+        "From 0.7 to 2.4 kg"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What body part is involved in the medical procedure called orchiopexy?",
+      "a": "Testicle",
+      "choices": [
+        "Teeth",
+        "Tendons",
+        "Navel",
+        "Testicle"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which line contains only types of precipitation?",
+      "a": "Graupel, sleet, snow, hail",
+      "choices": [
+        "Snow, vapor, fog drip, hail",
+        "Rain, fog drip, runoff, sleet",
+        "Graupel, sleet, snow, hail",
+        "Snow, ice, hail, rain"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What is the largest carnivorous mammal endemic to the island of Madagascar?",
+      "a": "Fossa",
+      "choices": [
+        "Short-tailed Mongoose",
+        "Fanaloka",
+        "Meerkat",
+        "Fossa"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which artificial island is situated in San Francisco Bay, between San Francisco and Oakland?",
+      "a": "Treasure Island",
+      "choices": [
+        "Hulhumal\u00e9",
+        "Treasure Island",
+        "Port Island",
+        "Flakfortet"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of the following do orca NOT do with their food?",
+      "a": "Regurgitate it for their young",
+      "choices": [
+        "Regurgitate it for their young",
+        "Throw it",
+        "Use it as a teaching tool for young orca",
+        "Slam it on the surface of the water"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which U.S. state has been nicknamed The Silver State?",
+      "a": "Nevada",
+      "choices": [
+        "Nevada",
+        "Nebraska",
+        "North Dakota",
+        "New Mexico"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which continents are entirely in the Southern Hemisphere?",
+      "a": "Australia and Antarctica",
+      "choices": [
+        "South America, Africa, and Australia",
+        "Australia and Antarctica",
+        "South America, Australia and Antarctica",
+        "South America and Australia"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which cartoon dog is one of Mickey Mouses best friends?",
+      "a": "Goofy",
+      "choices": [
+        "Happy",
+        "Minnie",
+        "Doggie",
+        "Goofy"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What iconic world landmark, sometimes called the Crossroads of the World, was formerly named Longacre Square?",
+      "a": "Times Square",
+      "choices": [
+        "Grosvenor Square",
+        "Times Square",
+        "Madison Square",
+        "St Jamess Square"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What island, located in the North Pacific Ocean, is also known as the Big Island?",
+      "a": "Hawaii",
+      "choices": [
+        "Cuba",
+        "Haiti",
+        "Hawaii",
+        "Maui"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these is one of the nicknames of the tiger shark?",
+      "a": "Wastebasket of the Sea",
+      "choices": [
+        "Garbage Can of the Deep",
+        "Predators  that will kill",
+        "Wastebasket of the Sea",
+        "Killers of the Ocean"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "How many times per year is a healthy female guinea pig able to give birth?",
+      "a": "Five times",
+      "choices": [
+        "Twice",
+        "Seven times",
+        "Five times",
+        "Once"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Few animals inhabit the North Pole. Which of these types of animals can never be seen there?",
+      "a": "Penguins",
+      "choices": [
+        "Penguins",
+        "Bears",
+        "Birds",
+        "Fish"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What breed is known as the favourite breed of Queen Elizabeth II?",
+      "a": "Welsh Corgi",
+      "choices": [
+        "Border Collie",
+        "Old English Sheepdog",
+        "Welsh Corgi",
+        "Australian Cattle Dog"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is the largest living bird of prey on the planet?",
+      "a": "Eurasian Black Vulture",
+      "choices": [
+        "Philippine Eagle",
+        "Booted Eagle",
+        "Lappet-faced Vulture",
+        "Eurasian Black Vulture"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of the following states borders South Carolina?",
+      "a": "Georgia",
+      "choices": [
+        "Alabama",
+        "Tennessee",
+        "Virginia",
+        "Georgia"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which country was not among the founding states of the European Economic Community (the European Union predecessor)?",
+      "a": "UK",
+      "choices": [
+        "Luxembourg",
+        "Italy",
+        "France",
+        "UK"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What was the former name of the city of Istanbul ?",
+      "a": "Constantinople",
+      "choices": [
+        "Constantinople",
+        "Persia",
+        "Zaire",
+        "Siam"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which is the state flower of Maryland?",
+      "a": "Black-eyed Susan",
+      "choices": [
+        "Mountain Laurel",
+        "Peach Blossom",
+        "Black-eyed Susan",
+        "Flowering Dogwood"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What important advantage does algal fuel possess?",
+      "a": "All of these",
+      "choices": [
+        "It is relatively environmentally harmless.",
+        "It is biodegradable.",
+        "It produces much more energy than second-generation biofuel crops.",
+        "All of these"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What type of anatomical structures does the Circle of Willis consist of?",
+      "a": "Arteries",
+      "choices": [
+        "Arteries",
+        "All of these",
+        "Veins",
+        "Neurons"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "The Dead Sea Scrolls, found in caves at Qumran, are believed to have been made by a group of people called what?",
+      "a": "Essenes",
+      "choices": [
+        "BHais",
+        "Sircurai",
+        "Essenes",
+        "Sarafai"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which one of these Mediterranean islands is the smallest in area?",
+      "a": "Corfu",
+      "choices": [
+        "Corsica",
+        "Cyprus",
+        "Crete",
+        "Corfu"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is the most likely suffix of the email address of someone who is Dutch?",
+      "a": ".nl",
+      "choices": [
+        ".nl",
+        ".hl",
+        ".ho",
+        ".du"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "In mathematics, what type of conic section would this equation show: x^2+y^2=9?",
+      "a": "Circle",
+      "choices": [
+        "Secant",
+        "Line",
+        "Ray",
+        "Circle"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What is the literal meaning of the word ecology, which derives from Greek?",
+      "a": "study of the household",
+      "choices": [
+        "study of life",
+        "None of these",
+        "study of the household",
+        "study of nature"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What bizarre food would pigs occasionally eat, being omnivores?",
+      "a": "All of these",
+      "choices": [
+        "Tree bark",
+        "Their young",
+        "Rotting carcasses",
+        "All of these"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "In what US state is the Fourpeaked Volcano, also known as Fourpeaked Mountain, situated?",
+      "a": "Alaska",
+      "choices": [
+        "Colorado",
+        "Oregon",
+        "Alaska",
+        "Montana"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these animals is NOT a natural predator of penguins?",
+      "a": "Polar Bear",
+      "choices": [
+        "Leopard Seal",
+        "Polar Bear",
+        "Stellars Sea Eagle",
+        "Orca (Killer Whale)"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What term refers to the animal that is the result of crossbreeding between a male coyote and a female dog?",
+      "a": "Coydog",
+      "choices": [
+        "All of these",
+        "Coypup",
+        "Coydog",
+        "Dogote"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of these countries joined the United Nations organization in 2006?",
+      "a": "Montenegro",
+      "choices": [
+        "South Korea",
+        "Poland",
+        "None of these",
+        "Montenegro"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Birmingham is the most populous city of which country or US state?",
+      "a": "Alabama",
+      "choices": [
+        "Austria",
+        "Alabama",
+        "the UK",
+        "Utah"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these is not within the natural diet of the omnivorous Eastern Box Turtle?",
+      "a": "Small amphibians",
+      "choices": [
+        "Small amphibians",
+        "Earthworms",
+        "Snails",
+        "Carrion"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "The Pyrenees-Mediterranean region is located along the border of which two countries?",
+      "a": "France - Spain",
+      "choices": [
+        "France - Italy",
+        "Norway - Sweden",
+        "France - Spain",
+        "Spain - Portugal"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is heavy water made of ?",
+      "a": "Two deuterium atoms and one oxygen atom",
+      "choices": [
+        "Two hydrogen atoms and two oxugen atoms",
+        "Two deuterium atoms and one oxygen atom",
+        "Two oxygen atoms and one hydrogen atom",
+        "Three hydrogen atoms and one oxygen molecule."
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which continents are entirely in the Western Hemisphere?",
+      "a": "North America and South America",
+      "choices": [
+        "North America, Europe, and Asia",
+        "Europe, Asia, Africa, Australia",
+        "Australia and Antarctica",
+        "North America and South America"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Where exactly is the retina of the eye positioned?",
+      "a": "Its lining the inner surface of the eye.",
+      "choices": [
+        "Retina is a synonym of pupil.",
+        "Along the optic nerve.",
+        "Right behind the pupil",
+        "Its lining the inner surface of the eye."
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "According to the Shinsengumi rules, if the leader of a unit is mortally wounded in a fight, what should the rest of the group do?",
+      "a": "All members of the unit must fight and die on the spot.",
+      "choices": [
+        "Run away",
+        "Take the body and run away",
+        "Commit Seppuku",
+        "All members of the unit must fight and die on the spot."
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Will Rogers World Airport and the Wiley Post Airport were named after people who died in 1935. How did they meet their demise?",
+      "a": "in a plane crash",
+      "choices": [
+        "in a plane crash",
+        "by murder",
+        "in a car crash",
+        "as a result of a boat accident"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Inert gases are found in Group 18 of the Periodic Table. Which is the inert gas with atomic number 54?",
+      "a": "Xe",
+      "choices": [
+        "Rn",
+        "Xe",
+        "Kr",
+        "Ar"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "In what year did 23-year-old American Clyde Tombough discover Pluto, or Planet X, as it was termed then?",
+      "a": "1930",
+      "choices": [
+        "1930",
+        "1878",
+        "1910",
+        "1754"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What human internal organ contains Luschkas crypts?",
+      "a": "Gallbladder",
+      "choices": [
+        "Uterus",
+        "Urinary bladder",
+        "Stomach",
+        "Gallbladder"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What is the major type of food that Hummingbirds depend on for their survival?",
+      "a": "Nectar",
+      "choices": [
+        "All of these",
+        "Seeds",
+        "Buds",
+        "Nectar"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "During which lunar phase is the moon least visible?",
+      "a": "Waxing Crescent",
+      "choices": [
+        "First Quarter",
+        "Full Moon",
+        "Waxing Crescent",
+        "Waxing Gibbous"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "To which countrys territory does the Dead Sea belong?",
+      "a": "Israel and Jordan share ownership",
+      "choices": [
+        "Egypt and Israel share ownership",
+        "Israel and Jordan share ownership",
+        "Israels territory",
+        "Saudi Arabias territory"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of the following is the Latin word for egg?",
+      "a": "Ovum",
+      "choices": [
+        "Ovum",
+        "Avis",
+        "Cancer",
+        "Rana"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What Canadian lake is the largest in the world, located on an island?",
+      "a": "Nettilling Lake",
+      "choices": [
+        "Nettilling Lake",
+        "Aral",
+        "Winnipeg",
+        "Michigan"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What are cheetahs that have mutated patterning that creates blotches instead of spots called?",
+      "a": "King Cheetahs",
+      "choices": [
+        "King Cheetahs",
+        "Smudge Cheetahs",
+        "Black Cheetahs",
+        "Striped Cheetahs"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is the state animal of Colorado and the symbol of Rocky Mountain National Park?",
+      "a": "Big Horned Sheep",
+      "choices": [
+        "Mustang",
+        "Big Horned Sheep",
+        "White Tailed Deer",
+        "Buffalo"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of the following octopuses could most easily kill a human?",
+      "a": "The Blue Ringed Octopus",
+      "choices": [
+        "The Common Octopus",
+        "The Blue Ringed Octopus",
+        "The Giant Pacific Octopus",
+        "Seven Armed Octopus"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which word refers to the study of bones?",
+      "a": "osteology",
+      "choices": [
+        "otology",
+        "osteology",
+        "endocrinology",
+        "neropathp"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of these ways of defence and attack do ants use?",
+      "a": "All of these",
+      "choices": [
+        "All of these",
+        "Injecting or spraying chemicals",
+        "Stinging",
+        "Biting"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is perihelion?",
+      "a": "the orbital point of the closest approach to the sun",
+      "choices": [
+        "the orbital point of the closest approach to the sun",
+        "the orbital point of greatest distance from the sun",
+        "the darkening of the moon when it moves through the Earths shadow",
+        "any planet visible in the sky just after sunset"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What national symbols are subject of study of vexillology?",
+      "a": "flags",
+      "choices": [
+        "flags",
+        "seals",
+        "national emblems",
+        "coat of arms"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which US state is nicknamed The Pine Tree State?",
+      "a": "Maine",
+      "choices": [
+        "New Hampshire",
+        "Missouri",
+        "Massachusetts",
+        "Maine"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which EU member state was known to the ancient Greeks and Romans as Dacia?",
+      "a": "Romania",
+      "choices": [
+        "Macedonia",
+        "Bulgaria",
+        "Romania",
+        "Slovenia"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which was the first implemented high-level general purpose programming language?",
+      "a": "Fortran",
+      "choices": [
+        "Cobol",
+        "BASIC",
+        "Fortran",
+        "Pascal"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "How many recognized giraffe subspecies exist?",
+      "a": "9",
+      "choices": [
+        "6",
+        "7",
+        "9",
+        "5"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "St Marks Basilica, a prominent example of Byzantine architecture, is located in which Italian city?",
+      "a": "Venice",
+      "choices": [
+        "Milan",
+        "Rome",
+        "Venice",
+        "Florence"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "When was the city of Eilat founded?",
+      "a": "1951",
+      "choices": [
+        "1951",
+        "1939",
+        "1941",
+        "1929"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What term is commonly used to denote a group of foxes?",
+      "a": "All of these",
+      "choices": [
+        "Earth",
+        "Troop",
+        "All of these",
+        "Skulk"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What notable feature does the Fennec Fox possess, that makes it easily recognizable?",
+      "a": "Very large ears",
+      "choices": [
+        "It has no tail",
+        "Bluish fur",
+        "Very large ears",
+        "Red eyes"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What animal is depicted on the Coat of Arms of Norway?",
+      "a": "Lion",
+      "choices": [
+        "Lion",
+        "Bear",
+        "Deer",
+        "Wolf"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What city boasts the most parks in the US?",
+      "a": "Denver, Colorado",
+      "choices": [
+        "Colorado Springs, Colorado",
+        "Golden, Colorado",
+        "Denver, Colorado",
+        "Aspen, Colorado"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of the following metropolitan areas is the largest in terms of population?",
+      "a": "New York City",
+      "choices": [
+        "London",
+        "New York City",
+        "Paris",
+        "Los Angeles"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "This equation, Y=mX+B, represents what?",
+      "a": "A line in the plane",
+      "choices": [
+        "A prism",
+        "A circle in the plane",
+        "A line in the plane",
+        "An ellipse in the plane"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "How many species of Moa are known to have existed?",
+      "a": "11-15",
+      "choices": [
+        "3-5",
+        "5-7",
+        "10-13",
+        "11-15"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What fruit is believed to be the highest in vitamin C content?",
+      "a": "Kakadu plum",
+      "choices": [
+        "Kakadu plum",
+        "Lemon",
+        "Kiwi",
+        "Rose hip"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What conic section is used to describe electromagnetic waves?",
+      "a": "Parabolas",
+      "choices": [
+        "Points",
+        "Lines",
+        "Ellipses",
+        "Parabolas"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Wichita, the county seat of Sedgwick County, is nicknamed what?",
+      "a": "Air Capital",
+      "choices": [
+        "Air Capital",
+        "Mountain Capital",
+        "Plain Capital",
+        "River capital"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is the difference between the male and the female Galah, a cockatoo bird native to Australia?",
+      "a": "Males and females have different eye colour.",
+      "choices": [
+        "There is no difference between them.",
+        "Males and females have different eye colour.",
+        "Galah males are crested.",
+        "Galah females have shorter tails."
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of these names belongs to the fox species that is the second smallest fox species in the world, slightly smaller than a domestic cat?",
+      "a": "All of these",
+      "choices": [
+        "Short-Tailed Fox",
+        "All of these",
+        "Coast Fox",
+        "California Channel Island Fox"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Use an IMAP server to get advanced mail features.  What does IMAP stand for?",
+      "a": "Internet Message Access Protocol",
+      "choices": [
+        "Internet Message Access Protocol",
+        "Intelligent Message Account Process",
+        "Internet Massive Access Peak",
+        "Intelligent Messaging Account Protocol"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of these statements is true about the female hormone estrogen?",
+      "a": "All of these",
+      "choices": [
+        "It reduces muscle mass.",
+        "All of these",
+        "It decreases height growth.",
+        "It speeds up metabolism."
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Who was the first  female  President of the Philippines?",
+      "a": "Corazon Aquino",
+      "choices": [
+        "Eleanor Concepcion",
+        "Louiza Rizal",
+        "Ramona  Magsaysay",
+        "Corazon Aquino"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "How permeable is the cell membrane?",
+      "a": "It is semi permeable",
+      "choices": [
+        "It is semi permeable",
+        "It varies in permeablity",
+        "It is fully permeable",
+        "It is not permeable"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "In which section of Israel is Eilat located?",
+      "a": "South",
+      "choices": [
+        "East",
+        "West",
+        "South",
+        "North"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which part of the body is decomposed last, but before the bones?",
+      "a": "Hair",
+      "choices": [
+        "Cartilages",
+        "Hair",
+        "Nails",
+        "Gall Bladder"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of the following is not a type of chipmunk?",
+      "a": "Bushy-tailed",
+      "choices": [
+        "Bushy-tailed",
+        "Long-eared",
+        "Eastern",
+        "Sonoma"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What are the Tropic of Cancer and the Tropic of Capricorn?",
+      "a": "Lines of latitude",
+      "choices": [
+        "Lines of latitude",
+        "Lines of longitude",
+        "Parallel to the Greenwhich Meridian",
+        "None of these"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What term refers to the horizontal line, 23.5 degrees S, which passes through South America, Africa, and Australia?",
+      "a": "Tropic of Capricorn",
+      "choices": [
+        "Tropic of Cancer",
+        "Prime Meridian",
+        "Tropic of Capricorn",
+        "Equator"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What does the word penguin mean?",
+      "a": "Fat",
+      "choices": [
+        "Fat",
+        "Black and White",
+        "Swimmer",
+        "Bird"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What type of glands are the Glands of Montgomery?",
+      "a": "Sebaceous glands",
+      "choices": [
+        "Lacrimal glands",
+        "Sebaceous glands",
+        "Sudoriferous glands",
+        "Salivary glands"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "The first examples of early Byzantine architecture, found in Ravenna and Constantinople, date from the reign of which Byzantine emperor?",
+      "a": "Justinian I",
+      "choices": [
+        "Justinian I",
+        "Justin II",
+        "Tiberius II",
+        "Haraclius"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which scientist discovered the atmosphere of Venus?",
+      "a": "Mikhail Lomonosov in 1761 A.D",
+      "choices": [
+        "Galileo Galilei in 1702 A.D.",
+        "Pythagoras in 546 B.C.",
+        "Giovanni Cassini in 1790 A.D.",
+        "Mikhail Lomonosov in 1761 A.D"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "In the country of Papua New Guinea, how many children does the average woman give birth to during her lifetime according to 2006 estimates?",
+      "a": "4.6",
+      "choices": [
+        "1.2",
+        "2.8",
+        "4.6",
+        "3.9"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these seas surrounds the Korean Peninsula, in the northern part of which North Korea is located?",
+      "a": "All of these",
+      "choices": [
+        "All of these",
+        "East China Sea",
+        "Sea of Japan",
+        "Yellow Sea"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which is the major source of revenue for the Eilat area?",
+      "a": "Tourism",
+      "choices": [
+        "Agriculture",
+        "Tourism",
+        "Jewelry",
+        "Mining"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "How long is the Red Foxs lifespan in the wild?",
+      "a": "3 years",
+      "choices": [
+        "3 years",
+        "8 years",
+        "6 years",
+        "10 years"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "The zebrafish (Girella zebra), which can be recognised by its pale body and yellow fins, is endemic to which region?",
+      "a": "Australian waters",
+      "choices": [
+        "Amazon River Basin",
+        "Australian waters",
+        "The Caribbean",
+        "Japan waters"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which body of water, situated in Southern Siberia, is the deepest and oldest freshwater lake on Earth?",
+      "a": "Baikal",
+      "choices": [
+        "Onega",
+        "Ladoga",
+        "Huron",
+        "Baikal"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What term is used for the behavior exhibited by male giraffes that are engaged in a fight?",
+      "a": "Necking",
+      "choices": [
+        "Hoofing",
+        "Tailing",
+        "Necking",
+        "Horning"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "During what geological time period did the ammonites evolve?",
+      "a": "The Devonian period",
+      "choices": [
+        "The Devonian period",
+        "The Silurian period",
+        "The Triassic period",
+        "The Carboniferous period"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What does the atomic number of the atom define?",
+      "a": "Its number of protons",
+      "choices": [
+        "All of these",
+        "Its number of protons",
+        "Its electrical charge",
+        "Its number of isotopes"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of the following characters is a chicken?",
+      "a": "Foghorn Leghorn",
+      "choices": [
+        "Dori",
+        "Foghorn Leghorn",
+        "Daffy",
+        "Kermit"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which three nations have not officially adopted the metric system?",
+      "a": "The USA, Liberia, Myanmar",
+      "choices": [
+        "The USA, Jamaica, Libya",
+        "The USA, the United Kingdom, Malawi",
+        "The USA, Jamaica, Burma",
+        "The USA, Liberia, Myanmar"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which country is the biggest contributor to the European Union budget?",
+      "a": "Germany",
+      "choices": [
+        "UK",
+        "Germany",
+        "Italy",
+        "France"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What type of climate does North Korea have?",
+      "a": "Continental",
+      "choices": [
+        "Oceanic",
+        "Humid subtropical",
+        "Continental",
+        "Tropical"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What was the name of the Earths first artificial satellite?",
+      "a": "Sputnik 1",
+      "choices": [
+        "Telstar 1",
+        "Telos 1",
+        "Sputnik 1",
+        "Explorer 1"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "How fast have winds on Jupiter blown?",
+      "a": "430 Kilometers per hour(267 Miles per hour)",
+      "choices": [
+        "430 Kilometers per hour(267 Miles per hour)",
+        "240 Kilometers per hour(150 Miles per hour)",
+        "470 Kilometers per hour(292 Miles per hour)",
+        "360 Kilometers per hour(223 Miles per hour)"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What is alektorophobia?",
+      "a": "The unreasonable fear of chickens",
+      "choices": [
+        "The unreasonable fear of birds of prey",
+        "The unreasonable fear of roaches",
+        "The unreasonable fear of chickens",
+        "The unreasonable fear of sharks"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of these statements is true about the diet of the platypus?",
+      "a": "Platypuses are carnivores.",
+      "choices": [
+        "Platypuses are carnivores.",
+        "Platypuses are herbivores.",
+        "Platypuses are specialized eaters.",
+        "Platypuses are omnivores."
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of these events occurred in 1589?",
+      "a": "Sir John Harington invented the modern flush toilet.",
+      "choices": [
+        "Sir Thomas Crapper invented the modern flush toilet.",
+        "Zacharias Hanssen invented the modern flush toilet.",
+        "Sir John Harington invented the modern flush toilet.",
+        "Otto von Guericke invented the modern flush toilet."
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Where in the world can you find the dolphin known as the Boto?",
+      "a": "South America",
+      "choices": [
+        "Asia",
+        "Australia",
+        "South America",
+        "North America"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "In the cartoon Dinosaucers, Bronto Thunder is what kind of dinosaur?",
+      "a": "An evolved Apatosaurus",
+      "choices": [
+        "An evolved Apatosaurus",
+        "An evolved Stegosaurus",
+        "An evolved Archaeopteryx",
+        "An evolved Triceratops"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which feature on a map helps determine direction?",
+      "a": "a compass rose",
+      "choices": [
+        "a key",
+        "a legend",
+        "a compass rose",
+        "a scale"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these oceans has the greatest depth?",
+      "a": "Pacific Ocean",
+      "choices": [
+        "Pacific Ocean",
+        "Indian Ocean",
+        "Atlantic Ocean",
+        "Arctic Ocean"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is the most common reason for getting a massage?",
+      "a": "Relaxation",
+      "choices": [
+        "Relaxation",
+        "Joint pain",
+        "Healing",
+        "Back pain"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which is the correct version of the joke about these four medical specialists?",
+      "a": "A psychiatrist knows nothing and does nothing.  An internist knows everything and does nothing. A surgeon knows nothing and does everything. A pathologist knows everything, and does everything--but too late!",
+      "choices": [
+        "A psychiatrist knows nothing and does nothing. An internist knows everything and does nothing. A pathologist knows nothing and does everything. A surgeon knows everything, and does everything--but too late!",
+        "A psychiatrist knows nothing and does nothing. A pathologist knows everything and does nothing. An internist knows nothing and does everything. A surgeon knows everything, and does everything--but too late!",
+        "A psychiatrist knows nothing and does nothing.  An internist knows everything and does nothing. A surgeon knows nothing and does everything. A pathologist knows everything, and does everything--but too late!",
+        "A psychiatrist knows nothing and does nothing. A pathologist knows everything and does nothing. A surgeon knows nothing and does everything.  An internist knows everything, and does everything--but too late!"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of these statements is true about the flea, a well-known external parasite?",
+      "a": "All of these",
+      "choices": [
+        "They have laterally compressed bodies.",
+        "All of these",
+        "They dont have wings.",
+        "They live on mammals and birds."
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "How did the Black Mamba snake get its name?",
+      "a": "Because its mouth is black",
+      "choices": [
+        "Because of its color",
+        "Because its eggs are black",
+        "Because its mouth is black",
+        "Because its venom is black"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "How much is Triceratops thought to have weighed?",
+      "a": "Between 13,000 and 26,000 lbs",
+      "choices": [
+        "Between 13,000 and 26,000 lbs",
+        "Between 1,000 and 9,000 lbs",
+        "Between 50,000 and 75,000 lbs",
+        "Between 110,000 and 140,000 lbs"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which one of these Australian reptiles is the largest living crocodile in the world?",
+      "a": "The saltwater crocodile",
+      "choices": [
+        "The thorny devil",
+        "The weedy sea dragon",
+        "The blue-tongued skink",
+        "The saltwater crocodile"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is the name of the highest volcano in Asia, and the highest point in the Middle East?",
+      "a": "Mount Damavand",
+      "choices": [
+        "Bazman",
+        "Sabalan",
+        "Taftan",
+        "Mount Damavand"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "In what European country are the Rhine Falls located?",
+      "a": "Switzerland",
+      "choices": [
+        "Germany",
+        "Switzerland",
+        "Austria",
+        "Belgium"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "How many vertebrae make up the thoracic region of the spinal column?",
+      "a": "12",
+      "choices": [
+        "5",
+        "7",
+        "10",
+        "12"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Many computer drives have a capacity of a terabit. How many bits are in one terabit?",
+      "a": "1,000,000,000,000",
+      "choices": [
+        "1,000",
+        "10",
+        "8",
+        "1,000,000,000,000"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Why do flamingos often stand on one leg?",
+      "a": "Noone knows for sure.",
+      "choices": [
+        "To keep their feet from becoming waterlogged.",
+        "To keep feet from getting tired.",
+        "To stir up as little silt from bottom as possible.",
+        "Noone knows for sure."
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "It is generally accepted, that economic market systems have proved to be so stable and efficient for which of these reasons?",
+      "a": "They facilitate exchange and specialization.",
+      "choices": [
+        "Everyone pays the same amount in taxes.",
+        "People cannot be self-sufficient.",
+        "They facilitate exchange and specialization.",
+        "Producers cannot specialize without markets."
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What is the meaning of the Portuguese word brasa from which the name of Brazil possibly originated?",
+      "a": "Ember",
+      "choices": [
+        "Jungle",
+        "River",
+        "Heaven",
+        "Ember"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "In what year was the first in-flight meal served?",
+      "a": "1919",
+      "choices": [
+        "1969",
+        "1949",
+        "1919",
+        "1959"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of these natural disasters is known to hit the lands of North Korea on the regular?",
+      "a": "All of these",
+      "choices": [
+        "All of these",
+        "Droughts",
+        "Floods",
+        "Typhoons"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these fish is a major source of omega-3 fatty acids?",
+      "a": "All of these",
+      "choices": [
+        "Tuna",
+        "Salmon",
+        "Mackerel",
+        "All of these"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What type of food do Tasmanian devils prefer in the wild?",
+      "a": "Carrion",
+      "choices": [
+        "Sheep",
+        "Carrion",
+        "Insects",
+        "Fish"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is Venus maximum elongation?",
+      "a": "47.8 Degrees",
+      "choices": [
+        "48.7 Degrees",
+        "47.8 Degrees",
+        "24.5 Degrees",
+        "177.8 Degrees"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What kind of respiratory organs do lungfish have?",
+      "a": "They have both lungs and gills.",
+      "choices": [
+        "They have both lungs and gills.",
+        "Lungfish do not have any respiratory organs. They absorb oxygen through their skin.",
+        "They breathe only with gills.",
+        "They do not have gills, they use their lungs for respiration."
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "On which of the Canary Islands is the Mount Teide volcano located?",
+      "a": "Tenerife",
+      "choices": [
+        "Gran Canaria",
+        "Fuerteventura",
+        "La Palma",
+        "Tenerife"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Baton Rouge is the capital of what US state?",
+      "a": "Louisiana",
+      "choices": [
+        "New Hampshire",
+        "Maine",
+        "Louisiana",
+        "North Carolina"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "To what country is the Rhinoderma rufum, a species of frog from the family Rhinodermatidae, endemic?",
+      "a": "Chile",
+      "choices": [
+        "India",
+        "United States",
+        "Chile",
+        "Brazil"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "In the scientific classification of animals, what does the term Dinosauria signify?",
+      "a": "A superorder",
+      "choices": [
+        "A family",
+        "A superorder",
+        "A genus",
+        "A kingdom"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "In what part of the human body are the Wormian bones, named after Ole Worm, located?",
+      "a": "Cranium",
+      "choices": [
+        "Thorax",
+        "Mandible",
+        "Pelvis",
+        "Cranium"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "In what geographical area is the Rock monitor lizard, or Legavaan, found?",
+      "a": "Africa",
+      "choices": [
+        "South America",
+        "New Guinea",
+        "Australia",
+        "Africa"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Where is the femoral artery located?",
+      "a": "Thigh",
+      "choices": [
+        "Thigh",
+        "Uterus",
+        "Calf",
+        "Along the spinal column"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "The highest mountain in the world is named after Sir George Everest, a famous Welshman. What was his profession?",
+      "a": "Surveyor and geographer",
+      "choices": [
+        "Defender of human rights",
+        "Actor",
+        "Surveyor and geographer",
+        "President"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which probe became the first probe to visit Mercury in 1974?",
+      "a": "Mariner 10",
+      "choices": [
+        "Mariner 8",
+        "Mariner 9",
+        "Mariner 10",
+        "Venera 11"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What is the special talent of the penguin Mumble from the 2006 animated movie Happy Feet?",
+      "a": "Tap dancing",
+      "choices": [
+        "Shoe making",
+        "Singing",
+        "Break dancing",
+        "Tap dancing"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Who was the first person to fly solo nonstop around the world in a balloon?",
+      "a": "Steve Fossett",
+      "choices": [
+        "Heinrich Kubis",
+        "Steve Fossett",
+        "Richard Rutan",
+        "John Alcock"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of these American zoos does NOT house Komodo Dragons?",
+      "a": "Bronx Zoo",
+      "choices": [
+        "Honolulu Zoo",
+        "Disneys Animal Kingdom",
+        "Memphis Zoo",
+        "Bronx Zoo"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What are the three basic parts of an ants body?",
+      "a": "Head, mesosoma, metasoma",
+      "choices": [
+        "Antennae, abdomen, thoraces",
+        "Head, mesosoma, metasoma",
+        "Head, abdomen, metasoma",
+        "Head, thorax, somatomy"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of these events is regularly performed only in North Korea?",
+      "a": "Mass games",
+      "choices": [
+        "Mass games",
+        "Senior citizens beauty pageant",
+        "Politicians athletics",
+        "Binoculars football games"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "The famous \u00cele Notre-Dame, an artificial island built from earth excavated for a metropolitan railway, is located in which country?",
+      "a": "Canada",
+      "choices": [
+        "England",
+        "Canada",
+        "France",
+        "Switzerland"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which continents does the natural habitat of the jaguar span upon?",
+      "a": "North and South America",
+      "choices": [
+        "Europe and Africa",
+        "South America and Africa",
+        "Africa and Asia",
+        "North and South America"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "In what U.S. state is the famous Bridalveil Fall located?",
+      "a": "California",
+      "choices": [
+        "California",
+        "Florida",
+        "Colorado",
+        "Hawaii"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What type of animal is the serval?",
+      "a": "Feline",
+      "choices": [
+        "Canine",
+        "Ungulate",
+        "Reptile",
+        "Feline"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "The name of cobras, which are very venomous, comes from the Portuguese cobra de capello. What does this mean?",
+      "a": "Snake with hood",
+      "choices": [
+        "Snake with hood",
+        "Poisonous hat",
+        "Poisonous nose",
+        "Snake with nose"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "In most computer monitors which of these colors is not accomplished by simply emitting in the respective wavelength?",
+      "a": "Orange",
+      "choices": [
+        "Green",
+        "Red",
+        "Orange",
+        "Cyan"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "How will you say I Love You in Filipino?",
+      "a": "Mahal Kita",
+      "choices": [
+        "Mahal Kita",
+        "Ikaw Na Nga",
+        "Sino Ka",
+        "Hindi Ko Alam"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is the official language spoken on the territory of Spain?",
+      "a": "Spanish",
+      "choices": [
+        "All of these",
+        "Spanish and Galician",
+        "Spanish and Basque",
+        "Spanish"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What does a koala eat?",
+      "a": "eucalyptus leaves",
+      "choices": [
+        "banyan tree",
+        "bamboo",
+        "eucalyptus leaves",
+        "rice"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which of these rivers runs through the Czech Republic and Germany?",
+      "a": "Elbe River",
+      "choices": [
+        "Elbe River",
+        "Rhine River",
+        "Danube River",
+        "Rhone River"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What animals do wolves generally prefer to feed on?",
+      "a": "Ungulates",
+      "choices": [
+        "Rodents",
+        "Birds",
+        "Fish",
+        "Ungulates"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of the following terms describes a dark layer of clouds that bring rain or snow?",
+      "a": "Nimbostratus",
+      "choices": [
+        "Stratocumulus",
+        "Cirrus",
+        "Nimbostratus",
+        "Altocumulus"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which skeletal muscle moves the scapula forward, as in pushing something?",
+      "a": "Serratus anterior",
+      "choices": [
+        "Soleus",
+        "Sartorius",
+        "Sternocleidomastoid",
+        "Serratus anterior"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Carbon dioxide is a very common pollutant. Approximately how much carbon dioxide is produced by the average American each year?",
+      "a": "22 tons",
+      "choices": [
+        "22 tons",
+        "5 tons",
+        "93  tons",
+        "1 ton"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What was the name of the first geometry textbook which was written by the ancient Greek Euclid?",
+      "a": "The Elements",
+      "choices": [
+        "The Stoia",
+        "The Principia",
+        "The Elements",
+        "The Academy"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "The Capybara is the largest rodent in the world. What is the meaning of its name, derived from a word of the Guaran\u00ed language?",
+      "a": "Master of the grasses",
+      "choices": [
+        "Master of the grasses",
+        "River keeper",
+        "Rabbit pig",
+        "Water squirrel"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which volcano, located on Ross Island, Antarctica, is the southernmost active volcano on Earth?",
+      "a": "Mount Erebus",
+      "choices": [
+        "Mayon Volcano",
+        "Cold Bay Volcano",
+        "Mount Erebus",
+        "Teide"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "Which of these is NOT a species of rhinoceros?",
+      "a": "African Rhino",
+      "choices": [
+        "African Rhino",
+        "Indian Rhino",
+        "Javan Rhino",
+        "Sumatran Rhino"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Control of the Ganges River, sacred to some people, has been much disputed between which two nations?",
+      "a": "India and Bangladesh",
+      "choices": [
+        "India and Bangladesh",
+        "India and Myanmar",
+        "India and Pakistan",
+        "India and China"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What is the symbol for Iron?",
+      "a": "Fe",
+      "choices": [
+        "Fe",
+        "I",
+        "Ir",
+        "Fi"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "At how many approximate degrees does Venus appear from the sun?",
+      "a": "46",
+      "choices": [
+        "78",
+        "35",
+        "46",
+        "55"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "How many stomachs does a starfish have?",
+      "a": "2",
+      "choices": [
+        "1",
+        "0",
+        "2",
+        "5"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "The EU has been a western club for most of its history. But which of these western countries has stayed out of the EU?",
+      "a": "Switzerland",
+      "choices": [
+        "Belgium",
+        "Spain",
+        "Switzerland",
+        "Luxembourg"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What term is used the denote the terrestrial stage of the development of the young newt?",
+      "a": "Eft",
+      "choices": [
+        "Eft",
+        "Imago",
+        "Elf",
+        "Larva"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "How many of the basic mathematical operations are needed to have an algebra?",
+      "a": "3",
+      "choices": [
+        "3",
+        "2",
+        "0",
+        "4"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "How many new species of animals and plants were discovered on Borneo between July 2005 and September 2006?",
+      "a": "52",
+      "choices": [
+        "None",
+        "121",
+        "3",
+        "52"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What expression is commonly used in Egypt to refer to the annual flooding of the river Nile, the longest river in the world?",
+      "a": "The Gift of the Nile",
+      "choices": [
+        "Feeding of the Soil",
+        "The Gift of the Nile",
+        "The Blessing of the Nile",
+        "The Mother of Abundance"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "In what European city are Piazza San Marco and Canale Grande located?",
+      "a": "Venice",
+      "choices": [
+        "Venice",
+        "Lisbon",
+        "Madrid",
+        "Florence"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What celestial formations are considered to be the birthplaces of stars?",
+      "a": "Nebulae",
+      "choices": [
+        "Galactic halos",
+        "Nebulae",
+        "Spiral galaxies",
+        "Galaxy cluster clouds"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "In what Asian country did one of the two main branches of alchemy originate?",
+      "a": "China",
+      "choices": [
+        "India",
+        "Saudi Arabia",
+        "China",
+        "Japan"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which country, Slovakia or Slovenia, used to be part of Yugoslavia?",
+      "a": "Slovenia",
+      "choices": [
+        "Slovenia",
+        "Both",
+        "Slovakia",
+        "None of them"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "No lizard species live on which continent?",
+      "a": "Antarctica",
+      "choices": [
+        "South America",
+        "Antarctica",
+        "Europe",
+        "Asia"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Human beings have 23 pairs of  chromosomes. Which animal has the most chromosomes?",
+      "a": "hermit crabs",
+      "choices": [
+        "minke whale",
+        "millipedes",
+        "elephants",
+        "hermit crabs"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What is the only place in the world you can see platypuses in the wild?",
+      "a": "Australia and Tasmania",
+      "choices": [
+        "South-eastern Asia",
+        "Australia and Tasmania",
+        "Hawaii Island",
+        "South America"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "How many pounds of leaves can a giraffe consume daily?",
+      "a": "140 pounds",
+      "choices": [
+        "60 pounds",
+        "100 pounds",
+        "140 pounds",
+        "210 pounds"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which whale expels a reddish-brown fluid when threatened, much like an octopus?",
+      "a": "Pygmy sperm whale",
+      "choices": [
+        "Dwarf sperm whale",
+        "Pygmy sperm whale",
+        "Andrew\u2019s beaked whale",
+        "Fin whale"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "What other common name is used for a mudpuppy?",
+      "a": "Waterdog",
+      "choices": [
+        "Water Canine",
+        "Waterdog",
+        "Mud Dog",
+        "Salamander"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Which of these methods is a reliable way to distinguish a natural pearl from a cultured one and a fake one?",
+      "a": "All of these",
+      "choices": [
+        "Rubbing the pearl on ones teeth",
+        "X-ray examination",
+        "All of these",
+        "Microscopic examination"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "What does the name of the U.S. state of Texas literally mean in Caddo?",
+      "a": "Friends",
+      "choices": [
+        "Vast",
+        "Buffalo",
+        "Wilderness",
+        "Friends"
+      ],
+      "cat": "Geography"
+    },
+    {
+      "q": "What is the literal translation of the Greek word amphibios, from which the modern word amphibian originated?",
+      "a": "Both kinds of life",
+      "choices": [
+        "Water and land",
+        "Both kinds of life",
+        "Two in one",
+        "Water and air"
+      ],
+      "cat": "Animals"
+    },
+    {
+      "q": "Web pages can be viewed on which of these devices?",
+      "a": "All of these",
+      "choices": [
+        "All of these",
+        "Cell phone",
+        "PDA",
+        "Personal Computer"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "In 2003, the FDA issued a warning about a possible connection between green onions and which disease?",
+      "a": "Hepatitis A",
+      "choices": [
+        "None of these",
+        "Gall stones",
+        "Hepatitis A",
+        "Cancer"
+      ],
+      "cat": "Science"
+    },
+    {
+      "q": "Which one of these statements about the Seismosaurus, the Earth-shaking lizard, is wrong?",
+      "a": "Its hind legs were shorter than its front legs.",
+      "choices": [
+        "It could reach 33 meters in length.",
+        "It was recognized as a species in 1991.",
+        "Its hind legs were shorter than its front legs.",
+        "It was herbivorous."
+      ],
+      "cat": "Animals"
+    }
+  ]
+}

@@ -1,0 +1,1197 @@
+{
+  "_source": "https://github.com/dariusk/corpora",
+  "_license": "CC0",
+  "birds_backyard": [
+    {
+      "name": "Mountain Quail",
+      "family": "New World Quail"
+    },
+    {
+      "name": "Scaled Quail",
+      "family": "New World Quail"
+    },
+    {
+      "name": "California Quail",
+      "family": "New World Quail"
+    },
+    {
+      "name": "Gambel's Quail",
+      "family": "New World Quail"
+    },
+    {
+      "name": "Northern Bobwhite",
+      "family": "New World Quail"
+    },
+    {
+      "name": "Montezuma Quail",
+      "family": "New World Quail"
+    },
+    {
+      "name": "Hook-billed Kite",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Swallow-tailed Kite",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "White-tailed Kite",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Snail Kite",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Double-toothed Kite",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Mississippi Kite",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Bald Eagle",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "White-tailed Eagle",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Steller's Sea-Eagle",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Northern Harrier",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Sharp-shinned Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Cooper's Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Northern Goshawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Crane Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Common Black Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Roadside Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Harris's Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "White-tailed Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Gray Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Red-shouldered Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Broad-winged Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Short-tailed Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Swainson's Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Zone-tailed Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Red-tailed Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Rough-legged Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Ferruginous Hawk",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Golden Eagle",
+      "family": "Hawks, Kites, Eagles, and Allies"
+    },
+    {
+      "name": "Rock Pigeon",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Scaly-naped Pigeon",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "White-crowned Pigeon",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Red-billed Pigeon",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Band-tailed Pigeon",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Oriental Turtle-Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "European Turtle-Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Eurasian Collared-Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Spotted Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Passenger Pigeon",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Inca Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Common Ground-Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Ruddy Ground-Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Ruddy Quail-Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Key West Quail-Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "White-tipped Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "White-winged Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Zenaida Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Mourning Dove",
+      "family": "Pigeons and Doves"
+    },
+    {
+      "name": "Green Violetear",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Green-breasted Mango",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Magnificent Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Plain-capped Starthroat",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Blue-throated Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Bahama Woodstar",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Lucifer Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Ruby-throated Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Black-chinned Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Anna's Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Costa's Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Bumblebee Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Broad-tailed Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Rufous Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Allen's Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Calliope Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Broad-billed Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Berylline Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Buff-bellied Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Cinnamon Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Violet-crowned Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "White-eared Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Xantus's Hummingbird",
+      "family": "Hummingbirds"
+    },
+    {
+      "name": "Northern Beardless-Tyrannulet",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Greenish Elaenia",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "White-crested Elaenia",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Tufted Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Olive-sided Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Greater Pewee",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Western Wood-Pewee",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Eastern Wood-Pewee",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Cuban Pewee",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Yellow-bellied Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Acadian Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Alder Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Willow Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Least Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Hammond's Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Gray Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Dusky Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Pacific-slope Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Cordilleran Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Buff-breasted Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Black Phoebe",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Eastern Phoebe",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Say's Phoebe",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Vermilion Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Dusky-capped Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Ash-throated Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Nutting's Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Great Crested Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Brown-crested Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "La Sagra's Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Great Kiskadee",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Social Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Sulphur-bellied Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Piratic Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Variegated Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Crowned Slaty Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Tropical Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Couch's Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Cassin's Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Thick-billed Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Western Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Eastern Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Gray Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Loggerhead Kingbird",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Scissor-tailed Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Fork-tailed Flycatcher",
+      "family": "Tyrant Flycatchers"
+    },
+    {
+      "name": "Purple Martin",
+      "family": "Swallows"
+    },
+    {
+      "name": "Cuban Martin",
+      "family": "Swallows"
+    },
+    {
+      "name": "Gray-breasted Martin",
+      "family": "Swallows"
+    },
+    {
+      "name": "Southern Martin",
+      "family": "Swallows"
+    },
+    {
+      "name": "Brown-chested Martin",
+      "family": "Swallows"
+    },
+    {
+      "name": "Tree Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Mangrove Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Violet-green Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Bahama Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Northern Rough-winged Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Bank Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Cliff Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Cave Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Barn Swallow",
+      "family": "Swallows"
+    },
+    {
+      "name": "Common House-Martin",
+      "family": "Swallows"
+    },
+    {
+      "name": "Carolina Chickadee",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Black-capped Chickadee",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Mountain Chickadee",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Mexican Chickadee",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Chestnut-backed Chickadee",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Boreal Chickadee",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Gray-headed Chickadee",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Bridled Titmouse",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Oak Titmouse",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Juniper Titmouse",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Tufted Titmouse",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Black-crested Titmouse",
+      "family": "Chickadees and Titmice"
+    },
+    {
+      "name": "Rock Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Canyon Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "House Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Pacific Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Winter Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Sedge Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Marsh Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Carolina Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Bewick's Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Cactus Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Sinaloa Wren",
+      "family": "Wrens"
+    },
+    {
+      "name": "Ovenbird",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Worm-eating Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Louisiana Waterthrush",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Northern Waterthrush",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Bachman's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Golden-winged Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Blue-winged Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Black-and-white Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Prothonotary Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Swainson's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Crescent-chested Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Tennessee Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Orange-crowned Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Colima Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Lucy's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Nashville Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Virginia's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Connecticut Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Gray-crowned Yellowthroat",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "MacGillivray's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Mourning Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Kentucky Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Common Yellowthroat",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Hooded Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "American Redstart",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Kirtland's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Cape May Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Cerulean Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Northern Parula",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Tropical Parula",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Magnolia Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Bay-breasted Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Blackburnian Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Yellow Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Chestnut-sided Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Blackpoll Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Black-throated Blue Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Palm Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Pine Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Yellow-rumped Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Yellow-throated Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Prairie Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Grace's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Black-throated Gray Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Townsend's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Hermit Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Golden-cheeked Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Black-throated Green Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Fan-tailed Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Rufous-capped Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Golden-crowned Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Canada Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Wilson's Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Red-faced Warbler",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Painted Redstart",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Slate-throated Redstart",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Yellow-breasted Chat",
+      "family": "Wood-Warblers"
+    },
+    {
+      "name": "Bobolink",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Red-winged Blackbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Tricolored Blackbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Tawny-shouldered Blackbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Eastern Meadowlark",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Western Meadowlark",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Yellow-headed Blackbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Rusty Blackbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Brewer's Blackbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Common Grackle",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Boat-tailed Grackle",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Great-tailed Grackle",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Shiny Cowbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Bronzed Cowbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Brown-headed Cowbird",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Black-vented Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Orchard Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Hooded Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Streak-backed Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Bullock's Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Spot-breasted Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Altamira Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Audubon's Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Baltimore Oriole",
+      "family": "Blackbirds"
+    },
+    {
+      "name": "Scott's Oriole",
+      "family": "Blackbirds"
+    }
+  ],
+  "animals": [
+    "aardvark",
+    "alligator",
+    "alpaca",
+    "antelope",
+    "ape",
+    "armadillo",
+    "baboon",
+    "badger",
+    "bat",
+    "bear",
+    "beaver",
+    "bison",
+    "boar",
+    "buffalo",
+    "bull",
+    "camel",
+    "canary",
+    "capybara",
+    "cat",
+    "chameleon",
+    "cheetah",
+    "chimpanzee",
+    "chinchilla",
+    "chipmunk",
+    "cougar",
+    "cow",
+    "coyote",
+    "crocodile",
+    "crow",
+    "deer",
+    "dingo",
+    "dog",
+    "donkey",
+    "dromedary",
+    "elephant",
+    "elk",
+    "ewe",
+    "ferret",
+    "finch",
+    "fish",
+    "fox",
+    "frog",
+    "gazelle",
+    "gila monster",
+    "giraffe",
+    "gnu",
+    "goat",
+    "gopher",
+    "gorilla",
+    "grizzly bear",
+    "ground hog",
+    "guinea pig",
+    "hamster",
+    "hedgehog",
+    "hippopotamus",
+    "hog",
+    "horse",
+    "hyena",
+    "ibex",
+    "iguana",
+    "impala",
+    "jackal",
+    "jaguar",
+    "kangaroo",
+    "koala",
+    "lamb",
+    "lemur",
+    "leopard",
+    "lion",
+    "lizard",
+    "llama",
+    "lynx",
+    "mandrill",
+    "marmoset",
+    "mink",
+    "mole",
+    "mongoose",
+    "monkey",
+    "moose",
+    "mountain goat",
+    "mouse",
+    "mule",
+    "muskrat",
+    "mustang",
+    "mynah bird",
+    "newt",
+    "ocelot",
+    "opossum",
+    "orangutan",
+    "oryx",
+    "otter",
+    "ox",
+    "panda",
+    "panther",
+    "parakeet",
+    "parrot",
+    "pig",
+    "platypus",
+    "polar bear",
+    "porcupine",
+    "porpoise",
+    "prairie dog",
+    "puma",
+    "rabbit",
+    "raccoon",
+    "ram",
+    "rat",
+    "reindeer",
+    "reptile",
+    "rhinoceros",
+    "salamander",
+    "seal",
+    "sheep",
+    "shrew",
+    "silver fox",
+    "skunk",
+    "sloth",
+    "snake",
+    "squirrel",
+    "tapir"
+  ],
+  "dinosaurs": [
+    "Tyrannosaurus",
+    "Triceratops",
+    "Stegosaurus",
+    "Velociraptor",
+    "Brachiosaurus",
+    "Apatosaurus",
+    "Ankylosaurus",
+    "Diplodocus",
+    "Allosaurus",
+    "Spinosaurus",
+    "Iguanodon",
+    "Parasaurolophus",
+    "Pachycephalosaurus",
+    "Therizinosaurus",
+    "Gallimimus",
+    "Carnotaurus",
+    "Microraptor"
+  ],
+  "plants": [
+    "Alder",
+    "Black alder",
+    "Common alder",
+    "False alder",
+    "Gray alder",
+    "Speckled alder",
+    "Striped alder",
+    "White alder",
+    "Almond",
+    "Tall ambrosia",
+    "Amy root",
+    "Apple",
+    "apple",
+    "Apple of Sodom",
+    "Apricot",
+    "Arfaj",
+    "Arizona sycamore",
+    "Arrowwood",
+    "Indian arrowwood",
+    "Ash",
+    "Black ash",
+    "Blue ash",
+    "Cane ash",
+    "Green ash",
+    "Maple ash",
+    "Red ash",
+    "River ash",
+    "Swamp ash",
+    "White ash",
+    "Water ash",
+    "Azolla",
+    "Carolina azolla",
+    "Bamboo",
+    "Banana",
+    "Baobab",
+    "Bay",
+    "Bay laurel",
+    "California bay",
+    "Bean",
+    "Bearberry",
+    "Bear corn",
+    "Beech",
+    "Blue bindweed",
+    "Bird's nest",
+    "Bird's nest plant",
+    "Birch",
+    "Black birch",
+    "Bolean birch",
+    "Canoe birch",
+    "Cherry birch",
+    "European weeping birch",
+    "European white birch",
+    "Gray birch",
+    "Mahogany birch",
+    "Paper birch",
+    "Red birch",
+    "River birch",
+    "Silver birch",
+    "Spice birch",
+    "Sweet birch",
+    "Water birch",
+    "Weeping birch",
+    "White birch",
+    "Yellow birch",
+    "Bittercress",
+    "Hairy bittercress",
+    "Bittersweet",
+    "Trailing bittersweet",
+    "Bitterweed",
+    "Blackberry",
+    "Hispid swamp blackberry",
+    "Pennsylvania blackberry",
+    "Running swamp blackberry",
+    "Black cap",
+    "Black-eyed Susan",
+    "Blackhaw",
+    "Blackiehead",
+    "Black-weed",
+    "Blueberry",
+    "Blue-of-the-heavens"
+  ]
+}

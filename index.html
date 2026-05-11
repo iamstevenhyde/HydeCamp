@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camp Hyde · Summer 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,900&family=DM+Mono:wght@400;500&family=Caprasimo&display=swap" rel="stylesheet">
+
+  <style>
+    /* ════════════════════════════════════════════════════════════
+       CAMP HYDE · RISOGRAPH CAMP POSTER
+       Cherry + cyan overprint on cream, halftone textures,
+       sticker cells with offset shadows, kid-facing maximalist.
+       ════════════════════════════════════════════════════════════ */
+
+    :root {
+      --cherry: #E63946;
+      --cherry-dark: #B92A35;
+      --cyan: #1098C7;
+      --cyan-dark: #0A6F92;
+      --canary: #F4D35E;
+      --canary-dark: #C9A82F;
+      --grass: #4A6741;
+      --grass-light: #B5D4A2;
+      --rose-light: #FAB7BF;
+      --cyan-light: #B0DEF4;
+      --ink: #0B1418;
+      --ink-soft: #3F4850;
+      --paper: #F4EDD2;
+      --paper-light: #FAF4DC;
+      --paper-dark: #E8DCAE;
+      --line: rgba(11,20,24,0.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+      font-weight: 500;
+      background: var(--paper);
+      /* Two-tone halftone texture (cherry + cyan dots offset) */
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(230,57,70,0.10) 1px, transparent 1.5px),
+        radial-gradient(circle at 5px 5px, rgba(16,152,199,0.08) 1px, transparent 1.5px);
+      background-size: 8px 8px, 12px 12px;
+      background-attachment: fixed;
+      color: var(--ink);
+      min-height: 100vh;
+      font-size: 16px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ════════════ HEADER ════════════ */
+    header {
+      padding: 30px 36px 22px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .sunburst {
+      position: absolute;
+      top: -70px;
+      right: -70px;
+      width: 280px;
+      height: 280px;
+      color: var(--canary);
+      transform: rotate(-12deg);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+    .sunburst svg { width: 100%; height: 100%; }
+    .header-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: flex-end;
+      gap: 30px;
+    }
+    .wordmark {
+      font-family: 'Caprasimo', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 0.88;
+      color: var(--cherry);
+      letter-spacing: -0.03em;
+      text-shadow: 3px 3px 0 var(--cyan), 6px 6px 0 var(--ink);
+    }
+    .wordmark em {
+      font-style: italic;
+      color: var(--cyan);
+      text-shadow: 3px 3px 0 var(--cherry), 6px 6px 0 var(--ink);
+    }
+    .wordmark .sub {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      color: var(--ink);
+      text-shadow: none;
+      margin-top: 14px;
+      font-weight: 500;
+    }
+    .header-meta {
+      text-align: right;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--ink);
+      line-height: 1.85;
+      text-transform: uppercase;
+    }
+    .header-meta .accent {
+      color: var(--cherry);
+      font-weight: 700;
+    }
+    .header-meta .stamp {
+      display: inline-block;
+      border: 2.5px solid var(--cherry);
+      color: var(--cherry);
+      padding: 5px 11px;
+      transform: rotate(6deg);
+      margin-top: 8px;
+      font-weight: 700;
+      background: var(--paper);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    /* ════════════ TAB NAV ════════════ */
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      padding: 0 36px;
+      border-bottom: 4px solid var(--ink);
+      background: var(--paper-dark);
+      position: relative;
+    }
+    .tab-btn {
+      background: var(--paper);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-bottom: none;
+      padding: 10px 22px;
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1rem;
+      letter-spacing: 0;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-right: 6px;
+      margin-bottom: -4px;
+      position: relative;
+      box-shadow: 4px 0 0 var(--ink);
+    }
+    .tab-btn:hover { background: var(--canary); }
+    .tab-btn.active {
+      background: var(--ink);
+      color: var(--canary);
+      transform: translateY(-2px);
+    }
+
+    /* ════════════ WEEK NAV ════════════ */
+    .week-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 14px 24px;
+      background: var(--paper-dark);
+      border-bottom: 3px solid var(--ink);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 0 var(--ink), 0 5px 16px rgba(11,20,24,0.08);
+    }
+    .week-nav button {
+      background: var(--paper);
+      color: var(--ink);
+      border: 2.5px solid var(--ink);
+      padding: 7px 16px;
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 0.12s;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .week-nav button:hover:not(:disabled) {
+      background: var(--canary);
+      transform: translate(-1px,-1px);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .week-nav button:active:not(:disabled) {
+      transform: translate(1px,1px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+    .week-nav button:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: 2px 2px 0 var(--ink); }
+    .week-nav button.today-btn { background: var(--cherry); color: var(--paper); }
+    .week-nav button.today-btn:hover { background: var(--cherry-dark); }
+
+    #weekLabel {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--ink);
+      min-width: 280px;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+    #weekProgress {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      color: var(--ink-soft);
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ════════════ BIG WEEK BANNER ════════════ */
+    .week-banner {
+      background: var(--cherry);
+      color: var(--paper);
+      padding: 26px 36px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 30px;
+      align-items: center;
+      position: relative;
+      border-bottom: 4px solid var(--ink);
+      overflow: hidden;
+    }
+    .week-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(11,20,24,0.16) 1px, transparent 1.5px);
+      background-size: 4px 4px;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+    .wk-numeral {
+      font-family: 'Caprasimo', serif;
+      font-size: clamp(5rem, 12vw, 7.5rem);
+      line-height: 0.85;
+      color: var(--canary);
+      text-shadow: 3px 3px 0 var(--ink);
+      position: relative;
+      z-index: 1;
+    }
+    .wk-title-block { position: relative; z-index: 1; }
+    .wk-kicker {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .wk-title {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .wk-of-week {
+      background: var(--cyan);
+      color: var(--paper);
+      padding: 11px 18px;
+      transform: rotate(-3deg);
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      position: relative;
+      z-index: 1;
+      min-width: 170px;
+    }
+    .wk-of-week .lbl {
+      font-size: 0.64rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      font-weight: 600;
+    }
+    .wk-of-week .nm {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      margin-top: 4px;
+      line-height: 1.1;
+    }
+
+    /* ════════════ HEAT BANNER ════════════ */
+    #heatBanner {
+      display: none;
+      background: var(--canary);
+      color: var(--ink);
+      padding: 10px 36px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-align: center;
+      border-bottom: 3px solid var(--ink);
+      font-weight: 600;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    #heatBanner.show { display: flex; }
+    #heatBanner svg { color: var(--cherry); }
+
+    /* ════════════ LAYOUT ════════════ */
+    .main-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 30px 24px 50px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 30px;
+    }
+
+    /* ════════════ SCREEN-TIME STICKER ════════════ */
+    .screen-bar {
+      background: var(--canary);
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 11px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transform: rotate(-0.4deg);
+    }
+    .screen-bar .lbl {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .screen-bar .lbl svg { width: 16px; height: 16px; }
+    .screen-bar .bar-wrap {
+      flex: 1;
+      background: var(--paper);
+      height: 11px;
+      position: relative;
+      border: 2px solid var(--ink);
+    }
+    .screen-bar .bar-fill {
+      height: 100%;
+      background: var(--cyan);
+      transition: width 0.4s, background 0.4s;
+    }
+    .screen-bar .bar-fill.over { background: var(--cherry); }
+    .screen-bar .amt {
+      font-weight: 700;
+      white-space: nowrap;
+      min-width: 110px;
+      text-align: right;
+      color: var(--ink);
+    }
+
+    /* ════════════ STICKER GRID ════════════ */
+    .grid-wrapper {
+      padding: 4px;
+      margin-bottom: 18px;
+    }
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 78px repeat(5, 1fr);
+      gap: 8px;
+    }
+    .gh {
+      background: var(--ink);
+      color: var(--canary);
+      padding: 13px 8px;
+      text-align: center;
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.1;
+      border: 3px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--cherry);
+    }
+    .gh.is-today {
+      background: var(--cherry);
+      color: var(--canary);
+      box-shadow: 4px 4px 0 var(--cyan);
+    }
+    .gh .day-date {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: var(--paper);
+      opacity: 0.78;
+      margin-top: 4px;
+    }
+
+    .tl {
+      padding: 8px 8px 0 0;
+      text-align: right;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 84px;
+    }
+    .tl .num {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--cherry);
+      margin-right: 4px;
+      line-height: 1;
+    }
+
+    /* Sticker cells */
+    .sc {
+      background: var(--paper-light);
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: 0;
+      min-height: 84px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .sc:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 var(--ink);
+      z-index: 5;
+    }
+    .sc:hover .eh { opacity: 1; }
+    .sc.is-today {
+      box-shadow: 4px 4px 0 var(--cherry), 8px 8px 0 var(--ink);
+      animation: marching-cherry 4s linear infinite;
+    }
+    @keyframes marching-cherry {
+      0%, 100% { box-shadow: 4px 4px 0 var(--cherry), 8px 8px 0 var(--ink); }
+      50% { box-shadow: 5px 5px 0 var(--cherry), 9px 9px 0 var(--ink); }
+    }
+
+    /* Random sticker tilts via nth-child */
+    .sc:nth-child(11n+1) { transform: rotate(-0.4deg); }
+    .sc:nth-child(11n+4) { transform: rotate(0.3deg); }
+    .sc:nth-child(11n+7) { transform: rotate(-0.25deg); }
+    .sc:nth-child(11n+9) { transform: rotate(0.45deg); }
+    .sc:hover { transform: translate(-2px,-2px) rotate(0deg); }
+
+    .cc {
+      padding: 9px 11px;
+      height: 100%;
+      min-height: 84px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+    .ci {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1;
+    }
+    .ci svg { width: 17px; height: 17px; flex-shrink: 0; color: currentColor; }
+    .ct {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+    .ct-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.62;
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+
+    /* Edit pencil hint */
+    .eh {
+      position: absolute;
+      top: 5px; right: 7px;
+      opacity: 0;
+      font-size: 0.7rem;
+      color: var(--ink);
+      transition: opacity 0.18s;
+      pointer-events: none;
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ════════════ CELL TYPE COLORS ════════════ */
+    .t-routine   { background: var(--canary); }
+    .t-reading   { background: var(--paper-dark); }
+    .t-education { background: var(--cyan-light); border-color: var(--cyan-dark); }
+    .t-lunch     { background: var(--rose-light); border-color: var(--cherry); }
+    .t-screen    { background: #F5D89E; }
+    .t-outdoor   { background: var(--grass-light); border-color: var(--grass); }
+    .t-fieldtrip { background: var(--cyan); color: var(--paper); border-color: var(--ink); }
+    .t-fieldtrip .ct { color: var(--paper); }
+    .t-fieldtrip .ct-tag { color: var(--canary); opacity: 1; }
+    .t-free      { background: var(--cherry); color: var(--paper); border-color: var(--ink); }
+    .t-free .ct { color: var(--paper); }
+    .t-free .ct-tag { color: var(--canary); opacity: 1; }
+    .t-camp      { background: var(--cherry); color: var(--canary); }
+    .t-camp .ct { color: var(--canary); }
+    .t-camp .ct-tag { color: var(--paper); opacity: 1; }
+    .t-trip      { background: var(--cyan); color: var(--canary); }
+    .t-trip .ct { color: var(--canary); }
+    .t-trip .ct-tag { color: var(--paper); opacity: 1; }
+    .t-school    { background: #C0BFB6; }
+    .t-blank     { background: var(--paper); opacity: 0.55; }
+
+    /* ════════════ PARENT BADGE ════════════ */
+    .parent-badge {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      cursor: pointer;
+      user-select: none;
+      letter-spacing: 0.06em;
+      border: 2px solid var(--ink);
+      z-index: 2;
+      transition: transform 0.12s;
+    }
+    .parent-badge:hover { transform: scale(1.18); }
+    .pb-none { background: var(--paper); color: var(--ink-soft); }
+    .pb-M    { background: var(--cherry); color: var(--paper); }
+    .pb-S    { background: var(--cyan); color: var(--paper); }
+    .pb-both { background: var(--canary); color: var(--ink); }
+
+    /* ════════════ HEAT FLAG OVERLAY ════════════ */
+    .heat-flag {
+      position: absolute;
+      top: 3px;
+      right: 4px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 2px 5px;
+      background: var(--cherry);
+      color: var(--paper);
+      text-transform: uppercase;
+      z-index: 2;
+      cursor: help;
+      border: 1.5px solid var(--ink);
+    }
+    .heat-flag svg { width: 10px; height: 10px; color: var(--canary); }
+
+    /* ════════════ WEEK NOTES (NOTEBOOK) ════════════ */
+    .week-notes {
+      background: var(--paper-light);
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 16px 20px;
+      transform: rotate(-0.3deg);
+    }
+    .week-notes h3 {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--cherry);
+    }
+    .week-notes textarea {
+      width: 100%;
+      min-height: 82px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      padding: 10px 12px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      resize: vertical;
+      /* Notebook lines */
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 23px,
+        rgba(16,152,199,0.18) 23px,
+        rgba(16,152,199,0.18) 24px
+      );
+      line-height: 24px;
+    }
+    .week-notes textarea:focus { outline: 3px solid var(--cherry); border-color: transparent; }
+
+    /* ════════════ SIDEBAR CARDS ════════════ */
+    .card {
+      background: var(--paper);
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 16px 18px;
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .card:nth-child(1) { transform: rotate(0.5deg); }
+    .card:nth-child(2) { transform: rotate(-0.6deg); box-shadow: 5px 5px 0 var(--cherry); }
+    .card:nth-child(3) { transform: rotate(0.4deg); box-shadow: 5px 5px 0 var(--cyan); }
+    .card:nth-child(4) { transform: rotate(-0.3deg); box-shadow: 5px 5px 0 var(--ink); }
+    .card:nth-child(5) { transform: rotate(0.5deg); box-shadow: 5px 5px 0 var(--canary-dark); }
+    .card:nth-child(6) { transform: rotate(-0.5deg); }
+    .card h3 {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .card h3 .h-ico {
+      vertical-align: -4px;
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
+      color: var(--cherry);
+    }
+
+    /* ════════════ SPOTLIGHT (APOD) ════════════ */
+    .spotlight {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0;
+      overflow: visible;
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0 var(--canary);
+    }
+    .spotlight h3 { color: var(--canary); padding: 14px 18px 0; }
+    .spotlight h3 .h-ico { color: var(--cherry); }
+    .spotlight .img-wrap {
+      position: relative;
+      background: var(--ink);
+      margin: 6px 18px 12px;
+      border: 3px solid var(--paper);
+      box-shadow: 4px 4px 0 var(--cherry);
+      overflow: hidden;
+    }
+    .spotlight .img-wrap img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .spotlight .img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 2px 2px, var(--cherry) 0.8px, transparent 1.4px) 0 0 / 6px 6px,
+        radial-gradient(circle at 3px 3px, var(--cyan) 0.8px, transparent 1.4px) 1px 1px / 8px 8px;
+      mix-blend-mode: multiply;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+    .spotlight .body { padding: 0 18px 18px; }
+    .spotlight .apod-title {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.05;
+      color: var(--cherry);
+      margin-bottom: 4px;
+    }
+    .spotlight .apod-credit {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      color: var(--canary);
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+    .spotlight .apod-kid {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--paper);
+    }
+    .spotlight .divider {
+      border: none;
+      border-top: 2px dashed rgba(244,237,210,0.25);
+      margin: 14px 0 12px;
+    }
+    .spotlight .state-block {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 14px;
+      font-size: 0.9rem;
+    }
+    .spotlight .state-block .lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      color: var(--canary);
+      text-transform: uppercase;
+      align-self: center;
+      font-weight: 600;
+    }
+    .spotlight .state-block .val {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--paper);
+      line-height: 1;
+    }
+
+    /* ════════════ TRIVIA ════════════ */
+    .trivia-card { background: var(--canary); }
+    .trivia-q-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      color: var(--cherry);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .trivia-q {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+    .trivia-choices { list-style: none; padding: 0; }
+    .trivia-choices li {
+      padding: 7px 11px;
+      margin: 5px 0;
+      background: var(--paper);
+      cursor: pointer;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 2px solid var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: all 0.12s;
+    }
+    .trivia-choices li:hover {
+      transform: translate(-1px,-1px);
+      box-shadow: 4px 4px 0 var(--ink);
+      background: var(--paper-light);
+    }
+    .trivia-choices li.correct { background: var(--grass-light); border-color: var(--grass); }
+    .trivia-choices li.wrong { background: var(--rose-light); border-color: var(--cherry); opacity: 0.7; }
+
+    /* ════════════ READING LOG ════════════ */
+    .reading-card { background: var(--cyan-light); }
+    .reading-row {
+      padding: 8px 0;
+      border-bottom: 2px dashed var(--cyan);
+    }
+    .reading-row:last-child { border-bottom: none; }
+    .reading-row .kid-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      color: var(--cherry);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .reading-row input {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid var(--ink);
+      background: transparent;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 3px 0;
+      color: var(--ink);
+    }
+    .reading-row input:focus { outline: none; border-bottom-color: var(--cherry); }
+    .reading-row .pages-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+    }
+    .reading-row .pages-row input { max-width: 70px; }
+
+    /* ════════════ LEGEND ════════════ */
+    .leg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 11px; }
+    .leg-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 2px 0;
+    }
+    .leg-dot {
+      width: 14px; height: 14px;
+      flex-shrink: 0;
+      border: 1.5px solid var(--ink);
+    }
+    .ld-routine   { background: var(--canary); }
+    .ld-reading   { background: var(--paper-dark); }
+    .ld-education { background: var(--cyan-light); }
+    .ld-lunch     { background: var(--rose-light); }
+    .ld-screen    { background: #F5D89E; }
+    .ld-outdoor   { background: var(--grass-light); }
+    .ld-fieldtrip { background: var(--cyan); }
+    .ld-free      { background: var(--cherry); }
+    .ld-camp      { background: var(--cherry-dark); }
+    .ld-trip      { background: var(--cyan-dark); }
+
+    /* ════════════ GLANCE LIST ════════════ */
+    .glance-list {
+      display: grid;
+      grid-template-columns: 22px 1fr auto;
+      gap: 9px 14px;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    .glance-list svg { width: 22px; height: 22px; color: var(--cherry); }
+    .glance-list .when {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    /* ════════════ RULES LIST ════════════ */
+    .rules-list { font-size: 0.92rem; line-height: 1.65; }
+    .rules-list .row {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: start;
+      padding: 3px 0;
+    }
+    .rules-list .yes::before { content: '+'; color: var(--grass); font-weight: 800; font-family: 'DM Mono', monospace; font-size: 1.1em; }
+    .rules-list .no::before { content: '×'; color: var(--cherry); font-weight: 800; font-family: 'DM Mono', monospace; font-size: 1.2em; line-height: 1; }
+    .rules-list .dot::before { content: '·'; color: var(--ink-soft); font-weight: 800; font-size: 1.5em; line-height: 0.8; }
+
+    /* ════════════ FIELD TRIP LIST ════════════ */
+    .ft-section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      color: var(--cherry);
+      text-transform: uppercase;
+      margin: 10px 0 5px;
+      font-weight: 700;
+    }
+    .ft-item {
+      padding: 8px 10px;
+      margin-bottom: 5px;
+      background: var(--paper-light);
+      cursor: pointer;
+      border: 2px solid var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+      font-size: 0.85rem;
+      transition: all 0.12s;
+      position: relative;
+    }
+    .ft-item:hover {
+      transform: translate(-1px,-1px);
+      box-shadow: 4px 4px 0 var(--ink);
+      background: var(--canary);
+    }
+    .ft-item.paid { background: var(--paper); }
+    .ft-item.paid:hover { background: var(--cyan-light); }
+    .ft-item .ft-name {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1rem;
+      display: block;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+    .ft-item .ft-detail {
+      font-size: 0.76rem;
+      color: var(--ink-soft);
+      display: block;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+    .ft-item.copied::after {
+      content: 'COPIED';
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--grass);
+      font-weight: 700;
+    }
+
+    /* ════════════ MODAL ════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,20,24,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      backdrop-filter: blur(2px);
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: var(--paper);
+      border: 3px solid var(--ink);
+      box-shadow: 8px 8px 0 var(--cherry);
+      padding: 28px 32px;
+      max-width: 480px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: rotate(-0.8deg);
+    }
+    .modal h3 {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      color: var(--cherry);
+    }
+    .modal label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+      text-transform: uppercase;
+      margin: 12px 0 5px;
+      font-weight: 700;
+    }
+    .modal input, .modal select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2.5px solid var(--ink);
+      background: var(--paper-light);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .modal input:focus, .modal select:focus { outline: 3px solid var(--cherry); }
+    .modal-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
+    .modal-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 9px 18px;
+      border: 2.5px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: all 0.12s;
+    }
+    .btn:hover {
+      transform: translate(-1px,-1px);
+      box-shadow: 4px 4px 0 var(--ink);
+      background: var(--canary);
+    }
+    .btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--ink); }
+    .btn-primary { background: var(--cherry); color: var(--paper); }
+    .btn-primary:hover { background: var(--cherry-dark); color: var(--paper); }
+    .btn-danger { background: var(--paper); color: var(--cherry); border-color: var(--cherry); }
+    .btn-danger:hover { background: var(--cherry); color: var(--paper); }
+
+    /* ════════════ STEM / ART PAGES ════════════ */
+    .stem-top {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .stem-filter { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 8px 16px;
+      border: 2.5px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1rem;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: all 0.12s;
+    }
+    .filter-btn:hover {
+      transform: translate(-1px,-1px);
+      box-shadow: 4px 4px 0 var(--ink);
+      background: var(--canary);
+    }
+    .filter-btn.active { background: var(--ink); color: var(--canary); }
+    .filter-btn.fs.active     { background: var(--cyan); color: var(--paper); }
+    .filter-btn.ft.active     { background: var(--grass); color: var(--paper); }
+    .filter-btn.fe.active     { background: var(--cherry); color: var(--paper); }
+    .filter-btn.fm.active     { background: var(--canary); color: var(--ink); }
+    .filter-btn.fdr.active    { background: var(--cherry); color: var(--paper); }
+    .filter-btn.fpa.active    { background: var(--cyan); color: var(--paper); }
+    .filter-btn.fcr.active    { background: var(--cherry-dark); color: var(--paper); }
+    .filter-btn.fdi.active    { background: var(--grass); color: var(--paper); }
+
+    .print-shop-btn {
+      padding: 9px 18px;
+      border: 2.5px solid var(--ink);
+      background: var(--canary);
+      color: var(--ink);
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.12s;
+    }
+    .print-shop-btn:hover {
+      transform: translate(-1px,-1px);
+      box-shadow: 4px 4px 0 var(--ink);
+      background: var(--cherry);
+      color: var(--paper);
+    }
+    .print-shop-btn svg { width: 16px; height: 16px; }
+
+    .stem-grid {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 22px 24px 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+      gap: 28px;
+    }
+    @media (max-width: 700px) { .stem-grid { grid-template-columns: 1fr; } }
+
+    /* Activity sticker card */
+    .ac {
+      background: var(--paper);
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0 var(--ink);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .ac:nth-child(5n+1) { transform: rotate(-0.4deg); }
+    .ac:nth-child(5n+3) { transform: rotate(0.3deg); }
+    .ac:nth-child(5n+5) { transform: rotate(-0.2deg); }
+    .ac:hover { transform: translate(-2px,-2px) rotate(0deg); box-shadow: 8px 8px 0 var(--ink); }
+    .ac-header {
+      padding: 14px 18px;
+      background: var(--ink);
+      color: var(--canary);
+      cursor: pointer;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      border-bottom: 3px solid var(--ink);
+    }
+    .ac-header .ico-block {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      background: var(--cherry);
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2.5px solid var(--paper);
+      box-shadow: 3px 3px 0 var(--paper);
+      transform: rotate(-3deg);
+    }
+    .ac-header .ico-block.cat-science     { background: var(--cyan); }
+    .ac-header .ico-block.cat-technology  { background: var(--grass); }
+    .ac-header .ico-block.cat-engineering { background: var(--cherry); }
+    .ac-header .ico-block.cat-math        { background: var(--canary); color: var(--ink); }
+    .ac-header .ico-block.cat-drawing     { background: var(--cherry); }
+    .ac-header .ico-block.cat-painting    { background: var(--cyan); }
+    .ac-header .ico-block.cat-crafts      { background: var(--cherry-dark); }
+    .ac-header .ico-block.cat-digital     { background: var(--grass); }
+    .ac-header .ico-block svg { width: 30px; height: 30px; }
+    .ac-header .meta-block { flex: 1; }
+    .ac-header .title {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+      line-height: 1.05;
+      color: var(--canary);
+    }
+    .ac-header .tags {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      color: var(--paper);
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .ac-header .tags .dot { color: var(--cherry); margin: 0 6px; opacity: 1; }
+    .ac-header .difficulty { color: var(--cherry); font-weight: 700; }
+    .ac-body {
+      padding: 16px 18px;
+      display: none;
+    }
+    .ac.expanded .ac-body { display: block; }
+    .ac-body .desc {
+      font-size: 0.96rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .ac-body .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--cherry);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 14px 0 9px;
+      border-bottom: 2px dashed var(--ink);
+      padding-bottom: 5px;
+    }
+    .ac-body table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+    .ac-body td {
+      padding: 5px 8px 5px 0;
+      vertical-align: top;
+      border-bottom: 1px dashed rgba(11,20,24,0.15);
+    }
+    .ac-body td:first-child { font-weight: 600; }
+    .ac-body td:nth-child(2) {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .ac-body td:nth-child(3) {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+    }
+    .ac-body ol {
+      padding-left: 24px;
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+    .ac-body ol li { margin-bottom: 7px; }
+    .ac-body ol li::marker {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      color: var(--cherry);
+      font-weight: 800;
+    }
+    .ac-body .tip {
+      background: var(--canary);
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: 11px 15px;
+      margin-top: 16px;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      transform: rotate(-0.4deg);
+    }
+
+    /* ════════════ ICONS ════════════ */
+    .ico {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      stroke: currentColor;
+      vertical-align: middle;
+    }
+    .ico-sm { width: 14px; height: 14px; }
+    .ico-md { width: 18px; height: 18px; }
+    .ico-lg { width: 28px; height: 28px; }
+
+    /* Cell icons take type accent */
+    .sc .ico { color: var(--ink); }
+    .t-routine   .ico { color: var(--cherry-dark); }
+    .t-reading   .ico { color: var(--grass); }
+    .t-education .ico { color: var(--cyan-dark); }
+    .t-lunch     .ico { color: var(--cherry-dark); }
+    .t-screen    .ico { color: var(--cherry-dark); }
+    .t-outdoor   .ico { color: var(--grass); }
+    .t-fieldtrip .ico { color: var(--canary); }
+    .t-free      .ico { color: var(--canary); }
+    .t-camp      .ico { color: var(--canary); }
+    .t-trip      .ico { color: var(--canary); }
+    .t-school    .ico { color: var(--ink); }
+    .t-blank     .ico { color: var(--ink-soft); opacity: 0.35; }
+
+    /* ════════════ PRINT STYLESHEET ════════════ */
+    @media print {
+      @page { size: landscape; margin: 0.4in; }
+      body { background: white !important; background-image: none !important; }
+      .tab-nav, .week-nav, .modal-overlay, .screen-bar,
+      .week-notes, .stem-top, #heatBanner, .sunburst { display: none !important; }
+      header { padding: 14px 0 !important; }
+      .wordmark { color: black !important; text-shadow: none !important; font-size: 2.2rem !important; }
+      .wordmark em { color: #888 !important; text-shadow: none !important; }
+      .wordmark .sub { color: #555 !important; }
+      .header-meta { color: #555 !important; }
+      .header-meta .stamp { display: none; }
+      .main-content {
+        grid-template-columns: 1fr !important;
+        padding: 8px 0 !important;
+        max-width: 100% !important;
+      }
+      .sidebar { display: none !important; }
+      .week-banner {
+        background: white !important;
+        color: black !important;
+        border: 2px solid black !important;
+        page-break-after: avoid;
+      }
+      .week-banner::after { display: none; }
+      .wk-numeral { color: #888 !important; text-shadow: none !important; font-size: 4rem !important; }
+      .wk-of-week { background: white !important; color: black !important; transform: none !important; border: 2px solid black !important; box-shadow: none !important; }
+      .grid-wrapper { padding: 0 !important; }
+      .schedule-grid { gap: 4px !important; }
+      .gh { background: white !important; color: black !important; border: 1.5px solid black !important; box-shadow: none !important; }
+      .gh.is-today { background: #ddd !important; }
+      .gh .day-date { color: #555 !important; }
+      .sc { border: 1px solid #888 !important; box-shadow: none !important; transform: none !important; min-height: 64px; background: white !important; }
+      .sc.is-today { box-shadow: inset 0 0 0 2px black !important; animation: none !important; }
+      .t-fieldtrip, .t-free, .t-camp, .t-trip { background: #eee !important; color: black !important; }
+      .t-fieldtrip .ct, .t-free .ct, .t-camp .ct, .t-trip .ct { color: black !important; }
+      .ct-tag { color: #555 !important; opacity: 1 !important; }
+      .parent-badge, .heat-flag, .eh { display: none !important; }
+      .ct { font-size: 0.82rem !important; }
+      .tl .num { color: #555 !important; }
+      .ac { box-shadow: none !important; border: 1.5px solid black !important; transform: none !important; page-break-inside: avoid; }
+      .ac-header { background: white !important; color: black !important; border-bottom: 1px solid black; }
+      .ac-header .title { color: black !important; }
+      .ac-header .tags { color: #555 !important; }
+      .ac-header .ico-block { background: #ddd !important; color: black !important; box-shadow: none !important; transform: none !important; border: 1px solid black !important; }
+      .ac-body { display: block !important; }
+      .ac-body .tip { background: #f5f5f5 !important; box-shadow: none !important; transform: none !important; }
+    }
+
+    /* ════════════ FOOTER ════════════ */
+    footer {
+      max-width: 1440px;
+      margin: 30px auto 0;
+      padding: 20px 24px 36px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      text-transform: uppercase;
+      text-align: center;
+      border-top: 2px dashed var(--ink);
+    }
+    footer a { color: var(--cherry); text-decoration: none; font-weight: 700; }
+    footer a:hover { text-decoration: underline; }
+    footer .swatch {
+      display: inline-flex;
+      gap: 5px;
+      margin: 0 14px;
+      vertical-align: middle;
+    }
+    footer .swatch span {
+      width: 14px; height: 14px;
+      border: 1.5px solid var(--ink);
+      display: inline-block;
+    }
+
+    /* ════════════ SCROLLBAR ════════════ */
+    ::-webkit-scrollbar { width: 11px; height: 11px; }
+    ::-webkit-scrollbar-track { background: var(--paper-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--ink); border: 2px solid var(--paper-dark); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cherry); }
+
+    @media (max-width: 900px) {
+      .main-content { grid-template-columns: 1fr; }
+      .schedule-grid { grid-template-columns: 60px repeat(5, 1fr); }
+      .wordmark { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ SVG ICON SYMBOL BANK ════════════ -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="ico-routine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="18" x2="21" y2="18"/>
+      <path d="M6.5 18 A5.5 5.5 0 0 1 17.5 18"/>
+      <line x1="12" y1="6" x2="12" y2="3.5"/>
+      <line x1="5.5" y1="11.5" x2="3.8" y2="9.8"/>
+      <line x1="18.5" y1="11.5" x2="20.2" y2="9.8"/>
+      <line x1="3" y1="21" x2="6" y2="21"/>
+      <line x1="9" y1="21" x2="15" y2="21"/>
+      <line x1="18" y1="21" x2="21" y2="21"/>
+    </symbol>
+    <symbol id="ico-reading" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 5 C 6 4, 10 4.5, 12 6 C 14 4.5, 18 4, 21 5 L 21 19 C 18 18, 14 18.5, 12 20 C 10 18.5, 6 18, 3 19 Z"/>
+      <line x1="12" y1="6" x2="12" y2="20"/>
+      <line x1="6" y1="8.5" x2="9.5" y2="8"/>
+      <line x1="6" y1="11" x2="10" y2="10.6"/>
+      <line x1="14.5" y1="8" x2="18" y2="8.5"/>
+      <line x1="14" y1="10.6" x2="18" y2="11"/>
+    </symbol>
+    <symbol id="ico-education" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20 L 8 16 L 18 6 L 20 8 L 10 18 L 4 20 Z"/>
+      <line x1="15.5" y1="8.5" x2="17.5" y2="10.5"/>
+      <line x1="4" y1="20" x2="6.5" y2="17.5"/>
+    </symbol>
+    <symbol id="ico-lunch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 7 C 8 7, 5 9.5, 5 14 C 5 18, 7.5 21, 10 21 C 11 21, 11.5 20.5, 12 20.5 C 12.5 20.5, 13 21, 14 21 C 16.5 21, 19 18, 19 14 C 19 9.5, 16 7, 12 7 Z"/>
+      <path d="M12 7 C 12 5, 11 3.5, 9.5 3"/>
+      <path d="M12 7 C 13.5 6, 15 5, 15.5 3.5"/>
+    </symbol>
+    <symbol id="ico-screen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="3.5" width="14" height="17" rx="1.5"/>
+      <line x1="5" y1="17" x2="19" y2="17"/>
+      <circle cx="12" cy="18.8" r="0.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-outdoor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3 L 7 9 L 9 9 L 5 14 L 8 14 L 4 19 L 20 19 L 16 14 L 19 14 L 15 9 L 17 9 Z"/>
+      <line x1="12" y1="19" x2="12" y2="22"/>
+    </symbol>
+    <symbol id="ico-fieldtrip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2.5 C 7.5 2.5, 4.5 6, 4.5 10 C 4.5 15, 12 21.5, 12 21.5 C 12 21.5, 19.5 15, 19.5 10 C 19.5 6, 16.5 2.5, 12 2.5 Z"/>
+      <circle cx="12" cy="10" r="2.8"/>
+    </symbol>
+    <symbol id="ico-free" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15.5 3 L 21 8.5 L 11.5 18 L 6 12.5 Z"/>
+      <path d="M6 12.5 C 3 14, 2.5 17, 3 19.5 C 5.5 20, 8.5 19.5, 10 16.5"/>
+      <line x1="6" y1="12.5" x2="11.5" y2="18"/>
+    </symbol>
+    <symbol id="ico-camp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="3.5" x2="5" y2="21"/>
+      <path d="M5 4 L 18.5 6.5 L 14 9 L 19 12 L 5 14"/>
+    </symbol>
+    <symbol id="ico-trip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 12 L 21 4 L 14 21 L 11 13.5 L 3 12 Z"/>
+      <line x1="11" y1="13.5" x2="21" y2="4"/>
+    </symbol>
+    <symbol id="ico-school" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 11 L 12 5 L 21 11"/>
+      <path d="M5 11 L 5 21 L 19 21 L 19 11"/>
+      <rect x="10" y="14" width="4" height="7"/>
+      <line x1="12" y1="5" x2="12" y2="2.5"/>
+      <path d="M11 2.5 L 13 2.5"/>
+    </symbol>
+    <symbol id="ico-blank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ico-science" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="8.5" y1="3" x2="15.5" y2="3"/>
+      <line x1="9.5" y1="3" x2="9.5" y2="9.5"/>
+      <line x1="14.5" y1="3" x2="14.5" y2="9.5"/>
+      <path d="M9.5 9.5 L 4.5 19.5 C 4 20.5, 4.5 21, 5.5 21 L 18.5 21 C 19.5 21, 20 20.5, 19.5 19.5 L 14.5 9.5"/>
+      <line x1="7" y1="15" x2="17" y2="15"/>
+    </symbol>
+    <symbol id="ico-technology" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="6" width="12" height="12" rx="0.5"/>
+      <rect x="9" y="9" width="6" height="6"/>
+      <line x1="3" y1="9" x2="6" y2="9"/><line x1="3" y1="12" x2="6" y2="12"/><line x1="3" y1="15" x2="6" y2="15"/>
+      <line x1="18" y1="9" x2="21" y2="9"/><line x1="18" y1="12" x2="21" y2="12"/><line x1="18" y1="15" x2="21" y2="15"/>
+      <line x1="9" y1="3" x2="9" y2="6"/><line x1="12" y1="3" x2="12" y2="6"/><line x1="15" y1="3" x2="15" y2="6"/>
+      <line x1="9" y1="18" x2="9" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/><line x1="15" y1="18" x2="15" y2="21"/>
+    </symbol>
+    <symbol id="ico-engineering" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.5 3.5 A 5 5 0 0 0 8 10 L 3 15 L 5 17 L 9 14 L 17.5 22 L 21 18.5 L 13 10.5 A 5 5 0 0 0 14.5 3.5 Z"/>
+    </symbol>
+    <symbol id="ico-math" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="5" r="1.5"/>
+      <line x1="12" y1="6.5" x2="6" y2="20"/>
+      <line x1="12" y1="6.5" x2="18" y2="20"/>
+      <path d="M8 16 A 8 8 0 0 0 16 16"/>
+    </symbol>
+    <symbol id="ico-drawing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2 L 16 6 L 16 20 L 12 22 L 8 20 L 8 6 Z"/>
+      <line x1="8" y1="6" x2="16" y2="6"/>
+      <line x1="12" y1="2" x2="12" y2="22"/>
+    </symbol>
+    <symbol id="ico-painting" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3 C 6.5 3, 3 7, 3 11.5 C 3 16, 6.5 19, 11 19 C 12 19, 12.5 18, 12 17 C 11.5 16, 12.5 14, 14.5 14 L 18 14 C 20 14, 21 13, 21 11 C 21 6.5, 17 3, 12 3 Z"/>
+      <circle cx="8" cy="10" r="1.2" fill="currentColor"/>
+      <circle cx="12.5" cy="7.5" r="1.2" fill="currentColor"/>
+      <circle cx="16" cy="10.5" r="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="ico-crafts" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6.5" cy="6.5" r="3"/>
+      <circle cx="6.5" cy="17.5" r="3"/>
+      <line x1="9" y1="8.5" x2="21" y2="20"/>
+      <line x1="9" y1="15.5" x2="21" y2="4"/>
+    </symbol>
+    <symbol id="ico-digital" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="13" height="17" rx="1"/>
+      <line x1="3" y1="18" x2="16" y2="18"/>
+      <line x1="16" y1="3" x2="20" y2="7"/>
+      <line x1="20" y1="7" x2="14" y2="13"/>
+    </symbol>
+    <symbol id="ico-heat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 3 C 10 2, 11 1.5, 12 1.5 C 13 1.5, 14 2, 14 3 L 14 15 A 3 3 0 1 1 10 15 Z"/>
+      <circle cx="12" cy="17.5" r="2" fill="currentColor" stroke="none"/>
+      <line x1="14" y1="6" x2="16" y2="6"/>
+      <line x1="14" y1="9" x2="16" y2="9"/>
+      <line x1="14" y1="12" x2="16" y2="12"/>
+    </symbol>
+    <symbol id="ico-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="5" width="17" height="16" rx="0.5"/>
+      <line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/>
+      <line x1="8" y1="3" x2="8" y2="7"/>
+      <line x1="16" y1="3" x2="16" y2="7"/>
+    </symbol>
+    <symbol id="ico-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 18 C 6 12, 8 8, 12 8 C 16 8, 18 12, 18 18 Z"/>
+      <line x1="4.5" y1="18" x2="19.5" y2="18"/>
+      <path d="M10 20 A 2 2 0 0 0 14 20"/>
+    </symbol>
+    <symbol id="ico-tent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 20 L 12 3 L 22 20 Z"/>
+      <line x1="12" y1="3" x2="12" y2="20"/>
+      <path d="M9 20 L 12 15 L 15 20"/>
+    </symbol>
+    <symbol id="ico-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="6" r="2.5"/>
+      <path d="M3.5 19 C 3.5 14, 6 12, 8 12 C 10 12, 12.5 14, 12.5 19"/>
+      <circle cx="16" cy="6" r="2.5"/>
+      <path d="M11.5 19 C 11.5 14, 14 12, 16 12 C 18 12, 20.5 14, 20.5 19"/>
+    </symbol>
+    <symbol id="ico-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9 L 6 3 L 18 3 L 18 9"/>
+      <rect x="3.5" y="9" width="17" height="9" rx="1"/>
+      <rect x="6" y="14" width="12" height="7"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <svg class="sunburst" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+    <g><circle cx="100" cy="100" r="38"/>
+    <g stroke="currentColor" stroke-width="7" stroke-linecap="round" fill="none">
+      <line x1="100" y1="18" x2="100" y2="52"/>
+      <line x1="100" y1="148" x2="100" y2="182"/>
+      <line x1="18" y1="100" x2="52" y2="100"/>
+      <line x1="148" y1="100" x2="182" y2="100"/>
+      <line x1="42" y1="42" x2="66" y2="66"/>
+      <line x1="134" y1="134" x2="158" y2="158"/>
+      <line x1="42" y1="158" x2="66" y2="134"/>
+      <line x1="134" y1="66" x2="158" y2="42"/>
+    </g></g>
+  </svg>
+
+  <div class="header-grid">
+    <h1 class="wordmark">CAMP <em>HYDE</em>
+      <span class="sub">SUMMER MMXXVI · BOISE · AGES 8 &amp; 10</span>
+    </h1>
+    <div class="header-meta">
+      <span class="accent">43.6°N · 116.2°W</span><br>
+      May 21 — Aug 12 · 13 weeks<br>
+      <span class="stamp">Field Edition · Vol I</span>
+    </div>
+  </div>
+</header>
+
+<div class="tab-nav">
+  <button class="tab-btn active" id="tab-schedule" onclick="showPage('schedule')">Schedule</button>
+  <button class="tab-btn" id="tab-stem" onclick="showPage('stem')">STEM</button>
+  <button class="tab-btn" id="tab-art" onclick="showPage('art')">Art</button>
+</div>
+
+<!-- ════════════ SCHEDULE PAGE ════════════ -->
+<div id="page-schedule">
+
+  <div class="week-nav">
+    <button onclick="changeWeek(-1)" id="prevBtn">← Prev</button>
+    <div>
+      <div id="weekLabel">—</div>
+      <div id="weekProgress">—</div>
+    </div>
+    <button onclick="changeWeek(1)" id="nextBtn">Next →</button>
+    <button class="today-btn" onclick="jumpToToday()">Today</button>
+    <button onclick="window.print()">Print</button>
+  </div>
+
+  <div class="week-banner">
+    <div class="wk-numeral" id="wkNum">03</div>
+    <div class="wk-title-block">
+      <div class="wk-kicker" id="wkKicker">WEEK OF —</div>
+      <div class="wk-title" id="wkTitle">—</div>
+    </div>
+    <div class="wk-of-week" id="wkBirdBlock">
+      <div class="lbl">Bird of the Week</div>
+      <div class="nm" id="wkBird">—</div>
+    </div>
+  </div>
+
+  <div id="heatBanner">
+    <svg class="ico"><use href="#ico-heat"/></svg>
+    HEAT FLAG · FORECAST HIGHS ABOVE 95°F · OUTDOOR AFTERNOON SWAPS RECOMMENDED
+  </div>
+
+  <div class="main-content">
+
+    <div class="schedule-section">
+
+      <div class="screen-bar">
+        <span class="lbl"><svg class="ico"><use href="#ico-screen"/></svg>Screen Time</span>
+        <div class="bar-wrap"><div class="bar-fill" id="screenFill" style="width:0%"></div></div>
+        <span class="amt" id="screenAmt">0.0 / 2.0 HRS · AVG</span>
+      </div>
+
+      <div class="grid-wrapper">
+        <div class="schedule-grid" id="scheduleGrid"></div>
+      </div>
+
+      <div class="week-notes">
+        <h3>Week Notes</h3>
+        <textarea id="weekNotes" placeholder="Reminders, surprises, plans for this week…" oninput="saveNotes()"></textarea>
+      </div>
+    </div>
+
+    <div class="sidebar">
+
+      <div class="card spotlight">
+        <h3><svg class="h-ico"><use href="#ico-tent"/></svg>Spotlight</h3>
+        <div class="img-wrap"><img id="apodImg" src="" alt="" onerror="this.style.display='none'"></div>
+        <div class="body">
+          <div class="apod-title" id="apodTitle">—</div>
+          <div class="apod-credit" id="apodCredit">—</div>
+          <div class="apod-kid" id="apodKid">—</div>
+          <hr class="divider">
+          <div class="state-block">
+            <div class="lbl">State</div><div class="val" id="spotState">—</div>
+            <div class="lbl">Capital</div><div class="val" id="spotCap">—</div>
+            <div class="lbl">Plant</div><div class="val" id="spotPlant">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card trivia-card">
+        <h3>Daily Trivia <span style="float:right;font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.15em;color:var(--ink-soft);text-transform:uppercase;margin-top:8px;" id="triviaDate"></span></h3>
+        <div id="triviaContent"></div>
+      </div>
+
+      <div class="card reading-card">
+        <h3>Reading Log</h3>
+        <div id="readingLog"></div>
+      </div>
+
+      <div class="card">
+        <h3><svg class="h-ico"><use href="#ico-calendar"/></svg>Summer at a Glance</h3>
+        <div class="glance-list">
+          <svg><use href="#ico-bell"/></svg><span>School Out</span><span class="when">May 21</span>
+          <svg><use href="#ico-routine"/></svg><span>Memorial Day</span><span class="when">May 25</span>
+          <svg><use href="#ico-tent"/></svg><span>Camping Trip</span><span class="when">Jun 5</span>
+          <svg><use href="#ico-camp"/></svg><span>Sports Camp</span><span class="when">Jun 15–19</span>
+          <svg><use href="#ico-trip"/></svg><span>Fallon Trip</span><span class="when">Jun 22–24</span>
+          <svg><use href="#ico-family"/></svg><span>Family Visiting</span><span class="when">Jun 25–26</span>
+          <svg><use href="#ico-trip"/></svg><span>Family Trip</span><span class="when">Jul 2–7</span>
+          <svg><use href="#ico-school"/></svg><span>School Resumes</span><span class="when">Aug 12</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><svg class="h-ico"><use href="#ico-screen"/></svg>Screen Time Rules</h3>
+        <div class="rules-list">
+          <div class="row dot"><div>Max <strong>2 hours / day</strong></div></div>
+          <div class="row yes"><div>Earn extra time with chores</div></div>
+          <div class="row yes"><div>Educational apps: relaxed</div></div>
+          <div class="row no"><div>No screens before 1 PM</div></div>
+          <div class="row no"><div>No screens 1 hr before bed</div></div>
+          <div class="row no"><div>Devices off during meals</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Legend</h3>
+        <div class="leg-grid">
+          <div class="leg-item"><div class="leg-dot ld-routine"></div>Routine</div>
+          <div class="leg-item"><div class="leg-dot ld-reading"></div>Reading</div>
+          <div class="leg-item"><div class="leg-dot ld-education"></div>Education</div>
+          <div class="leg-item"><div class="leg-dot ld-lunch"></div>Lunch</div>
+          <div class="leg-item"><div class="leg-dot ld-screen"></div>Screen</div>
+          <div class="leg-item"><div class="leg-dot ld-outdoor"></div>Outdoor</div>
+          <div class="leg-item"><div class="leg-dot ld-fieldtrip"></div>Field Trip</div>
+          <div class="leg-item"><div class="leg-dot ld-free"></div>Free</div>
+          <div class="leg-item"><div class="leg-dot ld-camp"></div>Camp</div>
+          <div class="leg-item"><div class="leg-dot ld-trip"></div>Trip</div>
+        </div>
+        <div style="margin-top:14px;padding-top:11px;border-top:2px dashed var(--ink);">
+          <div style="font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.16em;color:var(--cherry);text-transform:uppercase;font-weight:700;margin-bottom:8px;">Parent in Charge</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:0.86rem;font-weight:500;">
+            <span class="parent-badge pb-M" style="position:static;">M</span>Mom
+            <span class="parent-badge pb-S" style="position:static;margin-left:4px;">S</span>Dad
+            <span class="parent-badge pb-both" style="position:static;margin-left:4px;">M+S</span>Both
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><svg class="h-ico"><use href="#ico-fieldtrip"/></svg>Boise Field Trips</h3>
+        <p style="font-size:0.76rem;color:var(--ink-soft);margin-bottom:6px;font-style:italic;">Click any trip to copy its name.</p>
+        <div id="ftList"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ STEM PAGE ════════════ -->
+<div id="page-stem" style="display:none">
+  <div class="stem-top">
+    <div class="stem-filter">
+      <button class="filter-btn active" id="f-all"         onclick="filterStem('all')">All</button>
+      <button class="filter-btn fs"     id="f-science"     onclick="filterStem('science')">Science</button>
+      <button class="filter-btn ft"     id="f-technology"  onclick="filterStem('technology')">Tech</button>
+      <button class="filter-btn fe"     id="f-engineering" onclick="filterStem('engineering')">Engineering</button>
+      <button class="filter-btn fm"     id="f-math"        onclick="filterStem('math')">Math</button>
+    </div>
+    <button class="print-shop-btn" onclick="printShoppingList()"><svg class="ico"><use href="#ico-print"/></svg>Print Shopping List</button>
+  </div>
+  <div class="stem-grid" id="stemGrid"></div>
+</div>
+
+<!-- ════════════ ART PAGE ════════════ -->
+<div id="page-art" style="display:none">
+  <div class="stem-top">
+    <div class="stem-filter">
+      <button class="filter-btn active" id="af-all"     onclick="filterArt('all')">All</button>
+      <button class="filter-btn fdr"   id="af-drawing"  onclick="filterArt('drawing')">Drawing</button>
+      <button class="filter-btn fpa"   id="af-painting" onclick="filterArt('painting')">Painting</button>
+      <button class="filter-btn fcr"   id="af-crafts"   onclick="filterArt('crafts')">Crafts</button>
+      <button class="filter-btn fdi"   id="af-digital"  onclick="filterArt('digital')">Digital</button>
+    </div>
+    <button class="print-shop-btn" onclick="printArtList()"><svg class="ico"><use href="#ico-print"/></svg>Print Art Supplies</button>
+  </div>
+  <div class="stem-grid" id="artGrid"></div>
+</div>
+
+<!-- ════════════ EDIT MODAL ════════════ -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h3>Edit Time Block</h3>
+    <label>Activity</label>
+    <input type="text" id="editText" placeholder="e.g., Summer Workbook">
+    <p class="modal-hint">Enter to save · Esc to cancel</p>
+    <label>Type</label>
+    <select id="editType">
+      <option value="routine">Morning Routine</option>
+      <option value="reading">Reading</option>
+      <option value="education">Education</option>
+      <option value="lunch">Lunch / Break</option>
+      <option value="screen">Screen Time</option>
+      <option value="outdoor">Outdoor Play</option>
+      <option value="fieldtrip">Field Trip</option>
+      <option value="free">Free / Creative</option>
+      <option value="camp">Sports Camp</option>
+      <option value="trip">Family Trip</option>
+      <option value="school">School</option>
+      <option value="blank">Blank</option>
+    </select>
+    <div class="modal-btns">
+      <button class="btn btn-danger" onclick="resetCell()">↩ Reset</button>
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveCell()">Save</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Camp Hyde · Built on Maggie's original ·
+  <a href="https://github.com/dariusk/corpora" target="_blank">corpora</a> ·
+  <a href="https://github.com/uberspot/OpenTriviaQA" target="_blank">OpenTriviaQA</a> ·
+  <a href="https://apod.nasa.gov" target="_blank">NASA APOD</a> ·
+  <a href="https://open-meteo.com" target="_blank">Open-Meteo</a>
+  <span class="swatch">
+    <span style="background:#E63946"></span>
+    <span style="background:#1098C7"></span>
+    <span style="background:#F4D35E"></span>
+    <span style="background:#0B1418"></span>
+  </span>
+  Cherry · Cyan · Canary · Ink
+</footer>
+
+<script src="./data/legacy_catalogs.js"></script>
+<script src="./data/spines.js"></script>
+<script>
+// ════════════════════════════════════════════════════
+//  CAMP HYDE · APP LOGIC (riso build)
+// ════════════════════════════════════════════════════
+
+const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+const DAYS_SHORT = ['Mon','Tue','Wed','Thu','Fri'];
+const HOURS = ['8:00','9:00','10:00','11:00','12:00','1:00','2:00','3:00'];
+const HOURS_NUM = ['8','9','10','11','12','1','2','3'];
+const HOURS_AMPM = ['AM','AM','AM','AM','PM','PM','PM','PM'];
+
+const SUMMER_START = new Date('2026-05-21T00:00:00');
+const SUMMER_END   = new Date('2026-08-12T00:00:00');
+const TRIP_START   = new Date('2026-07-02T00:00:00');
+const TRIP_END     = new Date('2026-07-07T00:00:00');
+const MEMORIAL_DAY = new Date('2026-05-25T00:00:00');
+const SPORTS_CAMP_DAYS = ['2026-06-15','2026-06-16','2026-06-17','2026-06-18','2026-06-19'];
+
+const TYPE_ICON_IDS = {
+  routine:'ico-routine', reading:'ico-reading', education:'ico-education',
+  lunch:'ico-lunch', screen:'ico-screen', outdoor:'ico-outdoor',
+  fieldtrip:'ico-fieldtrip', free:'ico-free', camp:'ico-camp',
+  trip:'ico-trip', school:'ico-school', blank:'ico-blank',
+};
+const CATEGORY_ICON_IDS = {
+  science:'ico-science', technology:'ico-technology',
+  engineering:'ico-engineering', math:'ico-math',
+  drawing:'ico-drawing', painting:'ico-painting',
+  crafts:'ico-crafts', digital:'ico-digital',
+};
+const TYPE_TAGS = {
+  routine:'Routine', reading:'Reading', education:'Education',
+  lunch:'Lunch', screen:'Screen', outdoor:'Outdoor',
+  fieldtrip:'Field Trip', free:'Free', camp:'Camp',
+  trip:'Trip', school:'School', blank:'',
+};
+
+function stripEmoji(s) {
+  if (!s) return '';
+  return s.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2700}-\u{27BF}️‍]/gu, '').replace(/\s+/g,' ').trim();
+}
+
+const WEEKLY_THEMES = {
+  '2026-05-18': { num:'01', title:'Last Bell, First Bonfire',  stemId:null, artId:null,  fieldTrip:'Boise River Greenbelt' },
+  '2026-05-25': { num:'02', title:'Backyard Naturalist',       stemId:3,    artId:101,   fieldTrip:'MK Nature Center' },
+  '2026-06-01': { num:'03', title:'Water & Wonder',            stemId:2,    artId:104,   fieldTrip:'Lucky Peak State Park' },
+  '2026-06-08': { num:'04', title:'Build It Week',             stemId:6,    artId:107,   fieldTrip:'Discovery Center of Idaho' },
+  '2026-06-15': { num:'05', title:'Sports Camp Week',          stemId:1,    artId:108,   fieldTrip:'Boise Hawks Baseball Game' },
+  '2026-06-22': { num:'06', title:'Mountain West Travelers',   stemId:null, artId:null,  fieldTrip:'Fallon / June Lake' },
+  '2026-06-29': { num:'07', title:'Stars & Sky',               stemId:8,    artId:103,   fieldTrip:'Idaho Botanical Garden' },
+  '2026-07-06': { num:'08', title:'Family Trip',               stemId:null, artId:null,  fieldTrip:'Family Trip' },
+  '2026-07-13': { num:'09', title:'Idaho Stories',             stemId:10,   artId:109,   fieldTrip:'Idaho State Museum' },
+  '2026-07-20': { num:'10', title:'Maker Days',                stemId:7,    artId:110,   fieldTrip:'Wahooz Family Fun Zone' },
+  '2026-07-27': { num:'11', title:'Heat Wave Workshop',        stemId:9,    artId:111,   fieldTrip:'Roaring Springs Water Park' },
+  '2026-08-03': { num:'12', title:'Long Light',                stemId:11,   artId:106,   fieldTrip:'Zoo Boise' },
+  '2026-08-10': { num:'13', title:'Last Hurrah',               stemId:12,   artId:102,   fieldTrip:'Shoshone Falls' },
+};
+
+function generateWeeks() {
+  const weeks = [];
+  let d = new Date('2026-05-18T00:00:00');
+  const stop = new Date('2026-08-17T00:00:00');
+  while (d <= stop) {
+    weeks.push(new Date(d));
+    d = new Date(d.getTime() + 7 * 86400000);
+  }
+  return weeks;
+}
+const WEEKS = generateWeeks();
+
+function weekKey(d) { return d.toISOString().slice(0,10); }
+function dayDate(wDate, i) { const d = new Date(wDate); d.setDate(d.getDate()+i); return d; }
+function dayKey(d) { return d.toISOString().slice(0,10); }
+function sameDay(a,b) { return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate(); }
+function isSchoolDay(d) { return d < SUMMER_START || d >= SUMMER_END; }
+function isTripDay(d) { return d >= TRIP_START && d <= TRIP_END; }
+function isMemorialDay(d) { return sameDay(d, MEMORIAL_DAY); }
+function isSportsCamp(d) { return SPORTS_CAMP_DAYS.includes(dayKey(d)); }
+function dayOfYear(d) { const start = new Date(d.getFullYear(),0,0); return Math.floor((d - start)/86400000); }
+
+let currentWeekIndex = 0;
+let editContext = null;
+let userEditedName = false;
+let currentCatFilter = 'all';
+let currentArtFilter = 'all';
+let forecastData = null;
+
+const PREFIX = 'hyde26_';
+const lsKey = (wk,d,s) => `${PREFIX}cell_${wk}_${d}_${s}`;
+const parentKey = (wk,d,s) => `${PREFIX}parent_${wk}_${d}_${s}`;
+const notesKey = wk => `${PREFIX}notes_${wk}`;
+const readingKey = (wk,kid) => `${PREFIX}reading_${wk}_${kid}`;
+const heatDismissKey = d => `${PREFIX}heatdismiss_${d}`;
+
+function getSaved(wk,d,s) { try { const v = localStorage.getItem(lsKey(wk,d,s)); return v?JSON.parse(v):null; } catch(e){return null;} }
+function setSaved(wk,d,s,data) { try { localStorage.setItem(lsKey(wk,d,s), JSON.stringify(data)); } catch(e){} }
+function removeSaved(wk,d,s) { try { localStorage.removeItem(lsKey(wk,d,s)); } catch(e){} }
+function getNotes(wk) { try { return localStorage.getItem(notesKey(wk))||''; } catch(e){return '';} }
+function saveNotes() {
+  const wk = weekKey(WEEKS[currentWeekIndex]);
+  try { localStorage.setItem(notesKey(wk), document.getElementById('weekNotes').value); } catch(e){}
+}
+function getParent(wk,d,s) { try { return localStorage.getItem(parentKey(wk,d,s))||''; } catch(e){return '';} }
+function setParent(wk,d,s,v) { try { v?localStorage.setItem(parentKey(wk,d,s),v):localStorage.removeItem(parentKey(wk,d,s)); } catch(e){} }
+
+const PARENT_CYCLE  = ['', 'M', 'S', 'both'];
+const PARENT_LABELS = { '':'+', 'M':'M', 'S':'S', 'both':'M+S' };
+const PARENT_CLASSES = { '':'pb-none', 'M':'pb-M', 'S':'pb-S', 'both':'pb-both' };
+
+function applyWeeklyOverrides(wDate, dayIdx, slotIdx, baseData) {
+  const theme = WEEKLY_THEMES[weekKey(wDate)];
+  if (!theme) return baseData;
+  if (dayIdx === 1 && slotIdx === 2 && theme.stemId) {
+    const stem = STEM_ACTIVITIES.find(a => a.id === theme.stemId);
+    if (stem) return { text: stripEmoji(stem.title), type: 'education' };
+  }
+  if (dayIdx === 1 && slotIdx === 6 && theme.artId) {
+    const art = ART_ACTIVITIES.find(a => a.id === theme.artId);
+    if (art) return { text: stripEmoji(art.title), type: 'free' };
+  }
+  if (dayIdx === 2 && (slotIdx === 5 || slotIdx === 6) && theme.fieldTrip
+      && theme.fieldTrip !== 'Family Trip') {
+    return { text: theme.fieldTrip, type: 'fieldtrip' };
+  }
+  if (dayIdx === 4 && slotIdx === 6 && theme.stemId) {
+    const stem = STEM_ACTIVITIES.find(a => a.id === theme.stemId);
+    if (stem) return { text: `${stripEmoji(stem.title)} (Pt. 2)`, type: 'education' };
+  }
+  return baseData;
+}
+
+function getCellData(wDate, dayIdx, slotIdx) {
+  const wk = weekKey(wDate);
+  const saved = getSaved(wk, dayIdx, slotIdx);
+  if (saved) return saved;
+  const dd = dayDate(wDate, dayIdx);
+  if (isSchoolDay(dd)) return { text:'School', type:'school' };
+  if (isMemorialDay(dd)) return { text:'Memorial Day', type:'free' };
+  if (isTripDay(dd)) return { text:'Family Trip', type:'trip' };
+  const ddKey = dayKey(dd);
+  if (SPECIAL_DAY_EVENTS[ddKey]) {
+    const ev = SPECIAL_DAY_EVENTS[ddKey];
+    return { text: stripEmoji(ev.text), type: ev.type };
+  }
+  if (isSportsCamp(dd) && slotIdx <= 4) {
+    const labels = ['Drop-off','Sports Camp','Sports Camp','Sports Camp','Pick-up / Lunch'];
+    return { text: labels[slotIdx], type: 'camp' };
+  }
+  const base = DEFAULT_SCHEDULE[dayIdx][slotIdx];
+  return applyWeeklyOverrides(wDate, dayIdx, slotIdx, { ...base, text: stripEmoji(base.text) });
+}
+
+function isHeatDay(d) {
+  if (!forecastData) return false;
+  const k = dayKey(d);
+  if (forecastData[k] !== undefined && forecastData[k] >= 95) {
+    if (!localStorage.getItem(heatDismissKey(k))) return true;
+  }
+  return false;
+}
+
+function el(tag, cls, txt) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (txt != null) e.textContent = txt;
+  return e;
+}
+
+function renderGrid() {
+  const wDate = WEEKS[currentWeekIndex];
+  const wk = weekKey(wDate);
+  const grid = document.getElementById('scheduleGrid');
+  grid.innerHTML = '';
+  const today = new Date();
+
+  grid.appendChild(el('div','gh','Time'));
+  for (let i = 0; i < 5; i++) {
+    const dd = dayDate(wDate, i);
+    const isT = sameDay(dd, today);
+    const h = el('div','gh' + (isT ? ' is-today' : ''));
+    const dateStr = dd.toLocaleDateString('en-US',{ month:'short', day:'numeric' });
+    h.innerHTML = `${DAYS_SHORT[i]}<span class="day-date">${dateStr}</span>`;
+    grid.appendChild(h);
+  }
+
+  for (let slotIdx = 0; slotIdx < HOURS.length; slotIdx++) {
+    const tl = document.createElement('div');
+    tl.className = 'tl';
+    tl.innerHTML = `<span class="num">${HOURS_NUM[slotIdx]}</span>${HOURS_AMPM[slotIdx]}`;
+    grid.appendChild(tl);
+    for (let dayIdx = 0; dayIdx < 5; dayIdx++) {
+      const data = getCellData(wDate, dayIdx, slotIdx);
+      const parent = getParent(wk, dayIdx, slotIdx);
+      const dd = dayDate(wDate, dayIdx);
+      const isT = sameDay(dd, today);
+
+      const cell = document.createElement('div');
+      cell.className = `sc t-${data.type || 'blank'}${isT ? ' is-today' : ''}`;
+      cell.onclick = () => openModal(dayIdx, slotIdx, wDate);
+
+      const iconId = TYPE_ICON_IDS[data.type] || 'ico-blank';
+      const iconSvg = data.type && data.type !== 'blank'
+        ? `<svg class="ico"><use href="#${iconId}"/></svg>` : '';
+      const tagText = TYPE_TAGS[data.type] || '';
+      const cc = document.createElement('div');
+      cc.className = 'cc';
+      cc.innerHTML = `
+        ${tagText ? `<div class="ct-tag">${tagText}</div>` : ''}
+        <div class="ci">${iconSvg}<span class="ct">${data.text || '—'}</span></div>`;
+      cell.appendChild(cc);
+
+      const badge = document.createElement('button');
+      badge.className = `parent-badge ${PARENT_CLASSES[parent]}`;
+      badge.textContent = PARENT_LABELS[parent];
+      badge.id = `pb_${dayIdx}_${slotIdx}`;
+      badge.onclick = (e) => { e.stopPropagation(); toggleParent(dayIdx, slotIdx); };
+      cell.appendChild(badge);
+
+      if (isHeatDay(dd) && (data.type === 'outdoor' || (data.type === 'free' && slotIdx >= 5))
+          && slotIdx >= 5) {
+        const hf = document.createElement('span');
+        hf.className = 'heat-flag';
+        hf.innerHTML = '<svg class="ico"><use href="#ico-heat"/></svg>SWAP';
+        hf.title = `Forecast ${forecastData[dayKey(dd)]}°F — consider indoor swap. Click to dismiss.`;
+        hf.onclick = (e) => {
+          e.stopPropagation();
+          localStorage.setItem(heatDismissKey(dayKey(dd)), '1');
+          renderGrid();
+        };
+        cell.appendChild(hf);
+      }
+
+      const eh = document.createElement('span');
+      eh.className = 'eh';
+      eh.textContent = '✎';
+      cell.appendChild(eh);
+      grid.appendChild(cell);
+    }
+  }
+}
+
+function toggleParent(dayIdx, slotIdx) {
+  const wk = weekKey(WEEKS[currentWeekIndex]);
+  const cur = getParent(wk, dayIdx, slotIdx);
+  const next = PARENT_CYCLE[(PARENT_CYCLE.indexOf(cur) + 1) % PARENT_CYCLE.length];
+  setParent(wk, dayIdx, slotIdx, next);
+  const badge = document.getElementById(`pb_${dayIdx}_${slotIdx}`);
+  badge.className = `parent-badge ${PARENT_CLASSES[next]}`;
+  badge.textContent = PARENT_LABELS[next];
+}
+
+function updateBanner(wDate) {
+  const wk = weekKey(wDate);
+  const theme = WEEKLY_THEMES[wk];
+  if (!theme) {
+    document.getElementById('wkNum').textContent = '—';
+    document.getElementById('wkKicker').textContent = '';
+    document.getElementById('wkTitle').textContent = 'Off-Season';
+    return;
+  }
+  document.getElementById('wkNum').textContent = theme.num;
+  const start = wDate.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  const endDate = new Date(wDate); endDate.setDate(endDate.getDate()+4);
+  const end = endDate.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  document.getElementById('wkKicker').textContent = `WEEK OF ${start.toUpperCase()} — ${end.toUpperCase()}`;
+  document.getElementById('wkTitle').textContent = theme.title;
+  // Bird of the week
+  const idx = parseInt(theme.num, 10) - 1;
+  const bird = CORPORA.birds_backyard[idx * 11 % CORPORA.birds_backyard.length];
+  document.getElementById('wkBird').textContent = bird.name;
+}
+
+function updateSpotlight(wDate) {
+  const wk = weekKey(wDate);
+  const theme = WEEKLY_THEMES[wk];
+  const idx = theme ? (parseInt(theme.num, 10) - 1) : 0;
+  const apod = APOD_WEEKS.weeks[idx] || APOD_WEEKS.weeks[0];
+  const tour = ['Idaho','Nevada','Oregon','Wyoming','Montana','California','Washington','Utah','Colorado','New Mexico','Arizona','Alaska','Hawaii'];
+  const stateName = tour[idx] || 'Idaho';
+  const statePair = STATE_CAPITALS.pairs.find(p => p.state === stateName);
+  const plant = CORPORA.plants[idx * 7 % CORPORA.plants.length];
+
+  document.getElementById('apodImg').src = apod.img;
+  document.getElementById('apodImg').alt = apod.title;
+  document.getElementById('apodImg').style.display = '';
+  document.getElementById('apodTitle').textContent = apod.title;
+  document.getElementById('apodCredit').textContent = apod.credit;
+  document.getElementById('apodKid').textContent = apod.kid;
+  document.getElementById('spotState').textContent = stateName;
+  document.getElementById('spotCap').textContent = statePair ? statePair.capital : '—';
+  document.getElementById('spotPlant').textContent = plant;
+}
+
+function updateTrivia() {
+  const today = new Date();
+  const doy = dayOfYear(today);
+  const q = TRIVIA.questions[doy % TRIVIA.questions.length];
+  document.getElementById('triviaDate').textContent =
+    today.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  const choicesHtml = q.choices.map((c,i) =>
+    `<li onclick="answerTrivia(this, '${c.replace(/'/g,"\\'").replace(/"/g,'&quot;')}', '${q.a.replace(/'/g,"\\'").replace(/"/g,'&quot;')}')">${String.fromCharCode(65+i)}. ${c}</li>`
+  ).join('');
+  document.getElementById('triviaContent').innerHTML = `
+    <div class="trivia-q-num">${q.cat}</div>
+    <div class="trivia-q">${q.q}</div>
+    <ul class="trivia-choices">${choicesHtml}</ul>
+  `;
+}
+function answerTrivia(li, picked, correct) {
+  const ul = li.parentElement;
+  [...ul.children].forEach(c => {
+    const text = c.textContent.replace(/^[A-D]\.\s/,'');
+    if (text === correct) c.classList.add('correct');
+    else if (text === picked) c.classList.add('wrong');
+    c.onclick = null;
+  });
+}
+
+function updateReadingLog() {
+  const wk = weekKey(WEEKS[currentWeekIndex]);
+  const container = document.getElementById('readingLog');
+  const kids = ['kid1','kid2'];
+  const labels = ['Big Kid (10)', 'Little Kid (8)'];
+  container.innerHTML = kids.map((k, i) => {
+    const saved = JSON.parse(localStorage.getItem(readingKey(wk,k)) || '{}');
+    return `
+      <div class="reading-row">
+        <div class="kid-label">${labels[i]}</div>
+        <input type="text" placeholder="Book title…" value="${(saved.title || '').replace(/"/g,'&quot;')}"
+               onchange="saveReading('${k}','title',this.value)">
+        <div class="pages-row">
+          <span>Pages this week:</span>
+          <input type="number" min="0" placeholder="0" value="${saved.pages || ''}"
+                 onchange="saveReading('${k}','pages',this.value)">
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+function saveReading(kid, field, val) {
+  const wk = weekKey(WEEKS[currentWeekIndex]);
+  const cur = JSON.parse(localStorage.getItem(readingKey(wk,kid)) || '{}');
+  cur[field] = val;
+  localStorage.setItem(readingKey(wk,kid), JSON.stringify(cur));
+}
+
+function updateWeekLabel(wDate) {
+  const endDate = new Date(wDate); endDate.setDate(endDate.getDate()+4);
+  const start = wDate.toLocaleDateString('en-US',{month:'long',day:'numeric'});
+  const end   = endDate.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  document.getElementById('weekLabel').textContent = `${start} – ${end}`;
+  document.getElementById('weekProgress').textContent =
+    `Week ${currentWeekIndex + 1} of ${WEEKS.length}`;
+}
+function updateNotes(wk) { document.getElementById('weekNotes').value = getNotes(wk); }
+
+function updateScreenBar() {
+  const wDate = WEEKS[currentWeekIndex];
+  let total = 0;
+  for (let dayIdx = 0; dayIdx < 5; dayIdx++) {
+    for (let slotIdx = 0; slotIdx < HOURS.length; slotIdx++) {
+      const data = getCellData(wDate, dayIdx, slotIdx);
+      if (data.type === 'screen') total++;
+    }
+  }
+  const avg = total / 5;
+  const pct = Math.min((avg / 2) * 100, 130);
+  const fill = document.getElementById('screenFill');
+  fill.style.width = pct + '%';
+  fill.classList.toggle('over', avg > 2);
+  document.getElementById('screenAmt').textContent = `${avg.toFixed(1)} / 2.0 HRS · AVG`;
+}
+
+function updateNavBtns() {
+  document.getElementById('prevBtn').disabled = currentWeekIndex === 0;
+  document.getElementById('nextBtn').disabled = currentWeekIndex === WEEKS.length - 1;
+}
+
+function changeWeek(dir) {
+  const ni = currentWeekIndex + dir;
+  if (ni < 0 || ni >= WEEKS.length) return;
+  currentWeekIndex = ni;
+  renderAll();
+}
+function jumpToToday() {
+  const today = new Date();
+  let bestIdx = 0;
+  for (let i = 0; i < WEEKS.length; i++) if (today >= WEEKS[i]) bestIdx = i;
+  currentWeekIndex = bestIdx;
+  renderAll();
+}
+
+function renderAll() {
+  const wDate = WEEKS[currentWeekIndex];
+  const wk = weekKey(wDate);
+  updateWeekLabel(wDate);
+  updateBanner(wDate);
+  renderGrid();
+  updateNotes(wk);
+  updateScreenBar();
+  updateNavBtns();
+  updateSpotlight(wDate);
+  updateReadingLog();
+  document.getElementById('heatBanner').classList.toggle('show', hasAnyHeatDay());
+}
+
+function hasAnyHeatDay() {
+  if (!forecastData) return false;
+  const wDate = WEEKS[currentWeekIndex];
+  for (let i = 0; i < 5; i++) if (isHeatDay(dayDate(wDate, i))) return true;
+  return false;
+}
+
+// Modal
+function openModal(dayIdx, slotIdx, wDate) {
+  editContext = { dayIdx, slotIdx, wDate };
+  userEditedName = false;
+  const data = getCellData(wDate, dayIdx, slotIdx);
+  document.getElementById('editText').value = data.text || '';
+  document.getElementById('editType').value = data.type || 'blank';
+  document.getElementById('editModal').classList.add('show');
+  setTimeout(() => document.getElementById('editText').select(), 50);
+}
+function closeModal() {
+  document.getElementById('editModal').classList.remove('show');
+  editContext = null;
+}
+function saveCell() {
+  if (!editContext) return;
+  const { dayIdx, slotIdx, wDate } = editContext;
+  const wk = weekKey(wDate);
+  const text = document.getElementById('editText').value.trim();
+  const type = document.getElementById('editType').value;
+  if (!text) removeSaved(wk, dayIdx, slotIdx);
+  else setSaved(wk, dayIdx, slotIdx, { text, type });
+  closeModal();
+  renderGrid();
+  updateScreenBar();
+}
+function resetCell() {
+  if (!editContext) return;
+  const { dayIdx, slotIdx, wDate } = editContext;
+  removeSaved(weekKey(wDate), dayIdx, slotIdx);
+  closeModal();
+  renderGrid();
+  updateScreenBar();
+}
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('editModal').classList.contains('show')) return;
+  if (e.key === 'Enter') { e.preventDefault(); saveCell(); }
+  else if (e.key === 'Escape') closeModal();
+});
+document.getElementById('editModal').addEventListener('click', (e) => {
+  if (e.target.id === 'editModal') closeModal();
+});
+document.getElementById('editText').addEventListener('input', () => { userEditedName = true; });
+document.getElementById('editType').addEventListener('change', () => {
+  if (userEditedName) return;
+  const map = {
+    routine:'Morning Routine & Chores', reading:'Reading Time',
+    education:'Summer Workbook', lunch:'Lunch & Free Reading',
+    screen:'Screen Time', outdoor:'Outdoor Free Play',
+    fieldtrip:'Field Trip', free:'Creative Time',
+    camp:'Sports Camp', trip:'Family Trip', school:'School', blank:''
+  };
+  document.getElementById('editText').value = map[document.getElementById('editType').value] || '';
+});
+
+// Field trip list
+function renderFieldTrips() {
+  const list = document.getElementById('ftList');
+  list.innerHTML = '';
+  list.appendChild(el('div','ft-section-label','Free / Low-cost'));
+  FREE_TRIPS.forEach(t => {
+    const d = document.createElement('div');
+    d.className = 'ft-item';
+    d.innerHTML = `<span class="ft-name">${stripEmoji(t.name)}</span><span class="ft-detail">${stripEmoji(t.detail)}</span>`;
+    d.onclick = () => copyTrip(d, stripEmoji(t.name));
+    list.appendChild(d);
+  });
+  list.appendChild(el('div','ft-section-label','Paid'));
+  PAID_TRIPS.forEach(t => {
+    const d = document.createElement('div');
+    d.className = 'ft-item paid';
+    d.innerHTML = `<span class="ft-name">${stripEmoji(t.name)}</span><span class="ft-detail">${stripEmoji(t.detail)}</span>`;
+    d.onclick = () => copyTrip(d, stripEmoji(t.name));
+    list.appendChild(d);
+  });
+}
+function copyTrip(el, name) {
+  try { navigator.clipboard.writeText(name); } catch(e) {}
+  el.classList.add('copied');
+  setTimeout(() => el.classList.remove('copied'), 1400);
+}
+
+// Weather forecast (Open-Meteo)
+async function loadForecast() {
+  const cacheKey = PREFIX + 'forecast_v1';
+  try {
+    const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+    if (cached && Date.now() - cached.ts < 6 * 3600 * 1000) {
+      forecastData = cached.data;
+      return;
+    }
+  } catch(e) {}
+  try {
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=43.61&longitude=-116.20'
+              + '&daily=temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FDenver'
+              + '&forecast_days=14';
+    const res = await fetch(url);
+    const j = await res.json();
+    forecastData = {};
+    j.daily.time.forEach((d, i) => { forecastData[d] = Math.round(j.daily.temperature_2m_max[i]); });
+    localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data: forecastData }));
+  } catch(e) {
+    console.warn('Open-Meteo fetch failed:', e);
+    forecastData = null;
+  }
+}
+
+// Tabs
+function showPage(name) {
+  ['schedule','stem','art'].forEach(p => {
+    document.getElementById('page-'+p).style.display = (p===name) ? '' : 'none';
+    document.getElementById('tab-'+p).classList.toggle('active', p===name);
+  });
+  if (name === 'stem' && document.getElementById('stemGrid').children.length === 0) renderStem();
+  if (name === 'art' && document.getElementById('artGrid').children.length === 0) renderArt();
+}
+
+// STEM/Art cards
+function renderStem() {
+  const grid = document.getElementById('stemGrid');
+  grid.innerHTML = '';
+  const items = currentCatFilter === 'all' ? STEM_ACTIVITIES
+    : STEM_ACTIVITIES.filter(a => a.cat === currentCatFilter);
+  items.forEach(a => grid.appendChild(buildActivityCard(a)));
+}
+function filterStem(cat) {
+  currentCatFilter = cat;
+  document.querySelectorAll('#page-stem .filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('f-' + (cat === 'all' ? 'all' : cat)).classList.add('active');
+  renderStem();
+}
+function renderArt() {
+  const grid = document.getElementById('artGrid');
+  grid.innerHTML = '';
+  const items = currentArtFilter === 'all' ? ART_ACTIVITIES
+    : ART_ACTIVITIES.filter(a => a.cat === currentArtFilter);
+  items.forEach(a => grid.appendChild(buildActivityCard(a)));
+}
+function filterArt(cat) {
+  currentArtFilter = cat;
+  document.querySelectorAll('#page-art .filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('af-' + (cat === 'all' ? 'all' : cat)).classList.add('active');
+  renderArt();
+}
+function buildActivityCard(a) {
+  const card = document.createElement('div');
+  card.className = 'ac';
+  const stars = '★'.repeat(a.difficulty || 1) + '☆'.repeat(3 - (a.difficulty || 1));
+  const catIcon = CATEGORY_ICON_IDS[a.cat] || 'ico-blank';
+  card.innerHTML = `
+    <div class="ac-header" onclick="this.parentElement.classList.toggle('expanded')">
+      <div class="ico-block cat-${a.cat}"><svg class="ico"><use href="#${catIcon}"/></svg></div>
+      <div class="meta-block">
+        <div class="title">${stripEmoji(a.title)}</div>
+        <div class="tags">
+          ${a.duration} <span class="dot">·</span>
+          <span class="difficulty">${stars}</span> <span class="dot">·</span>
+          ${a.ages}
+        </div>
+      </div>
+    </div>
+    <div class="ac-body">
+      <div class="desc">${a.description}</div>
+      <div class="section-label">Materials</div>
+      <table>
+        ${a.materials.map(m => `<tr><td>${m.item}</td><td>${m.qty}</td><td>${m.where}</td></tr>`).join('')}
+      </table>
+      <div class="section-label">Steps</div>
+      <ol>${a.steps.map(s => `<li>${s}</li>`).join('')}</ol>
+      ${a.tip ? `<div class="tip">${a.tip}</div>` : ''}
+    </div>
+  `;
+  return card;
+}
+
+// Print shopping list
+function printShoppingList() {
+  const items = currentCatFilter === 'all' ? STEM_ACTIVITIES
+    : STEM_ACTIVITIES.filter(a => a.cat === currentCatFilter);
+  printList(items, 'STEM Shopping List');
+}
+function printArtList() {
+  const items = currentArtFilter === 'all' ? ART_ACTIVITIES
+    : ART_ACTIVITIES.filter(a => a.cat === currentArtFilter);
+  printList(items, 'Art Supplies List');
+}
+function printList(items, title) {
+  const w = window.open('','_blank');
+  const rows = items.map(a => `
+    <h3 style="font-family:'Caprasimo',Georgia,serif;font-style:italic;color:#E63946;border-bottom:3px double #0B1418;padding-bottom:5px;margin-top:24px;font-size:1.6rem;">
+      ${stripEmoji(a.title)}
+      <span style="float:right;font-family:'DM Mono',monospace;font-size:0.7rem;color:#888;text-transform:uppercase;font-style:normal;letter-spacing:0.15em;">${a.cat}</span>
+    </h3>
+    <table style="width:100%;border-collapse:collapse;font-family:Georgia,serif;font-size:0.92rem;">
+      ${a.materials.map(m => `
+        <tr>
+          <td style="padding:4px 8px;border-bottom:1px dashed #ccc;width:24px;"><input type="checkbox"></td>
+          <td style="padding:4px 8px;border-bottom:1px dashed #ccc;font-weight:600;">${m.item}</td>
+          <td style="padding:4px 8px;border-bottom:1px dashed #ccc;font-family:monospace;font-size:0.85rem;">${m.qty}</td>
+          <td style="padding:4px 8px;border-bottom:1px dashed #ccc;font-style:italic;color:#666;">${m.where}</td>
+        </tr>
+      `).join('')}
+    </table>`).join('');
+  w.document.write(`<!doctype html><html><head><title>${title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Mono&display=swap" rel="stylesheet"></head>
+    <body style="font-family:Georgia,serif;max-width:760px;margin:30px auto;padding:0 20px;color:#0B1418;">
+      <h1 style="font-family:'Caprasimo',serif;font-style:italic;color:#E63946;text-shadow:2px 2px 0 #1098C7;">${title}</h1>
+      <p style="color:#666;font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;">Camp Hyde · Summer 2026</p>
+      ${rows}
+    </body></html>`);
+  w.document.close();
+  setTimeout(() => w.print(), 300);
+}
+
+// Boot
+async function boot() {
+  renderFieldTrips();
+  jumpToToday();
+  updateTrivia();
+  await loadForecast();
+  renderAll();
+}
+boot();
+</script>
+
+</body>
+</html>

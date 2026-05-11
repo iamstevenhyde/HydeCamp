@@ -1,0 +1,17 @@
+# local OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# temp downloads in data/
+data/_*
+
+# Python
+__pycache__/
+*.pyc
