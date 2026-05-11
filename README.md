@@ -1,17 +1,21 @@
 # Camp Hyde · Summer 2026
 
-A field-journal-style home curriculum app for two kids (ages 8 & 10) in Boise, ID.
-Built on top of Maggie Hyde's original `Summer_2026_Schedule.html`, with content
-variety pulled in from open-source GitHub repos.
+### → **[Open the app](https://iamstevenhyde.github.io/HydeCamp/)** ←
+
+A home curriculum app for two kids (ages 8 & 10) in Boise, ID. Built on top of
+Maggie Hyde's original `Summer_2026_Schedule.html`, with content variety pulled
+in from open-source GitHub repos.
 
 **Live design:** Risograph Camp Poster — cherry + cyan overprint on cream, sticker
 cells with offset shadows, Caprasimo + Bricolage Grotesque + DM Mono.
 
 ## Open
 
-Double-click `index.html`. Everything works offline. Google Fonts and the
-Open-Meteo forecast load over the internet if available; the app falls back
-gracefully if they don't.
+Easiest: click **[iamstevenhyde.github.io/HydeCamp](https://iamstevenhyde.github.io/HydeCamp/)**.
+
+Offline: clone the repo or download the ZIP, then double-click `index.html`.
+Google Fonts and the Open-Meteo forecast load over the internet if available;
+the app falls back gracefully if they don't.
 
 ## Files
 

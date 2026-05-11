@@ -2064,8 +2064,8 @@ function answerTrivia(li, picked, correct) {
 function updateReadingLog() {
   const wk = weekKey(WEEKS[currentWeekIndex]);
   const container = document.getElementById('readingLog');
-  const kids = ['kid1','kid2'];
-  const labels = ['Big Kid (10)', 'Little Kid (8)'];
+  const kids = ['lincoln','leo'];
+  const labels = ['Lincoln', 'Leo'];
   container.innerHTML = kids.map((k, i) => {
     const saved = JSON.parse(localStorage.getItem(readingKey(wk,k)) || '{}');
     return `
