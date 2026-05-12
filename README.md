@@ -60,11 +60,42 @@ HydeCamp/
 - **Screen-time tracker** — average hours/day across the week, capped at 2 hr
 - **STEM tab** — 27 activities with materials/steps/pro tips, filter by S/T/E/M,
   print a checklist shopping list
-- **Art tab** — 12 projects, same shape
+- **Art tab** — 28 projects, same shape
 - **17 Boise field trips** — 5 free, 12 paid, click to copy the name
 - **Custom SVG icon set** — 24 icons in field-journal/woodblock stroke style, no
   emojis anywhere in the UI
 - **Print stylesheet** — clean B&W landscape view for posting on the fridge
+
+## Summer Keepsake Features
+
+These turn the planner into a keepsake the kids keep.
+
+- **📸 Photo capture** — Every activity card has an "Add Photo" button. Take a
+  picture of the finished project; thumbnails appear on the card. Compressed
+  to ~80KB and stored in localStorage.
+- **Album tab** — All photos grouped by week, with a one-click **Export
+  Scrapbook** that downloads a standalone HTML page (`camphyde-2026-scrapbook.html`)
+  — email or AirDrop the whole summer to grandparents in one file.
+- **Badges tab** — 12 merit badges (Naturalist, Maker, Cartographer,
+  Printmaker, Star Charter, Painter, Sculptor, Coder, Mathematician,
+  Storyteller, Fabric Artist, Camp Veteran). Earn by completing activities in
+  a category. Locked badges grayscaled; unlocked badges show earned date.
+- **Shopping tab** — Pick which weeks to include and get a deduplicated
+  materials list across all assigned art + STEM projects. Email or print.
+  Checkbox state persists.
+- **Poster tab** — Pre-formatted printable fridge poster for the current
+  week: 5-day grid, this week's art + STEM + field trip, weather strip,
+  shopping mini-list. Save as PDF or print landscape. Includes a "Share
+  with co-parent" `mailto:` button.
+- **Parent divide pivot** — Counts Maggie/Steven/Both badges across the
+  current week; flags imbalance.
+- **Mark Done** — Activity cards and individual schedule cells have a
+  done toggle that feeds the badge engine.
+- **Boredom button ("I'm bored")** — Header button picks a random
+  not-yet-done activity, weighted to indoor on hot days and easy on late
+  evenings.
+- **Kid Mode** — Header toggle (or `?mode=kid` URL) hides parent badges,
+  screen-time bar, week notes, heat banner, and bumps font sizes.
 
 ## Content sources
 

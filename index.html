@@ -1301,6 +1301,310 @@
       .ac-body .tip { background: #f5f5f5 !important; box-shadow: none !important; transform: none !important; }
     }
 
+    /* ════════════ KID-EXPERIENCE + PARENT-OPS ════════════ */
+    .header-tools {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .boredom-btn {
+      font-family: 'Caprasimo', Georgia, serif;
+      font-style: italic;
+      background: var(--cherry);
+      color: var(--cream);
+      border: 2px solid var(--ink);
+      padding: 8px 18px;
+      font-size: 1rem;
+      box-shadow: 3px 3px 0 var(--ink);
+      cursor: pointer;
+      transform: rotate(-1deg);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .boredom-btn:hover { transform: rotate(0deg) translateY(-1px); box-shadow: 4px 4px 0 var(--ink); }
+    .boredom-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+    .kidmode-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--canary);
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      padding: 8px 14px;
+      box-shadow: 2px 2px 0 var(--ink);
+      cursor: pointer;
+    }
+    .kidmode-btn.on { background: var(--cyan); color: var(--cream); }
+
+    /* Kid mode: simplified UI */
+    body.kid-mode .parent-badge,
+    body.kid-mode .screen-bar,
+    body.kid-mode .week-notes,
+    body.kid-mode #heatBanner,
+    body.kid-mode .sunburst,
+    body.kid-mode .parent-pivot,
+    body.kid-mode .eh { display: none !important; }
+    body.kid-mode .sc { min-height: 80px; }
+    body.kid-mode .sc .ct { font-size: 1.05rem; font-weight: 600; }
+    body.kid-mode .ac-header .title { font-size: 1.4rem; }
+
+    /* Cell done indicator */
+    .cell-done {
+      position: absolute;
+      top: 4px; left: 4px;
+      width: 22px; height: 22px;
+      border: 2px solid var(--ink);
+      background: var(--cream);
+      color: var(--ink);
+      border-radius: 50%;
+      font-size: 0.8rem;
+      line-height: 18px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 900;
+      padding: 0;
+      z-index: 4;
+    }
+    .cell-done.is-done { background: var(--cherry); color: var(--cream); }
+    .sc.is-done::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(135deg, transparent 0 12px, rgba(11,20,24,0.04) 12px 13px);
+      pointer-events: none;
+    }
+
+    /* Activity card footer */
+    .ac-footer {
+      padding: 12px 18px;
+      border-top: 1.5px dashed var(--ink);
+      background: var(--cream);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .ac-footer label.done-toggle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ac-footer label.done-toggle input { width: 18px; height: 18px; accent-color: #E63946; }
+    .ac-footer .photo-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--cyan);
+      color: var(--cream);
+      border: 2px solid var(--ink);
+      padding: 5px 12px;
+      box-shadow: 2px 2px 0 var(--ink);
+      cursor: pointer;
+    }
+    .ac-footer .thumb-strip {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto;
+    }
+    .ac-footer .thumb-strip img {
+      width: 56px; height: 56px;
+      object-fit: cover;
+      border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
+      cursor: pointer;
+    }
+    .ac.is-done { background: rgba(244,211,94,0.18); }
+    .ac.is-done .ac-header::after {
+      content: '✓ DONE';
+      position: absolute;
+      top: 8px; right: 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--cherry);
+      background: var(--cream);
+      padding: 3px 8px;
+      border: 1.5px solid var(--cherry);
+    }
+    .ac-header { position: relative; }
+
+    /* Parent divide pivot */
+    .parent-pivot {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 16px;
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+      margin: 0 0 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .pivot-pill {
+      padding: 4px 12px;
+      border: 2px solid var(--ink);
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .pivot-pill.pp-M { background: var(--cyan); color: var(--cream); }
+    .pivot-pill.pp-S { background: var(--cherry); color: var(--cream); }
+    .pivot-pill.pp-both { background: var(--canary); color: var(--ink); }
+    .pivot-balance { margin-left: auto; font-style: italic; font-family: 'Caprasimo', Georgia, serif; font-size: 0.9rem; text-transform: none; letter-spacing: 0; }
+    .sc.pivot-highlight { outline: 3px solid var(--cherry); outline-offset: -3px; }
+
+    /* Badges page */
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+      padding: 22px;
+    }
+    .badge-card {
+      background: var(--cream);
+      border: 2.5px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 18px 14px 16px;
+      text-align: center;
+      transform: rotate(-0.5deg);
+    }
+    .badge-card:nth-child(even) { transform: rotate(0.6deg); }
+    .badge-card.locked { filter: grayscale(1) opacity(0.45); transform: rotate(0deg); }
+    .badge-card svg { width: 90px; height: 90px; display: block; margin: 0 auto 10px; }
+    .badge-card .b-title { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 1.25rem; }
+    .badge-card .b-blurb { font-family: Georgia, serif; font-size: 0.82rem; color: var(--ink); margin: 6px 0; line-height: 1.35; }
+    .badge-card .b-status { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+    .badge-card .b-status.unlocked { color: var(--cherry); font-weight: 700; }
+    .badges-header { padding: 22px 22px 0; }
+    .badges-header h2 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 2rem; }
+    .badge-progress-bar {
+      height: 8px; background: rgba(11,20,24,0.1); margin-top: 8px;
+      border: 1.5px solid var(--ink);
+    }
+    .badge-progress-bar .fill { height: 100%; background: var(--cherry); }
+
+    /* Album */
+    .album-header { padding: 22px 22px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .album-header h2 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 2rem; flex: 1; }
+    .album-empty { padding: 60px 22px; text-align: center; font-family: 'DM Mono', monospace; color: var(--ink-soft); }
+    .album-week { padding: 16px 22px; border-bottom: 1.5px dashed var(--ink); }
+    .album-week h3 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 1.3rem; margin-bottom: 10px; }
+    .album-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+    .album-photo { background: var(--cream); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); padding: 6px; }
+    .album-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .album-photo .caption { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 6px 0 0; text-align: center; letter-spacing: 0.05em; }
+
+    /* Shopping list */
+    .shopping-header { padding: 22px 22px 0; }
+    .shopping-header h2 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 2rem; }
+    .week-toggles { display: flex; gap: 6px; flex-wrap: wrap; margin: 14px 0; }
+    .week-toggle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      padding: 5px 10px;
+      border: 2px solid var(--ink);
+      background: var(--cream);
+      cursor: pointer;
+    }
+    .week-toggle.on { background: var(--cyan); color: var(--cream); }
+    .shopping-table {
+      width: 100%;
+      border-collapse: collapse;
+      padding: 0 22px;
+      font-family: Georgia, serif;
+    }
+    .shopping-table th { text-align: left; padding: 8px 12px; background: var(--ink); color: var(--cream); font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .shopping-table td { padding: 8px 12px; border-bottom: 1px dashed var(--ink-soft); }
+    .shopping-table input[type=checkbox] { width: 18px; height: 18px; accent-color: #E63946; }
+    .shopping-table tr.checked td { opacity: 0.4; text-decoration: line-through; }
+    .shopping-wrap { padding: 0 22px 30px; }
+
+    /* Poster */
+    .poster-page {
+      background: var(--cream);
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0 var(--ink);
+      margin: 22px;
+      padding: 28px;
+      max-width: 1100px;
+    }
+    .poster-page .poster-head { display: flex; align-items: flex-end; gap: 20px; border-bottom: 3px solid var(--ink); padding-bottom: 14px; margin-bottom: 18px; }
+    .poster-page .pw-num { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 5rem; line-height: 1; }
+    .poster-page .pw-title { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--ink); font-size: 2.4rem; flex: 1; }
+    .poster-page .pw-dates { font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+    .poster-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 18px; }
+    .poster-day {
+      border: 2px solid var(--ink); background: var(--cream); padding: 8px;
+      min-height: 100px; font-size: 0.78rem; font-family: Georgia, serif;
+    }
+    .poster-day h4 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); margin-bottom: 4px; font-size: 1rem; }
+    .poster-day ul { list-style: none; padding: 0; }
+    .poster-day li { padding: 2px 0; border-bottom: 1px dotted #ccc; }
+    .poster-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .poster-feature { border: 2px solid var(--ink); padding: 10px; background: var(--canary); }
+    .poster-feature h5 { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+    .poster-feature .val { font-family: 'Caprasimo', Georgia, serif; font-style: italic; font-size: 1.1rem; color: var(--ink); line-height: 1.2; }
+    .poster-weather { display: flex; gap: 6px; margin: 14px 0; }
+    .poster-day-temp { flex: 1; text-align: center; border: 1.5px solid var(--ink); padding: 6px 4px; font-family: 'DM Mono', monospace; font-size: 0.74rem; background: var(--cream); }
+    .poster-day-temp .t-d { font-weight: 700; letter-spacing: 0.05em; }
+    .poster-day-temp .t-hi { font-size: 1.1rem; color: var(--cherry); font-weight: 700; }
+    .poster-day-temp.hot { background: rgba(230,57,70,0.15); }
+    .poster-shop { padding: 12px; border: 2px solid var(--ink); background: var(--cream); margin-bottom: 14px; }
+    .poster-shop h5 { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .poster-shop ul { padding-left: 18px; font-size: 0.85rem; font-family: Georgia, serif; }
+    .poster-footer { display: flex; justify-content: space-between; padding-top: 10px; border-top: 2px solid var(--ink); font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+    .poster-actions { padding: 0 22px 22px; display: flex; gap: 10px; }
+    .poster-actions button {
+      font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+      background: var(--cherry); color: var(--cream); border: 2px solid var(--ink); padding: 8px 16px;
+      box-shadow: 3px 3px 0 var(--ink); cursor: pointer;
+    }
+    .poster-actions button.alt { background: var(--cyan); }
+
+    /* Boredom modal */
+    .boredom-modal-overlay {
+      display: none;
+      position: fixed; inset: 0; background: rgba(11,20,24,0.7); z-index: 200;
+      align-items: center; justify-content: center;
+    }
+    .boredom-modal-overlay.show { display: flex; }
+    .boredom-modal {
+      background: var(--cream); border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink);
+      padding: 28px; max-width: 460px; text-align: center; transform: rotate(-1deg);
+    }
+    .boredom-modal .emoji { font-size: 3.5rem; line-height: 1; margin-bottom: 10px; }
+    .boredom-modal h3 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 2rem; margin-bottom: 8px; }
+    .boredom-modal .blurb { font-family: Georgia, serif; font-size: 0.95rem; margin-bottom: 18px; }
+    .boredom-modal .actions { display: flex; gap: 10px; justify-content: center; }
+    .boredom-modal button {
+      font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+      background: var(--ink); color: var(--cream); border: 2px solid var(--ink); padding: 8px 16px;
+      box-shadow: 3px 3px 0 var(--ink); cursor: pointer;
+    }
+    .boredom-modal button.alt { background: var(--cherry); }
+
+    /* Print rules for poster — landscape one-pager */
+    @media print {
+      body.printing-poster { background: white !important; }
+      body.printing-poster > *:not(#page-poster) { display: none !important; }
+      body.printing-poster #page-poster { display: block !important; }
+      body.printing-poster .poster-actions { display: none !important; }
+      body.printing-poster .poster-page {
+        box-shadow: none !important; border: 2px solid black !important;
+        margin: 0 !important; padding: 16px !important; max-width: 100% !important;
+      }
+    }
+
     /* ════════════ FOOTER ════════════ */
     footer {
       max-width: 1440px;
@@ -1517,6 +1821,10 @@
       <span class="accent">43.6°N · 116.2°W</span><br>
       May 21 — Aug 12 · 13 weeks<br>
       <span class="stamp">Field Edition · Vol I</span>
+      <div class="header-tools">
+        <button class="boredom-btn" onclick="openBoredom()">I'm bored</button>
+        <button class="kidmode-btn" id="kidmodeBtn" onclick="toggleKidMode()">Kid Mode: Off</button>
+      </div>
     </div>
   </div>
 </header>
@@ -1525,6 +1833,10 @@
   <button class="tab-btn active" id="tab-schedule" onclick="showPage('schedule')">Schedule</button>
   <button class="tab-btn" id="tab-stem" onclick="showPage('stem')">STEM</button>
   <button class="tab-btn" id="tab-art" onclick="showPage('art')">Art</button>
+  <button class="tab-btn" id="tab-album" onclick="showPage('album')">Album</button>
+  <button class="tab-btn" id="tab-badges" onclick="showPage('badges')">Badges</button>
+  <button class="tab-btn" id="tab-shopping" onclick="showPage('shopping')">Shopping</button>
+  <button class="tab-btn" id="tab-poster" onclick="showPage('poster')">Poster</button>
 </div>
 
 <!-- ════════════ SCHEDULE PAGE ════════════ -->
@@ -1551,6 +1863,14 @@
       <div class="lbl">Bird of the Week</div>
       <div class="nm" id="wkBird">—</div>
     </div>
+  </div>
+
+  <div class="parent-pivot" id="parentPivot" style="display:none">
+    <span>This week:</span>
+    <button class="pivot-pill pp-M" onclick="highlightParent('M')">M: <span id="pivCountM">0</span></button>
+    <button class="pivot-pill pp-S" onclick="highlightParent('S')">S: <span id="pivCountS">0</span></button>
+    <button class="pivot-pill pp-both" onclick="highlightParent('both')">M+S: <span id="pivCountB">0</span></button>
+    <span class="pivot-balance" id="pivBalance">—</span>
   </div>
 
   <div id="heatBanner">
@@ -1696,6 +2016,71 @@
   <div class="stem-grid" id="artGrid"></div>
 </div>
 
+<!-- ════════════ ALBUM PAGE ════════════ -->
+<div id="page-album" style="display:none">
+  <div class="album-header">
+    <h2>Summer Album</h2>
+    <button class="photo-btn" onclick="exportScrapbook()">📦 Export Scrapbook</button>
+    <button class="photo-btn" onclick="checkStorage()">📊 Storage</button>
+  </div>
+  <div id="albumBody"></div>
+</div>
+
+<!-- ════════════ BADGES PAGE ════════════ -->
+<div id="page-badges" style="display:none">
+  <div class="badges-header">
+    <h2>Merit Badges</h2>
+    <p style="font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;color:#666;text-transform:uppercase;margin-top:6px">
+      Earn a badge by completing activities in that category.
+    </p>
+  </div>
+  <div class="badges-grid" id="badgesGrid"></div>
+</div>
+
+<!-- ════════════ SHOPPING PAGE ════════════ -->
+<div id="page-shopping" style="display:none">
+  <div class="shopping-header">
+    <h2>Shopping List</h2>
+    <div class="week-toggles" id="weekToggles"></div>
+    <div style="display:flex;gap:10px;margin-bottom:14px">
+      <button class="photo-btn" onclick="emailShoppingList()">📧 Email List</button>
+      <button class="photo-btn" onclick="window.print()">🖨 Print</button>
+    </div>
+  </div>
+  <div class="shopping-wrap">
+    <table class="shopping-table" id="shoppingTable">
+      <thead><tr><th></th><th>Item</th><th>Qty</th><th>For</th><th>Where</th></tr></thead>
+      <tbody id="shoppingBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════ POSTER PAGE ════════════ -->
+<div id="page-poster" style="display:none">
+  <div class="poster-actions">
+    <button onclick="printPoster()">🖨 Print / Save as PDF</button>
+    <button class="alt" onclick="shareWeekEmail()">📧 Share with co-parent</button>
+  </div>
+  <div id="posterPage" class="poster-page"></div>
+</div>
+
+<!-- ════════════ BOREDOM MODAL ════════════ -->
+<div class="boredom-modal-overlay" id="boredomOverlay" onclick="if(event.target===this)closeBoredom()">
+  <div class="boredom-modal">
+    <div class="emoji" id="boredomEmoji">🎲</div>
+    <h3 id="boredomTitle">—</h3>
+    <div class="blurb" id="boredomBlurb">—</div>
+    <div class="actions">
+      <button onclick="openBoredom()">Pick another</button>
+      <button class="alt" onclick="openBoredomTab()">Open in tab</button>
+      <button onclick="closeBoredom()" style="background:var(--ink-soft)">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden photo upload input -->
+<input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none">
+
 <!-- ════════════ EDIT MODAL ════════════ -->
 <div class="modal-overlay" id="editModal">
   <div class="modal">
@@ -1742,6 +2127,7 @@
 </footer>
 
 <script src="./data/legacy_catalogs.js"></script>
+<script src="./data/badges.js"></script>
 <script src="./data/spines.js"></script>
 <script>
 // ════════════════════════════════════════════════════
@@ -1786,19 +2172,19 @@ function stripEmoji(s) {
 }
 
 const WEEKLY_THEMES = {
-  '2026-05-18': { num:'01', title:'Last Bell, First Bonfire',  stemId:null, artId:null,  fieldTrip:'Boise River Greenbelt' },
-  '2026-05-25': { num:'02', title:'Backyard Naturalist',       stemId:3,    artId:101,   fieldTrip:'MK Nature Center' },
-  '2026-06-01': { num:'03', title:'Water & Wonder',            stemId:2,    artId:104,   fieldTrip:'Lucky Peak State Park' },
+  '2026-05-18': { num:'01', title:'Last Bell, First Bonfire',  stemId:null, artId:113,   fieldTrip:'Boise River Greenbelt' },
+  '2026-05-25': { num:'02', title:'Backyard Naturalist',       stemId:3,    artId:114,   fieldTrip:'MK Nature Center' },
+  '2026-06-01': { num:'03', title:'Water & Wonder',            stemId:2,    artId:116,   fieldTrip:'Lucky Peak State Park' },
   '2026-06-08': { num:'04', title:'Build It Week',             stemId:6,    artId:107,   fieldTrip:'Discovery Center of Idaho' },
   '2026-06-15': { num:'05', title:'Sports Camp Week',          stemId:1,    artId:108,   fieldTrip:'Boise Hawks Baseball Game' },
-  '2026-06-22': { num:'06', title:'Mountain West Travelers',   stemId:null, artId:null,  fieldTrip:'Fallon / June Lake' },
-  '2026-06-29': { num:'07', title:'Stars & Sky',               stemId:8,    artId:103,   fieldTrip:'Idaho Botanical Garden' },
-  '2026-07-06': { num:'08', title:'Family Trip',               stemId:null, artId:null,  fieldTrip:'Family Trip' },
+  '2026-06-22': { num:'06', title:'Mountain West Travelers',   stemId:null, artId:119,   fieldTrip:'Fallon / June Lake' },
+  '2026-06-29': { num:'07', title:'Stars & Sky',               stemId:8,    artId:121,   fieldTrip:'Idaho Botanical Garden' },
+  '2026-07-06': { num:'08', title:'Family Trip',               stemId:null, artId:122,   fieldTrip:'Family Trip' },
   '2026-07-13': { num:'09', title:'Idaho Stories',             stemId:10,   artId:109,   fieldTrip:'Idaho State Museum' },
   '2026-07-20': { num:'10', title:'Maker Days',                stemId:7,    artId:110,   fieldTrip:'Wahooz Family Fun Zone' },
   '2026-07-27': { num:'11', title:'Heat Wave Workshop',        stemId:9,    artId:111,   fieldTrip:'Roaring Springs Water Park' },
-  '2026-08-03': { num:'12', title:'Long Light',                stemId:11,   artId:106,   fieldTrip:'Zoo Boise' },
-  '2026-08-10': { num:'13', title:'Last Hurrah',               stemId:12,   artId:102,   fieldTrip:'Shoshone Falls' },
+  '2026-08-03': { num:'12', title:'Long Light',                stemId:11,   artId:126,   fieldTrip:'Zoo Boise' },
+  '2026-08-10': { num:'13', title:'Last Hurrah',               stemId:12,   artId:127,   fieldTrip:'Shoshone Falls' },
 };
 
 function generateWeeks() {
@@ -1939,8 +2325,12 @@ function renderGrid() {
       const dd = dayDate(wDate, dayIdx);
       const isT = sameDay(dd, today);
 
+      const cellDoneFlag = localStorage.getItem(`${PREFIX}celldone_${wk}_${dayIdx}_${slotIdx}`) === 'true';
       const cell = document.createElement('div');
-      cell.className = `sc t-${data.type || 'blank'}${isT ? ' is-today' : ''}`;
+      cell.className = `sc t-${data.type || 'blank'}${isT ? ' is-today' : ''}${cellDoneFlag ? ' is-done' : ''}`;
+      cell.dataset.parent = parent;
+      cell.dataset.dayidx = dayIdx;
+      cell.dataset.slotidx = slotIdx;
       cell.onclick = () => openModal(dayIdx, slotIdx, wDate);
 
       const iconId = TYPE_ICON_IDS[data.type] || 'ico-blank';
@@ -1960,6 +2350,13 @@ function renderGrid() {
       badge.id = `pb_${dayIdx}_${slotIdx}`;
       badge.onclick = (e) => { e.stopPropagation(); toggleParent(dayIdx, slotIdx); };
       cell.appendChild(badge);
+
+      const doneBtn = document.createElement('button');
+      doneBtn.className = `cell-done${cellDoneFlag ? ' is-done' : ''}`;
+      doneBtn.textContent = cellDoneFlag ? '✓' : '○';
+      doneBtn.title = 'Mark as done';
+      doneBtn.onclick = (e) => { e.stopPropagation(); toggleCellDone(wk, dayIdx, slotIdx); };
+      cell.appendChild(doneBtn);
 
       if (isHeatDay(dd) && (data.type === 'outdoor' || (data.type === 'free' && slotIdx >= 5))
           && slotIdx >= 5) {
@@ -2147,6 +2544,7 @@ function renderAll() {
   updateSpotlight(wDate);
   updateReadingLog();
   document.getElementById('heatBanner').classList.toggle('show', hasAnyHeatDay());
+  updateParentPivot();
 }
 
 function hasAnyHeatDay() {
@@ -2265,12 +2663,18 @@ async function loadForecast() {
 
 // Tabs
 function showPage(name) {
-  ['schedule','stem','art'].forEach(p => {
-    document.getElementById('page-'+p).style.display = (p===name) ? '' : 'none';
-    document.getElementById('tab-'+p).classList.toggle('active', p===name);
+  ['schedule','stem','art','album','badges','shopping','poster'].forEach(p => {
+    const pg = document.getElementById('page-'+p);
+    if (pg) pg.style.display = (p===name) ? '' : 'none';
+    const tb = document.getElementById('tab-'+p);
+    if (tb) tb.classList.toggle('active', p===name);
   });
   if (name === 'stem' && document.getElementById('stemGrid').children.length === 0) renderStem();
   if (name === 'art' && document.getElementById('artGrid').children.length === 0) renderArt();
+  if (name === 'album') renderAlbum();
+  if (name === 'badges') renderBadges();
+  if (name === 'shopping') renderShopping();
+  if (name === 'poster') renderPoster();
 }
 
 // STEM/Art cards
@@ -2302,7 +2706,9 @@ function filterArt(cat) {
 }
 function buildActivityCard(a) {
   const card = document.createElement('div');
-  card.className = 'ac';
+  const isDone = localStorage.getItem(`${PREFIX}done_${a.id}`) === 'true';
+  card.className = 'ac' + (isDone ? ' is-done' : '');
+  card.dataset.activityId = a.id;
   const stars = '★'.repeat(a.difficulty || 1) + '☆'.repeat(3 - (a.difficulty || 1));
   const catIcon = CATEGORY_ICON_IDS[a.cat] || 'ico-blank';
   card.innerHTML = `
@@ -2326,6 +2732,14 @@ function buildActivityCard(a) {
       <div class="section-label">Steps</div>
       <ol>${a.steps.map(s => `<li>${s}</li>`).join('')}</ol>
       ${a.tip ? `<div class="tip">${a.tip}</div>` : ''}
+    </div>
+    <div class="ac-footer" onclick="event.stopPropagation()">
+      <label class="done-toggle">
+        <input type="checkbox" ${isDone ? 'checked' : ''} onchange="toggleActivityDone(${a.id}, this.checked)">
+        Mark Complete
+      </label>
+      <button class="photo-btn" onclick="capturePhoto(${a.id})">📸 Add Photo</button>
+      <div class="thumb-strip" id="thumbs_${a.id}">${renderThumbs(a.id)}</div>
     </div>
   `;
   return card;
@@ -2370,8 +2784,557 @@ function printList(items, title) {
   setTimeout(() => w.print(), 300);
 }
 
+// ════════════ KID-EXPERIENCE + PARENT-OPS ════════════
+
+// Cell-level done toggle
+function toggleCellDone(wk, dayIdx, slotIdx) {
+  const k = `${PREFIX}celldone_${wk}_${dayIdx}_${slotIdx}`;
+  if (localStorage.getItem(k) === 'true') localStorage.removeItem(k);
+  else localStorage.setItem(k, 'true');
+  renderGrid();
+  updateParentPivot();
+}
+
+// Activity-level done toggle
+function toggleActivityDone(id, done) {
+  const k = `${PREFIX}done_${id}`;
+  if (done) localStorage.setItem(k, 'true');
+  else localStorage.removeItem(k);
+  // Refresh card styling
+  const card = document.querySelector(`.ac[data-activity-id="${id}"]`);
+  if (card) card.classList.toggle('is-done', done);
+}
+
+// Photo capture: compress to ~80KB jpg and stash in localStorage
+let pendingPhotoActivityId = null;
+function capturePhoto(activityId) {
+  pendingPhotoActivityId = activityId;
+  document.getElementById('photoInput').click();
+}
+function handlePhotoFile(e) {
+  const file = e.target.files[0];
+  if (!file || !pendingPhotoActivityId) return;
+  compressPhoto(file).then(base64 => {
+    const key = `${PREFIX}photo_${pendingPhotoActivityId}_${Date.now()}`;
+    try {
+      localStorage.setItem(key, base64);
+      const strip = document.getElementById(`thumbs_${pendingPhotoActivityId}`);
+      if (strip) strip.innerHTML = renderThumbs(pendingPhotoActivityId);
+    } catch (err) {
+      alert('Out of storage. Export your scrapbook from the Album tab and clear some photos.');
+    }
+    pendingPhotoActivityId = null;
+    e.target.value = '';
+  });
+}
+function compressPhoto(file) {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const img = new Image();
+      img.onload = () => {
+        const MAX = 800;
+        const scale = Math.min(MAX / img.width, MAX / img.height, 1);
+        const w = Math.round(img.width * scale);
+        const h = Math.round(img.height * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', 0.7));
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function renderThumbs(activityId) {
+  const photos = getPhotosForActivity(activityId);
+  if (!photos.length) return '';
+  return photos.map(p =>
+    `<img src="${p.data}" onclick="viewPhoto('${p.key}')" alt="">`
+  ).join('');
+}
+function getPhotosForActivity(activityId) {
+  const out = [];
+  const prefix = `${PREFIX}photo_${activityId}_`;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith(prefix)) {
+      out.push({ key: k, ts: parseInt(k.slice(prefix.length), 10), data: localStorage.getItem(k) });
+    }
+  }
+  return out.sort((a, b) => a.ts - b.ts);
+}
+function getAllPhotos() {
+  const out = [];
+  const prefix = `${PREFIX}photo_`;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith(prefix)) {
+      const rest = k.slice(prefix.length);
+      const parts = rest.split('_');
+      const activityId = parseInt(parts[0], 10);
+      const ts = parseInt(parts[1], 10);
+      out.push({ key: k, activityId, ts, data: localStorage.getItem(k) });
+    }
+  }
+  return out.sort((a, b) => a.ts - b.ts);
+}
+function viewPhoto(key) {
+  const data = localStorage.getItem(key);
+  if (!data) return;
+  if (confirm('Delete this photo?')) {
+    localStorage.removeItem(key);
+    // Refresh nearest strip
+    document.querySelectorAll('.thumb-strip').forEach(s => {
+      const id = parseInt(s.id.replace('thumbs_', ''), 10);
+      s.innerHTML = renderThumbs(id);
+    });
+    if (document.getElementById('page-album').style.display !== 'none') renderAlbum();
+  }
+}
+
+// Kid mode
+function toggleKidMode() {
+  const cur = localStorage.getItem(`${PREFIX}kidmode`) === 'true';
+  setKidMode(!cur);
+}
+function setKidMode(on) {
+  localStorage.setItem(`${PREFIX}kidmode`, on ? 'true' : 'false');
+  document.body.classList.toggle('kid-mode', on);
+  const btn = document.getElementById('kidmodeBtn');
+  if (btn) {
+    btn.textContent = 'Kid Mode: ' + (on ? 'On' : 'Off');
+    btn.classList.toggle('on', on);
+  }
+}
+
+// Boredom button
+let lastBoredomPick = null;
+function openBoredom() {
+  const wDate = WEEKS[currentWeekIndex];
+  const today = new Date();
+  const isHot = forecastData && forecastData[dayKey(today)] >= 95;
+  const hour = today.getHours();
+
+  const allActivities = [...ART_ACTIVITIES, ...STEM_ACTIVITIES];
+  let pool = allActivities.filter(a => localStorage.getItem(`${PREFIX}done_${a.id}`) !== 'true');
+  if (!pool.length) pool = allActivities;
+  if (isHot) {
+    const indoor = pool.filter(a => !/outdoor|river|cairn|sun print|cyanot|nature print|driveway|sagebrush|basalt|snake river/i.test(a.title));
+    if (indoor.length) pool = indoor;
+  }
+  if (hour >= 19) {
+    const easy = pool.filter(a => (a.difficulty || 1) <= 2);
+    if (easy.length) pool = easy;
+  }
+  let pick = pool[Math.floor(Math.random() * pool.length)];
+  if (lastBoredomPick && pool.length > 1) {
+    let tries = 0;
+    while (pick && pick.id === lastBoredomPick && tries < 5) {
+      pick = pool[Math.floor(Math.random() * pool.length)];
+      tries++;
+    }
+  }
+  lastBoredomPick = pick.id;
+  document.getElementById('boredomEmoji').textContent = pick.emoji || '🎲';
+  document.getElementById('boredomTitle').textContent = stripEmoji(pick.title);
+  document.getElementById('boredomBlurb').textContent = (pick.description || '').slice(0, 200);
+  document.getElementById('boredomOverlay').classList.add('show');
+  document.getElementById('boredomOverlay').dataset.pickId = pick.id;
+  document.getElementById('boredomOverlay').dataset.pickType = STEM_ACTIVITIES.find(s => s.id === pick.id) ? 'stem' : 'art';
+}
+function closeBoredom() { document.getElementById('boredomOverlay').classList.remove('show'); }
+function openBoredomTab() {
+  const ov = document.getElementById('boredomOverlay');
+  const type = ov.dataset.pickType;
+  closeBoredom();
+  showPage(type);
+}
+
+// Parent divide pivot
+function updateParentPivot() {
+  const wk = weekKey(WEEKS[currentWeekIndex]);
+  let m = 0, s = 0, both = 0;
+  for (let d = 0; d < 5; d++) {
+    for (let sl = 0; sl < HOURS.length; sl++) {
+      const p = getParent(wk, d, sl);
+      if (p === 'M') m++;
+      else if (p === 'S') s++;
+      else if (p === 'both') both++;
+    }
+  }
+  const total = m + s + both;
+  const pivot = document.getElementById('parentPivot');
+  if (!pivot) return;
+  if (total === 0) { pivot.style.display = 'none'; return; }
+  pivot.style.display = 'flex';
+  document.getElementById('pivCountM').textContent = m;
+  document.getElementById('pivCountS').textContent = s;
+  document.getElementById('pivCountB').textContent = both;
+  const bal = document.getElementById('pivBalance');
+  if (Math.abs(m - s) <= 2) bal.textContent = '⚖️ balanced';
+  else if (m > s) bal.textContent = `↔️ M leads by ${m - s}`;
+  else bal.textContent = `↔️ S leads by ${s - m}`;
+}
+function highlightParent(which) {
+  document.querySelectorAll('.sc.pivot-highlight').forEach(c => c.classList.remove('pivot-highlight'));
+  document.querySelectorAll('.sc').forEach(c => {
+    if (c.dataset.parent === which) c.classList.add('pivot-highlight');
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.sc.pivot-highlight').forEach(c => c.classList.remove('pivot-highlight'));
+  }, 2500);
+}
+
+// Album / scrapbook
+function renderAlbum() {
+  const body = document.getElementById('albumBody');
+  const photos = getAllPhotos();
+  if (!photos.length) {
+    body.innerHTML = '<div class="album-empty">No photos yet. Click 📸 Add Photo on any activity card to start your summer scrapbook.</div>';
+    return;
+  }
+  const byWeek = {};
+  WEEKS.forEach(w => byWeek[weekKey(w)] = []);
+  photos.forEach(p => {
+    const photoDate = new Date(p.ts);
+    const weekStart = WEEKS.find(w => {
+      const end = new Date(w.getTime() + 7 * 86400000);
+      return photoDate >= w && photoDate < end;
+    });
+    const key = weekStart ? weekKey(weekStart) : weekKey(WEEKS[0]);
+    if (!byWeek[key]) byWeek[key] = [];
+    byWeek[key].push(p);
+  });
+  let html = '';
+  for (const w of WEEKS) {
+    const k = weekKey(w);
+    const ps = byWeek[k] || [];
+    if (!ps.length) continue;
+    const theme = WEEKLY_THEMES[k];
+    html += `<div class="album-week"><h3>Week ${theme ? theme.num : '—'} · ${theme ? theme.title : k}</h3><div class="album-photos">`;
+    ps.forEach(p => {
+      const allAct = [...ART_ACTIVITIES, ...STEM_ACTIVITIES];
+      const act = allAct.find(a => a.id === p.activityId);
+      const dateStr = new Date(p.ts).toLocaleDateString('en-US', { month:'short', day:'numeric' });
+      html += `<div class="album-photo"><img src="${p.data}" alt="" onclick="viewPhoto('${p.key}')"><div class="caption">${act ? stripEmoji(act.title) : 'Activity ' + p.activityId}<br>${dateStr}</div></div>`;
+    });
+    html += '</div></div>';
+  }
+  body.innerHTML = html || '<div class="album-empty">No photos yet.</div>';
+}
+function exportScrapbook() {
+  const photos = getAllPhotos();
+  if (!photos.length) { alert('No photos yet to export.'); return; }
+  const allAct = [...ART_ACTIVITIES, ...STEM_ACTIVITIES];
+  let body = `<!doctype html><html><head><meta charset="utf-8"><title>Camp Hyde 2026 Scrapbook</title>
+    <style>
+      body{font-family:Georgia,serif;background:#FAF6E8;color:#0B1418;max-width:1100px;margin:0 auto;padding:30px}
+      h1{font-family:Georgia,serif;font-style:italic;color:#E63946;font-size:3rem;text-shadow:3px 3px 0 #1098C7}
+      h2{font-style:italic;color:#E63946;border-bottom:2px solid #0B1418;padding-bottom:6px;margin-top:36px}
+      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin:20px 0}
+      .card{background:white;border:2px solid #0B1418;box-shadow:5px 5px 0 #0B1418;padding:8px}
+      .card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+      .cap{font-size:0.78rem;padding:8px 4px 4px;text-align:center;font-family:monospace}
+    </style></head><body>
+    <h1>Camp Hyde · Summer MMXXVI</h1>
+    <p style="font-family:monospace;letter-spacing:0.15em;text-transform:uppercase;color:#555">Boise · 13 weeks · ${photos.length} photographs</p>`;
+  for (const w of WEEKS) {
+    const k = weekKey(w);
+    const ps = photos.filter(p => {
+      const pd = new Date(p.ts);
+      const end = new Date(w.getTime() + 7 * 86400000);
+      return pd >= w && pd < end;
+    });
+    if (!ps.length) continue;
+    const theme = WEEKLY_THEMES[k];
+    body += `<h2>Week ${theme ? theme.num : '—'} · ${theme ? theme.title : k}</h2><div class="grid">`;
+    ps.forEach(p => {
+      const act = allAct.find(a => a.id === p.activityId);
+      const dateStr = new Date(p.ts).toLocaleDateString('en-US', { month:'short', day:'numeric' });
+      body += `<div class="card"><img src="${p.data}"><div class="cap">${act ? stripEmoji(act.title) : 'Activity'}<br>${dateStr}</div></div>`;
+    });
+    body += '</div>';
+  }
+  // Add badges page
+  const unlocked = computeUnlockedBadges();
+  if (unlocked.length) {
+    body += '<h2>Merit Badges Earned</h2><div class="grid">';
+    unlocked.forEach(b => {
+      body += `<div class="card" style="text-align:center;padding:16px">${b.svg}<div class="cap" style="font-size:0.9rem;color:#E63946;font-style:italic">${b.title}</div></div>`;
+    });
+    body += '</div>';
+  }
+  body += '</body></html>';
+  const blob = new Blob([body], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `camphyde-2026-scrapbook.html`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function checkStorage() {
+  let total = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    total += (localStorage.getItem(k) || '').length + k.length;
+  }
+  const mb = (total / 1024 / 1024).toFixed(2);
+  alert(`Using ~${mb} MB of localStorage (browser cap is typically 5–10 MB).`);
+}
+
+// Badges
+function computeUnlockedBadges() {
+  if (typeof MERIT_BADGES === 'undefined') return [];
+  const allAct = [...ART_ACTIVITIES, ...STEM_ACTIVITIES];
+  const doneActs = allAct.filter(a => localStorage.getItem(`${PREFIX}done_${a.id}`) === 'true');
+  return MERIT_BADGES.filter(b => {
+    if (b.id === 'campveteran') {
+      const weeks = new Set();
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith(`${PREFIX}celldone_`)) {
+          weeks.add(k.split('_')[2]);
+        }
+      }
+      return weeks.size >= b.threshold;
+    }
+    const matched = doneActs.filter(b.match);
+    return matched.length >= b.threshold;
+  });
+}
+function renderBadges() {
+  if (typeof MERIT_BADGES === 'undefined') return;
+  const grid = document.getElementById('badgesGrid');
+  const allAct = [...ART_ACTIVITIES, ...STEM_ACTIVITIES];
+  const doneActs = allAct.filter(a => localStorage.getItem(`${PREFIX}done_${a.id}`) === 'true');
+  grid.innerHTML = MERIT_BADGES.map(b => {
+    let progress = 0;
+    if (b.id === 'campveteran') {
+      const weeks = new Set();
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith(`${PREFIX}celldone_`)) weeks.add(k.split('_')[2]);
+      }
+      progress = weeks.size;
+    } else {
+      progress = doneActs.filter(b.match).length;
+    }
+    const unlocked = progress >= b.threshold;
+    const stored = localStorage.getItem(`${PREFIX}badge_${b.id}`);
+    if (unlocked && !stored) {
+      localStorage.setItem(`${PREFIX}badge_${b.id}`, new Date().toISOString().slice(0, 10));
+    }
+    const earnedDate = localStorage.getItem(`${PREFIX}badge_${b.id}`);
+    const pct = Math.min(100, Math.round(100 * progress / b.threshold));
+    return `<div class="badge-card${unlocked ? '' : ' locked'}">
+      ${b.svg}
+      <div class="b-title">${b.title}</div>
+      <div class="b-blurb">${b.blurb}</div>
+      <div class="b-status ${unlocked ? 'unlocked' : ''}">${unlocked ? `Earned ${earnedDate || 'today'}` : `${progress} of ${b.threshold}`}</div>
+      <div class="badge-progress-bar"><div class="fill" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+// Shopping list aggregator
+let shoppingSelectedWeeks = null;
+function initShoppingWeeks() {
+  if (shoppingSelectedWeeks !== null) return;
+  shoppingSelectedWeeks = new Set();
+  const idx = currentWeekIndex;
+  [idx, idx + 1, idx + 2].forEach(i => {
+    if (i >= 0 && i < WEEKS.length) shoppingSelectedWeeks.add(weekKey(WEEKS[i]));
+  });
+}
+function renderShopping() {
+  initShoppingWeeks();
+  const toggles = document.getElementById('weekToggles');
+  toggles.innerHTML = WEEKS.map(w => {
+    const k = weekKey(w);
+    const theme = WEEKLY_THEMES[k];
+    const on = shoppingSelectedWeeks.has(k);
+    return `<button class="week-toggle${on ? ' on' : ''}" onclick="toggleShoppingWeek('${k}')">${theme ? theme.num : '—'} · ${theme ? theme.title : k}</button>`;
+  }).join('');
+  const body = document.getElementById('shoppingBody');
+  const byItem = {};
+  shoppingSelectedWeeks.forEach(k => {
+    const theme = WEEKLY_THEMES[k];
+    if (!theme) return;
+    const acts = [];
+    if (theme.artId) {
+      const art = ART_ACTIVITIES.find(a => a.id === theme.artId);
+      if (art) acts.push(art);
+    }
+    if (theme.stemId) {
+      const stem = STEM_ACTIVITIES.find(a => a.id === theme.stemId);
+      if (stem) acts.push(stem);
+    }
+    acts.forEach(a => {
+      (a.materials || []).forEach(m => {
+        const slug = m.item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        if (!byItem[slug]) byItem[slug] = { item: m.item, qtys: new Set(), wheres: new Set(), forActs: new Set() };
+        byItem[slug].qtys.add(m.qty);
+        byItem[slug].wheres.add(m.where);
+        byItem[slug].forActs.add(stripEmoji(a.title));
+      });
+    });
+  });
+  const rows = Object.entries(byItem).sort((a, b) => a[1].item.localeCompare(b[1].item));
+  if (!rows.length) {
+    body.innerHTML = '<tr><td colspan="5" style="padding:30px;text-align:center;font-family:monospace;color:#999">Select one or more weeks above to see materials.</td></tr>';
+    return;
+  }
+  body.innerHTML = rows.map(([slug, info]) => {
+    const checked = localStorage.getItem(`${PREFIX}shopping_${slug}`) === 'true';
+    return `<tr class="${checked ? 'checked' : ''}" data-slug="${slug}">
+      <td><input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleShoppingItem('${slug}', this.checked)"></td>
+      <td>${info.item}</td>
+      <td>${[...info.qtys].join(' + ')}</td>
+      <td style="font-style:italic;font-size:0.85rem">${[...info.forActs].join(', ')}</td>
+      <td style="font-size:0.85rem;color:#666">${[...info.wheres][0]}</td>
+    </tr>`;
+  }).join('');
+}
+function toggleShoppingWeek(k) {
+  if (shoppingSelectedWeeks.has(k)) shoppingSelectedWeeks.delete(k);
+  else shoppingSelectedWeeks.add(k);
+  renderShopping();
+}
+function toggleShoppingItem(slug, on) {
+  if (on) localStorage.setItem(`${PREFIX}shopping_${slug}`, 'true');
+  else localStorage.removeItem(`${PREFIX}shopping_${slug}`);
+  document.querySelector(`tr[data-slug="${slug}"]`)?.classList.toggle('checked', on);
+}
+function emailShoppingList() {
+  const rows = document.querySelectorAll('#shoppingBody tr[data-slug]');
+  let body = 'Camp Hyde shopping list:\n\n';
+  rows.forEach(r => {
+    const tds = r.querySelectorAll('td');
+    body += `□ ${tds[1].textContent} — ${tds[2].textContent} (${tds[3].textContent})\n`;
+  });
+  window.location.href = `mailto:?subject=${encodeURIComponent('Camp Hyde · Shopping list')}&body=${encodeURIComponent(body)}`;
+}
+
+// Poster
+function renderPoster() {
+  const wDate = WEEKS[currentWeekIndex];
+  const wk = weekKey(wDate);
+  const theme = WEEKLY_THEMES[wk];
+  if (!theme) {
+    document.getElementById('posterPage').innerHTML = '<p>No theme for this week.</p>';
+    return;
+  }
+  const end = new Date(wDate.getTime() + 6 * 86400000);
+  const startStr = wDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const endStr = end.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+  const art = theme.artId ? ART_ACTIVITIES.find(a => a.id === theme.artId) : null;
+  const stem = theme.stemId ? STEM_ACTIVITIES.find(a => a.id === theme.stemId) : null;
+
+  // Day grid: pull primary cells per day
+  let gridHtml = '';
+  for (let d = 0; d < 5; d++) {
+    const dd = dayDate(wDate, d);
+    const dateStr = dd.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+    const lines = [];
+    for (let sl = 1; sl < HOURS.length; sl++) {
+      const cd = getCellData(wDate, d, sl);
+      if (cd && cd.text && cd.type !== 'blank' && cd.type !== 'school' && cd.type !== 'lunch') {
+        lines.push(cd.text);
+      }
+    }
+    const uniq = [...new Set(lines)].slice(0, 5);
+    gridHtml += `<div class="poster-day"><h4>${DAYS_SHORT[d]} · ${dateStr}</h4><ul>${uniq.map(l => `<li>${l}</li>`).join('')}</ul></div>`;
+  }
+
+  // Weather strip
+  let weatherHtml = '';
+  for (let d = 0; d < 5; d++) {
+    const dd = dayDate(wDate, d);
+    const k = dayKey(dd);
+    const temp = forecastData ? forecastData[k] : null;
+    const hot = temp >= 95;
+    weatherHtml += `<div class="poster-day-temp${hot ? ' hot' : ''}"><span class="t-d">${DAYS_SHORT[d]}</span><div class="t-hi">${temp ? Math.round(temp) + '°' : '—'}</div></div>`;
+  }
+
+  // Shopping mini-list (top items from this week's art project)
+  const mats = (art ? art.materials : []).slice(0, 6);
+  const shopHtml = mats.map(m => `<li>${m.item} <span style="color:#888">— ${m.qty}</span></li>`).join('');
+
+  document.getElementById('posterPage').innerHTML = `
+    <div class="poster-head">
+      <div class="pw-num">${theme.num}</div>
+      <div>
+        <div class="pw-title">${theme.title}</div>
+        <div class="pw-dates">${startStr} — ${endStr}</div>
+      </div>
+    </div>
+
+    <div class="poster-grid">${gridHtml}</div>
+
+    <div class="poster-features">
+      <div class="poster-feature">
+        <h5>This Week's Art</h5>
+        <div class="val">${art ? stripEmoji(art.title) : '—'}</div>
+      </div>
+      <div class="poster-feature">
+        <h5>This Week's STEM</h5>
+        <div class="val">${stem ? stripEmoji(stem.title) : '—'}</div>
+      </div>
+      <div class="poster-feature">
+        <h5>Field Trip</h5>
+        <div class="val">${theme.fieldTrip || '—'}</div>
+      </div>
+    </div>
+
+    <div class="poster-weather">${weatherHtml}</div>
+
+    ${mats.length ? `<div class="poster-shop"><h5>Shopping for the art project</h5><ul>${shopHtml}</ul></div>` : ''}
+
+    <div class="poster-footer">
+      <span>Camp Hyde · Week ${theme.num} · Summer MMXXVI</span>
+      <span>Boise · 43.6°N</span>
+    </div>
+  `;
+}
+function printPoster() {
+  document.body.classList.add('printing-poster');
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => document.body.classList.remove('printing-poster'), 500);
+  }, 100);
+}
+function shareWeekEmail() {
+  const wDate = WEEKS[currentWeekIndex];
+  const wk = weekKey(wDate);
+  const theme = WEEKLY_THEMES[wk];
+  if (!theme) return;
+  const art = theme.artId ? ART_ACTIVITIES.find(a => a.id === theme.artId) : null;
+  const stem = theme.stemId ? STEM_ACTIVITIES.find(a => a.id === theme.stemId) : null;
+  let body = `Camp Hyde · Week ${theme.num} · ${theme.title}\n\n`;
+  body += `Art project: ${art ? stripEmoji(art.title) : '—'}\n`;
+  body += `STEM project: ${stem ? stripEmoji(stem.title) : '—'}\n`;
+  body += `Field trip: ${theme.fieldTrip || '—'}\n\n`;
+  body += `Open the app: https://iamstevenhyde.github.io/HydeCamp/`;
+  window.location.href = `mailto:?subject=${encodeURIComponent(`Camp Hyde · Week ${theme.num}`)}&body=${encodeURIComponent(body)}`;
+}
+
+// ════════════ END KID/PARENT FEATURES ════════════
+
 // Boot
 async function boot() {
+  // Apply kid mode from URL or localStorage before render
+  const params = new URLSearchParams(location.search);
+  if (params.get('mode') === 'kid') setKidMode(true);
+  else setKidMode(localStorage.getItem(`${PREFIX}kidmode`) === 'true');
+
+  // Wire photo input
+  const input = document.getElementById('photoInput');
+  if (input) input.addEventListener('change', handlePhotoFile);
+
   renderFieldTrips();
   jumpToToday();
   updateTrivia();
