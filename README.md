@@ -49,7 +49,7 @@ HydeCamp/
 - **Parent badges** — click any cell's M/S/M+S badge to assign Mom, Dad, or Both
 - **Weekly themes** — one per week, each rotating in a STEM activity, an art
   project, and a Boise field trip ("Water & Wonder", "Build It Week", etc.)
-- **Sports Camp week (Jun 15–19)** — mornings blocked out as Sports Camp
+- **Sports Camp week (Jun 15–19)** — full days (9 AM–4 PM) blocked out as Sports Camp
 - **Today highlight** — current day's cells get a cherry marching-ant shadow
 - **Spotlight card** — NASA APOD with kid-friendly caption, plus State of the
   Week, Capital, and Plant of the Week
@@ -60,8 +60,8 @@ HydeCamp/
 - **Screen-time tracker** — average hours/day across the week, capped at 2 hr
 - **STEM tab** — 27 activities with materials/steps/pro tips, filter by S/T/E/M,
   print a checklist shopping list
-- **Art tab** — 28 projects, same shape
-- **17 Boise field trips** — 5 free, 12 paid, click to copy the name
+- **Art tab** — 32 projects, same shape
+- **22 Boise field trips** — 5 free, 17 paid (incl. 8 day-trip options), click to copy the name
 - **Custom SVG icon set** — 24 icons in field-journal/woodblock stroke style, no
   emojis anywhere in the UI
 - **Print stylesheet** — clean B&W landscape view for posting on the fridge

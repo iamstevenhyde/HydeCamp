@@ -2176,7 +2176,7 @@ const WEEKLY_THEMES = {
   '2026-05-25': { num:'02', title:'Backyard Naturalist',       stemId:3,    artId:114,   fieldTrip:'MK Nature Center' },
   '2026-06-01': { num:'03', title:'Water & Wonder',            stemId:2,    artId:116,   fieldTrip:'Lucky Peak State Park' },
   '2026-06-08': { num:'04', title:'Build It Week',             stemId:6,    artId:107,   fieldTrip:'Discovery Center of Idaho' },
-  '2026-06-15': { num:'05', title:'Sports Camp Week',          stemId:1,    artId:108,   fieldTrip:'Boise Hawks Baseball Game' },
+  '2026-06-15': { num:'05', title:'Sports Camp Week',          stemId:1,    artId:108,   fieldTrip:'Jump Time Trampoline Park' },
   '2026-06-22': { num:'06', title:'Mountain West Travelers',   stemId:null, artId:119,   fieldTrip:'Fallon / June Lake' },
   '2026-06-29': { num:'07', title:'Stars & Sky',               stemId:8,    artId:121,   fieldTrip:'Idaho Botanical Garden' },
   '2026-07-06': { num:'08', title:'Family Trip',               stemId:null, artId:122,   fieldTrip:'Family Trip' },
@@ -2273,8 +2273,9 @@ function getCellData(wDate, dayIdx, slotIdx) {
     const ev = SPECIAL_DAY_EVENTS[ddKey];
     return { text: stripEmoji(ev.text), type: ev.type };
   }
-  if (isSportsCamp(dd) && slotIdx <= 4) {
-    const labels = ['Drop-off','Sports Camp','Sports Camp','Sports Camp','Pick-up / Lunch'];
+  if (isSportsCamp(dd) && slotIdx >= 1) {
+    // Sports Camp runs 9am–4pm (slots 1–7)
+    const labels = ['','Drop-off','Sports Camp','Sports Camp','Sports Camp (Lunch)','Sports Camp','Sports Camp','Sports Camp / Pick-up'];
     return { text: labels[slotIdx], type: 'camp' };
   }
   const base = DEFAULT_SCHEDULE[dayIdx][slotIdx];
