@@ -1643,6 +1643,131 @@
       .schedule-grid { grid-template-columns: 60px repeat(5, 1fr); }
       .wordmark { font-size: 3rem; }
     }
+
+    /* ════════════ SUMMER JOBS PAGE ════════════ */
+    .jobs-header {
+      padding: 22px 24px 0;
+    }
+    .jobs-header h2 {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      color: var(--cherry);
+      font-size: 2rem;
+      margin-bottom: 4px;
+    }
+    .jobs-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .jobs-earned-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--canary);
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 12px 20px;
+      margin-bottom: 16px;
+      transform: rotate(-0.3deg);
+    }
+    .jobs-earned-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .jobs-earned-amount {
+      font-family: 'Caprasimo', serif;
+      font-size: 2.4rem;
+      color: var(--cherry);
+      text-shadow: 2px 2px 0 var(--ink);
+      line-height: 1;
+      flex: 1;
+    }
+    .jobs-reset-btn {
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      padding: 7px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--cherry);
+    }
+    .jobs-reset-btn:hover { background: var(--cherry-dark); }
+    .jobs-cat-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 10px;
+      padding: 0 24px 40px;
+    }
+    .job-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--paper-light);
+      border: 2.5px solid var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .job-card:hover {
+      transform: translate(-1px,-1px);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .job-card input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      cursor: pointer;
+      accent-color: var(--cherry);
+    }
+    .job-emoji { font-size: 1.3rem; flex-shrink: 0; }
+    .job-label {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      flex: 1;
+      color: var(--ink);
+    }
+    .job-pay {
+      font-family: 'Caprasimo', serif;
+      font-size: 1.1rem;
+      color: var(--grass);
+      flex-shrink: 0;
+    }
+    .job-card.is-done {
+      background: var(--grass-light);
+      border-color: var(--grass);
+      box-shadow: 3px 3px 0 var(--grass);
+    }
+    .job-card.is-done .job-label { text-decoration: line-through; opacity: 0.6; }
+
+    /* ════════════ 3D PRINTER PAGE ════════════ */
+    .print-tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      padding-right: 8px;
+    }
   </style>
 </head>
 <body>
@@ -1837,6 +1962,8 @@
   <button class="tab-btn" id="tab-badges" onclick="showPage('badges')">Badges</button>
   <button class="tab-btn" id="tab-shopping" onclick="showPage('shopping')">Shopping</button>
   <button class="tab-btn" id="tab-poster" onclick="showPage('poster')">Poster</button>
+  <button class="tab-btn" id="tab-jobs" onclick="showPage('jobs')">Jobs 💰</button>
+  <button class="tab-btn" id="tab-3dprint" onclick="showPage('3dprint')">3D Print 🖨️</button>
 </div>
 
 <!-- ════════════ SCHEDULE PAGE ════════════ -->
@@ -1931,6 +2058,7 @@
         <div class="glance-list">
           <svg><use href="#ico-bell"/></svg><span>School Out</span><span class="when">May 21</span>
           <svg><use href="#ico-routine"/></svg><span>Memorial Day</span><span class="when">May 25</span>
+          <svg><use href="#ico-camp"/></svg><span>Leo Football Camp</span><span class="when">Jun 1–4</span>
           <svg><use href="#ico-tent"/></svg><span>Camping Trip</span><span class="when">Jun 5</span>
           <svg><use href="#ico-camp"/></svg><span>Sports Camp</span><span class="when">Jun 15–19</span>
           <svg><use href="#ico-trip"/></svg><span>Fallon Trip</span><span class="when">Jun 22–24</span>
@@ -2062,6 +2190,44 @@
     <button class="alt" onclick="shareWeekEmail()">📧 Share with co-parent</button>
   </div>
   <div id="posterPage" class="poster-page"></div>
+</div>
+
+<!-- ════════════ SUMMER JOBS PAGE ════════════ -->
+<div id="page-jobs" style="display:none">
+  <div class="jobs-header">
+    <h2>Summer Jobs 💰</h2>
+    <p class="jobs-sub">Complete a job → earn $1. Check it off below. Total tracked all summer.</p>
+    <div class="jobs-earned-banner">
+      <span class="jobs-earned-label">Total Earned This Summer</span>
+      <span class="jobs-earned-amount" id="jobsTotal">$0.00</span>
+      <button class="jobs-reset-btn" onclick="resetJobs()">Reset</button>
+    </div>
+    <div class="jobs-cat-filter">
+      <button class="filter-btn active" id="jf-all"      onclick="filterJobs('all')">All</button>
+      <button class="filter-btn"        id="jf-inside"   onclick="filterJobs('inside')">Cleaning</button>
+      <button class="filter-btn"        id="jf-kitchen"  onclick="filterJobs('kitchen')">Kitchen &amp; Laundry</button>
+      <button class="filter-btn"        id="jf-organize" onclick="filterJobs('organize')">Organization</button>
+      <button class="filter-btn"        id="jf-outside"  onclick="filterJobs('outside')">Yard</button>
+      <button class="filter-btn"        id="jf-car"      onclick="filterJobs('car')">Car</button>
+    </div>
+  </div>
+  <div class="jobs-grid" id="jobsGrid"></div>
+</div>
+
+<!-- ════════════ 3D PRINTER PAGE ════════════ -->
+<div id="page-3dprint" style="display:none">
+  <div class="stem-top">
+    <div class="stem-filter">
+      <button class="filter-btn active" id="pf-all"        onclick="filterPrint('all')">All</button>
+      <button class="filter-btn"        id="pf-functional" onclick="filterPrint('functional')">Functional</button>
+      <button class="filter-btn"        id="pf-toys"       onclick="filterPrint('toys')">Toys &amp; Games</button>
+      <button class="filter-btn"        id="pf-games"      onclick="filterPrint('games')">Board Games</button>
+      <button class="filter-btn"        id="pf-science"    onclick="filterPrint('science')">Science Models</button>
+      <button class="filter-btn"        id="pf-art"        onclick="filterPrint('art')">Art &amp; Display</button>
+    </div>
+    <span class="print-tagline">Bambulab P1S · Boise 2026</span>
+  </div>
+  <div class="stem-grid" id="printGrid"></div>
 </div>
 
 <!-- ════════════ BOREDOM MODAL ════════════ -->
@@ -2207,6 +2373,7 @@ function isSchoolDay(d) { return d < SUMMER_START || d >= SUMMER_END; }
 function isTripDay(d) { return d >= TRIP_START && d <= TRIP_END; }
 function isMemorialDay(d) { return sameDay(d, MEMORIAL_DAY); }
 function isSportsCamp(d) { return SPORTS_CAMP_DAYS.includes(dayKey(d)); }
+function isLeoFootballCamp(d) { return typeof LEO_FOOTBALL_CAMP_DAYS !== 'undefined' && LEO_FOOTBALL_CAMP_DAYS.includes(dayKey(d)); }
 function dayOfYear(d) { const start = new Date(d.getFullYear(),0,0); return Math.floor((d - start)/86400000); }
 
 let currentWeekIndex = 0;
@@ -2272,6 +2439,9 @@ function getCellData(wDate, dayIdx, slotIdx) {
   if (SPECIAL_DAY_EVENTS[ddKey]) {
     const ev = SPECIAL_DAY_EVENTS[ddKey];
     return { text: stripEmoji(ev.text), type: ev.type };
+  }
+  if (isLeoFootballCamp(dd) && slotIdx >= 1 && slotIdx <= 3) {
+    return { text: 'Leo Football Camp (9am–12pm)', type: 'camp' };
   }
   if (isSportsCamp(dd) && slotIdx >= 1) {
     // Sports Camp runs 9am–4pm (slots 1–7)
@@ -2664,7 +2834,7 @@ async function loadForecast() {
 
 // Tabs
 function showPage(name) {
-  ['schedule','stem','art','album','badges','shopping','poster'].forEach(p => {
+  ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint'].forEach(p => {
     const pg = document.getElementById('page-'+p);
     if (pg) pg.style.display = (p===name) ? '' : 'none';
     const tb = document.getElementById('tab-'+p);
@@ -2676,6 +2846,8 @@ function showPage(name) {
   if (name === 'badges') renderBadges();
   if (name === 'shopping') renderShopping();
   if (name === 'poster') renderPoster();
+  if (name === 'jobs') renderJobs();
+  if (name === '3dprint') renderPrint();
 }
 
 // STEM/Art cards
@@ -3324,6 +3496,113 @@ function shareWeekEmail() {
 }
 
 // ════════════ END KID/PARENT FEATURES ════════════
+
+// ════════════ SUMMER JOBS ════════════
+const JOB_PREFIX = `${PREFIX}job_`;
+let currentJobFilter = 'all';
+
+function jobsDone() {
+  if (typeof SUMMER_JOBS === 'undefined') return 0;
+  return SUMMER_JOBS.filter(j => localStorage.getItem(JOB_PREFIX + j.id) === 'true').length;
+}
+function updateJobsTotal() {
+  const el = document.getElementById('jobsTotal');
+  if (el) el.textContent = '$' + jobsDone().toFixed(2);
+}
+function toggleJob(id, checked) {
+  if (checked) localStorage.setItem(JOB_PREFIX + id, 'true');
+  else localStorage.removeItem(JOB_PREFIX + id);
+  updateJobsTotal();
+  const card = document.querySelector(`.job-card[data-job-id="${id}"]`);
+  if (card) card.classList.toggle('is-done', checked);
+}
+function resetJobs() {
+  if (!confirm('Reset all job earnings to $0? This cannot be undone.')) return;
+  if (typeof SUMMER_JOBS === 'undefined') return;
+  SUMMER_JOBS.forEach(j => localStorage.removeItem(JOB_PREFIX + j.id));
+  renderJobs();
+}
+function filterJobs(cat) {
+  currentJobFilter = cat;
+  document.querySelectorAll('#page-jobs .filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('jf-' + (cat === 'all' ? 'all' : cat)).classList.add('active');
+  renderJobs();
+}
+function renderJobs() {
+  if (typeof SUMMER_JOBS === 'undefined') return;
+  updateJobsTotal();
+  const grid = document.getElementById('jobsGrid');
+  if (!grid) return;
+  const items = currentJobFilter === 'all' ? SUMMER_JOBS
+    : SUMMER_JOBS.filter(j => j.cat === currentJobFilter);
+  grid.innerHTML = items.map(j => {
+    const done = localStorage.getItem(JOB_PREFIX + j.id) === 'true';
+    return `<label class="job-card${done ? ' is-done' : ''}" data-job-id="${j.id}">
+      <input type="checkbox" ${done ? 'checked' : ''} onchange="toggleJob(${j.id}, this.checked)">
+      <span class="job-emoji">${j.emoji}</span>
+      <span class="job-label">${j.label}</span>
+      <span class="job-pay">$1</span>
+    </label>`;
+  }).join('');
+}
+
+// ════════════ 3D PRINTER PROJECTS ════════════
+let currentPrintFilter = 'all';
+const DIFF_STARS = n => '★'.repeat(n) + '☆'.repeat(3 - n);
+const PRINT_CAT_EMOJI = { functional:'🔧', toys:'🧸', games:'🎲', science:'🔬', art:'🎨' };
+
+function filterPrint(cat) {
+  currentPrintFilter = cat;
+  document.querySelectorAll('#page-3dprint .filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pf-' + (cat === 'all' ? 'all' : cat)).classList.add('active');
+  renderPrint();
+}
+function renderPrint() {
+  if (typeof PRINTER_PROJECTS === 'undefined') return;
+  const grid = document.getElementById('printGrid');
+  if (!grid) return;
+  const items = currentPrintFilter === 'all' ? PRINTER_PROJECTS
+    : PRINTER_PROJECTS.filter(p => p.cat === currentPrintFilter);
+  const isDone = id => localStorage.getItem(`${PREFIX}print_${id}`) === 'true';
+  grid.innerHTML = '';
+  items.forEach(p => {
+    const done = isDone(p.id);
+    const card = document.createElement('div');
+    card.className = 'ac' + (done ? ' is-done' : '');
+    card.dataset.printId = p.id;
+    card.innerHTML = `
+      <div class="ac-header" onclick="this.parentElement.classList.toggle('expanded')">
+        <div class="ico-block cat-technology"><span style="font-size:1.4rem">${p.emoji}</span></div>
+        <div class="meta-block">
+          <div class="title">${p.title}</div>
+          <div class="tags">
+            🕒 ${p.printTime} <span class="dot">·</span>
+            🧵 ${p.filament} <span class="dot">·</span>
+            <span class="difficulty">${DIFF_STARS(p.difficulty)}</span>
+          </div>
+        </div>
+      </div>
+      <div class="ac-body">
+        <div class="desc">${p.description}</div>
+        <div class="section-label">Where to find the file</div>
+        <p style="font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--cyan-dark);padding:6px 0">${p.source}</p>
+        ${p.tip ? `<div class="tip"><strong>Tip:</strong> ${p.tip}</div>` : ''}
+      </div>
+      <div class="ac-footer" onclick="event.stopPropagation()">
+        <label class="done-toggle">
+          <input type="checkbox" ${done ? 'checked' : ''} onchange="togglePrintDone(${p.id}, this.checked)">
+          Mark Printed
+        </label>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+function togglePrintDone(id, done) {
+  const k = `${PREFIX}print_${id}`;
+  if (done) localStorage.setItem(k, 'true'); else localStorage.removeItem(k);
+  const card = document.querySelector(`.ac[data-print-id="${id}"]`);
+  if (card) card.classList.toggle('is-done', done);
+}
 
 // Boot
 async function boot() {
