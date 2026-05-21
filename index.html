@@ -871,19 +871,60 @@
     .rules-list .no::before { content: '×'; color: var(--cherry); font-weight: 800; font-family: 'DM Mono', monospace; font-size: 1.2em; line-height: 1; }
     .rules-list .dot::before { content: '·'; color: var(--ink-soft); font-weight: 800; font-size: 1.5em; line-height: 0.8; }
 
-    /* ════════════ FIELD TRIP LIST ════════════ */
-    .ft-section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.66rem;
-      letter-spacing: 0.18em;
-      color: var(--cherry);
-      text-transform: uppercase;
-      margin: 10px 0 5px;
-      font-weight: 700;
+    /* ════════════ FIELD TRIP SECTION (full-width, 3 columns) ════════════ */
+    .ft-section {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
     }
+    .ft-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--ink);
+      border-bottom: 4px solid var(--ink);
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+    }
+    .ft-section-header .h-ico {
+      width: 22px; height: 22px;
+      color: var(--cherry);
+      flex-shrink: 0;
+    }
+    .ft-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-style: normal;
+      margin-left: auto;
+    }
+    .ft-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .ft-col-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: var(--paper);
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+    }
+    .ft-col-quick .ft-col-label  { background: var(--grass); }
+    .ft-col-half  .ft-col-label  { background: var(--cyan-dark); }
+    .ft-col-full  .ft-col-label  { background: var(--cherry); }
     .ft-item {
-      padding: 8px 10px;
-      margin-bottom: 5px;
+      padding: 9px 11px;
+      margin-bottom: 6px;
       background: var(--paper-light);
       cursor: pointer;
       border: 2px solid var(--ink);
@@ -897,18 +938,16 @@
       box-shadow: 4px 4px 0 var(--ink);
       background: var(--canary);
     }
-    .ft-item.paid { background: var(--paper); }
-    .ft-item.paid:hover { background: var(--cyan-light); }
     .ft-item .ft-name {
       font-family: 'Caprasimo', serif;
       font-style: italic;
-      font-size: 1rem;
+      font-size: 0.98rem;
       display: block;
       color: var(--ink);
-      line-height: 1.05;
+      line-height: 1.1;
     }
     .ft-item .ft-detail {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       color: var(--ink-soft);
       display: block;
       margin-top: 3px;
@@ -925,6 +964,10 @@
       letter-spacing: 0.1em;
       color: var(--grass);
       font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .ft-columns { grid-template-columns: 1fr; }
     }
 
     /* ════════════ MODAL ════════════ */
@@ -2060,7 +2103,7 @@
           <svg><use href="#ico-routine"/></svg><span>Memorial Day</span><span class="when">May 25</span>
           <svg><use href="#ico-camp"/></svg><span>Leo Football Camp</span><span class="when">Jun 1–4</span>
           <svg><use href="#ico-tent"/></svg><span>Camping Trip</span><span class="when">Jun 5</span>
-          <svg><use href="#ico-camp"/></svg><span>Sports Camp</span><span class="when">Jun 15–19</span>
+          <svg><use href="#ico-camp"/></svg><span>Leo STEM Camp</span><span class="when">Jun 15–19</span>
           <svg><use href="#ico-trip"/></svg><span>Fallon Trip</span><span class="when">Jun 22–24</span>
           <svg><use href="#ico-family"/></svg><span>Family Visiting</span><span class="when">Jun 25–26</span>
           <svg><use href="#ico-trip"/></svg><span>Family Trip</span><span class="when">Jul 2–7</span>
@@ -2104,14 +2147,19 @@
         </div>
       </div>
 
-      <div class="card">
-        <h3><svg class="h-ico"><use href="#ico-fieldtrip"/></svg>Boise Field Trips</h3>
-        <p style="font-size:0.76rem;color:var(--ink-soft);margin-bottom:6px;font-style:italic;">Click any trip to copy its name.</p>
-        <div id="ftList"></div>
-      </div>
-
     </div>
   </div>
+
+  <!-- ── FIELD TRIPS — full-width below schedule ── -->
+  <div class="ft-section" id="ftSection">
+    <div class="ft-section-header">
+      <svg class="h-ico"><use href="#ico-fieldtrip"/></svg>
+      <span>Boise Field Trips</span>
+      <span class="ft-hint">Click any trip to copy its name</span>
+    </div>
+    <div class="ft-columns" id="ftList"></div>
+  </div>
+
 </div>
 
 <!-- ════════════ STEM PAGE ════════════ -->
@@ -2342,7 +2390,7 @@ const WEEKLY_THEMES = {
   '2026-05-25': { num:'02', title:'Backyard Naturalist',       stemId:3,    artId:114,   fieldTrip:'MK Nature Center' },
   '2026-06-01': { num:'03', title:'Water & Wonder',            stemId:2,    artId:116,   fieldTrip:'Lucky Peak State Park' },
   '2026-06-08': { num:'04', title:'Build It Week',             stemId:6,    artId:107,   fieldTrip:'Discovery Center of Idaho' },
-  '2026-06-15': { num:'05', title:'Sports Camp Week',          stemId:1,    artId:108,   fieldTrip:'Jump Time Trampoline Park' },
+  '2026-06-15': { num:'05', title:'Leo STEM Camp Week',        stemId:1,    artId:108,   fieldTrip:'Jump Time Trampoline Park' },
   '2026-06-22': { num:'06', title:'Mountain West Travelers',   stemId:null, artId:119,   fieldTrip:'Fallon / June Lake' },
   '2026-06-29': { num:'07', title:'Stars & Sky',               stemId:8,    artId:121,   fieldTrip:'Idaho Botanical Garden' },
   '2026-07-06': { num:'08', title:'Family Trip',               stemId:null, artId:122,   fieldTrip:'Family Trip' },
@@ -2444,8 +2492,7 @@ function getCellData(wDate, dayIdx, slotIdx) {
     return { text: 'Leo Football Camp (9am–12pm)', type: 'camp' };
   }
   if (isSportsCamp(dd) && slotIdx >= 1) {
-    // Sports Camp runs 9am–4pm (slots 1–7)
-    const labels = ['','Drop-off','Sports Camp','Sports Camp','Sports Camp (Lunch)','Sports Camp','Sports Camp','Sports Camp / Pick-up'];
+    const labels = ['','Drop-off (9am)','Leo STEM Camp','Leo STEM Camp','Leo STEM Camp (Lunch)','Leo STEM Camp','Leo STEM Camp','Leo STEM Camp / Pick-up'];
     return { text: labels[slotIdx], type: 'camp' };
   }
   const base = DEFAULT_SCHEDULE[dayIdx][slotIdx];
@@ -2783,22 +2830,28 @@ document.getElementById('editType').addEventListener('change', () => {
 // Field trip list
 function renderFieldTrips() {
   const list = document.getElementById('ftList');
+  if (!list) return;
+  const cols = [
+    { label: 'Quick Stop · 1–2 hrs', items: typeof QUICK_TRIPS !== 'undefined' ? QUICK_TRIPS : [], cls: 'ft-col-quick' },
+    { label: 'Half-Day Out · 3–5 hrs', items: typeof HALFDAY_TRIPS !== 'undefined' ? HALFDAY_TRIPS : [], cls: 'ft-col-half' },
+    { label: 'Full-Day Adventure', items: typeof FULLDAY_TRIPS !== 'undefined' ? FULLDAY_TRIPS : [], cls: 'ft-col-full' },
+  ];
   list.innerHTML = '';
-  list.appendChild(el('div','ft-section-label','Free / Low-cost'));
-  FREE_TRIPS.forEach(t => {
-    const d = document.createElement('div');
-    d.className = 'ft-item';
-    d.innerHTML = `<span class="ft-name">${stripEmoji(t.name)}</span><span class="ft-detail">${stripEmoji(t.detail)}</span>`;
-    d.onclick = () => copyTrip(d, stripEmoji(t.name));
-    list.appendChild(d);
-  });
-  list.appendChild(el('div','ft-section-label','Paid'));
-  PAID_TRIPS.forEach(t => {
-    const d = document.createElement('div');
-    d.className = 'ft-item paid';
-    d.innerHTML = `<span class="ft-name">${stripEmoji(t.name)}</span><span class="ft-detail">${stripEmoji(t.detail)}</span>`;
-    d.onclick = () => copyTrip(d, stripEmoji(t.name));
-    list.appendChild(d);
+  cols.forEach(col => {
+    const colEl = document.createElement('div');
+    colEl.className = 'ft-col ' + col.cls;
+    const lbl = document.createElement('div');
+    lbl.className = 'ft-col-label';
+    lbl.textContent = col.label;
+    colEl.appendChild(lbl);
+    col.items.forEach(t => {
+      const d = document.createElement('div');
+      d.className = 'ft-item';
+      d.innerHTML = `<span class="ft-name">${stripEmoji(t.name)}</span><span class="ft-detail">${stripEmoji(t.detail)}</span>`;
+      d.onclick = () => copyTrip(d, stripEmoji(t.name));
+      colEl.appendChild(d);
+    });
+    list.appendChild(colEl);
   });
 }
 function copyTrip(el, name) {

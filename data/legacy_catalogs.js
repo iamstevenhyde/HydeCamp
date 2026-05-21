@@ -61,7 +61,7 @@ const DEFAULT_SCHEDULE = [
     { text:'Lunch & Free Reading', type:'lunch' },
     { text:'3D Printer Project', type:'education' },
     { text:'Science Exploration', type:'education' },
-    { text:'Board Games / Family Time', type:'free' },
+    { text:'Board Games / Free Time', type:'free' },
   ],
   // ── FRIDAY — Fun Friday ──
   [
@@ -76,33 +76,44 @@ const DEFAULT_SCHEDULE = [
   ],
 ];
 
-// Boise area field trips
-const FREE_TRIPS = [
-  { name:'Parks, Trails & Open Spaces', detail:'🌳 Local parks, trails & green spaces around Boise · Free · Pack water & snacks' },
-  { name:'Boise River Greenbelt', detail:'🚲 Walk or bike 25+ miles along the river · Free · Tubes available to rent ($)' },
-  { name:'MK Nature Center', detail:'🌿 Wildlife exhibits & nature trails · Free · Near downtown Boise' },
-  { name:'Idaho State Capitol Tour', detail:'🏛️ Idaho history & government · Free · Downtown Boise' },
-  { name:'Deer Flat National Wildlife Refuge', detail:'🦆 Bird watching & nature walks · Nampa · Free' },
+// Boise area field trips — organized by time commitment
+const QUICK_TRIPS = [
+  { name:'Idaho State Capitol Tour',          detail:'🏛️ Free · Downtown Boise · Idaho history & government · ~1 hr' },
+  { name:'Ann Morrison / Julia Davis Parks',  detail:'🌳 Free · Splash pad, playgrounds & rose garden · Downtown · ~1–2 hrs' },
+  { name:'MK Nature Center',                  detail:'🌿 Free · Wildlife exhibits & nature trails · Near downtown Boise · ~1 hr' },
+  { name:'Freak Alley Gallery Walk',          detail:'🎨 Free · Largest outdoor mural collection in Northwest · Downtown Boise · ~1 hr' },
+  { name:'Hyde Park + 13th Street Ice Cream', detail:'🍦 Free+ · Stroll historic neighborhood + ice cream at Goody\'s · ~1 hr' },
+  { name:'Deer Flat Wildlife Refuge',         detail:'🦆 Free · Bird watching & nature walk · Lake Lowell, Nampa · ~1–2 hrs' },
+  { name:'Boise Public Library Maker Space',  detail:'📚 Free · 3D printers, robotics kits, LEGO wall · Downtown · ~1–2 hrs' },
+  { name:'Old Idaho Penitentiary',            detail:'🏚️ ~$6/person · Historic prison tours · Boise · ~1–2 hrs' },
+  { name:'Idaho Botanical Garden',            detail:'🌸 ~$8/person · Themed gardens & pollinator meadow · Boise · ~1–2 hrs' },
+  { name:'Jump Time Trampoline Park',         detail:'🤸 ~$15/person · Indoor trampoline park · Boise · ~1–2 hrs' },
 ];
 
-const PAID_TRIPS = [
-  { name:'Discovery Center of Idaho', detail:'🔬 Interactive science museum · Downtown Boise · ~$12/person' },
-  { name:'Zoo Boise', detail:'🦁 Julia Davis Park · ~$10/person' },
-  { name:'Idaho State Museum', detail:'🏛️ History & culture · Julia Davis Park · ~$8/person' },
-  { name:'Idaho Botanical Garden', detail:'🌸 Themed gardens & events · Boise · ~$8/person' },
-  { name:'Lucky Peak State Park', detail:'💦 Swimming & beach · 10 min east of Boise · Seasonal fee' },
-  { name:'Old Idaho Penitentiary', detail:'🏚️ Historic prison tours · Boise · ~$6/person' },
-  { name:'Roaring Springs Water Park', detail:'🌊 Full waterpark · Meridian · ~$30–35/person' },
-  { name:'Wahooz Family Fun Zone', detail:'🎮 Mini golf, go-karts, laser tag · Meridian · Varies' },
-  { name:'Jump Time Trampoline Park', detail:'🤸 Indoor trampoline park · Boise · ~$15/person' },
-  { name:'Craters of the Moon (Day Trip)', detail:'🌋 Lava fields & lava tubes · ~2.5 hr drive · Monument entry fee' },
-  { name:'Shoshone Falls (Day Trip)', detail:"💧 'Niagara of the West' · Twin Falls ~1.5 hrs · ~$5/car" },
-  { name:'McCall & Payette Lake (Day Trip)', detail:'🏔️ Mountain lake town · ~2 hr drive · Beach swim & ice cream' },
-  { name:'Bruneau Dunes State Park (Day Trip)', detail:'🏜️ Tallest single-structured sand dune in NA · ~1 hr · ~$7/car' },
-  { name:'Ponderosa State Park (Day Trip)', detail:'🌲 Old-growth forest peninsula on Payette Lake · ~2 hr · ~$7/car' },
-  { name:'Sun Valley & Sawtooth NRA (Day Trip)', detail:'⛰️ Alpine lakes & galleries · ~2.5 hr drive · Free hiking' },
-  { name:'Bogus Basin Summer Adventures (Day Trip)', detail:'🎢 Mountain coaster, ropes, biking · ~45 min · Pass varies' },
-  { name:'Three Island Crossing (Day Trip)', detail:'🛶 Oregon Trail river crossing site · Glenns Ferry ~1 hr · ~$7/car' },
+const HALFDAY_TRIPS = [
+  { name:'Zoo Boise',                         detail:'🦁 ~$10/person · Julia Davis Park · 3–4 hrs' },
+  { name:'Discovery Center of Idaho',         detail:'🔬 ~$12/person · Interactive science museum · Downtown Boise · 3–4 hrs' },
+  { name:'Idaho State Museum',                detail:'🏛️ ~$8/person · Idaho history & culture · Julia Davis Park · 2–3 hrs' },
+  { name:'Boise River Greenbelt',             detail:'🚲 Free · Bike or walk 25+ miles along the river · Rent tubes ($) · 3–5 hrs' },
+  { name:'Table Rock Trail',                  detail:'⛰️ Free · 3.4 mi round trip to the mesa · sweeping city views · 2–3 hrs' },
+  { name:'Eagle Island State Park',           detail:'💧 Free · Sandy beach + river channels · Eagle · 3–4 hrs · bring tubes' },
+  { name:'Wahooz Family Fun Zone',            detail:'🎮 Varies · Mini golf, go-karts, laser tag, arcade · Meridian · 3–4 hrs' },
+  { name:'Roaring Springs Water Park',        detail:'🌊 ~$30–35/person · Full waterpark · Meridian · 4–5 hrs' },
+  { name:'Lucky Peak State Park',             detail:'💦 Seasonal fee · Swimming beach 10 min east of Boise · 3–4 hrs' },
+  { name:'Foothills Learning Center + Gulch', detail:'🦅 Free · Hawk watch platform + Hull\'s Gulch trail system · ~2–3 hrs' },
+];
+
+const FULLDAY_TRIPS = [
+  { name:'Craters of the Moon',               detail:'🌋 ~2.5 hr drive · NPS fee · Lava tubes, cinder cones & alien landscape · All day' },
+  { name:'Shoshone Falls',                    detail:"💧 ~1.5 hr · Twin Falls · 'Niagara of the West' + canyon rim walk · Half–full day" },
+  { name:'McCall & Payette Lake',             detail:'🏔️ ~2 hr drive · Mountain lake beach swim + Tastee Treet ice cream · All day' },
+  { name:'Bruneau Dunes State Park',          detail:'🏜️ ~1 hr drive · ~$7/car · Tallest single-structure sand dune in North America · All day' },
+  { name:'Ponderosa State Park',              detail:'🌲 ~2 hr drive · ~$7/car · Old-growth forest peninsula on Payette Lake · All day' },
+  { name:'Sun Valley & Sawtooth Byway',       detail:'⛰️ ~2.5 hr drive · Alpine lakes, galleries & Hemingway memorial · Free hiking' },
+  { name:'Bogus Basin Summer Adventures',     detail:'🎢 ~45 min drive · Mountain coaster, ropes course, disc golf · Pass varies' },
+  { name:'Three Island Crossing SP',          detail:'🛶 ~1 hr drive · ~$7/car · Oregon Trail river crossing site · Glenns Ferry' },
+  { name:'City of Rocks National Reserve',    detail:'🧗 ~2 hr drive · Rock climbing + pioneer wagon rut history · Free/NPS fee' },
+  { name:'Thousand Springs Scenic Byway',     detail:'🌊 ~1.5 hr drive · Hagerman Fossil Beds + waterfalls + fish hatchery · All day' },
 ];
 
 const TYPE_DEFAULT_NAMES = {
