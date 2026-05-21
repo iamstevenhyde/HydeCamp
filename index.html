@@ -140,6 +140,10 @@
       background: var(--paper-dark);
       position: relative;
     }
+    .tab-list {
+      display: flex;
+      gap: 0;
+    }
     .tab-btn {
       background: var(--paper);
       color: var(--ink);
@@ -163,6 +167,7 @@
       color: var(--canary);
       transform: translateY(-2px);
     }
+    .burger-btn { display: none; }
 
     /* ════════════ WEEK NAV ════════════ */
     .week-nav {
@@ -1719,6 +1724,57 @@
       .wordmark { font-size: 3rem; }
     }
     @media (max-width: 600px) {
+      /* Header */
+      header { padding: 16px 16px 14px; overflow: visible; }
+      .header-grid { grid-template-columns: 1fr; gap: 4px; }
+      .wordmark { font-size: clamp(1.9rem, 9vw, 2.6rem); text-shadow: 2px 2px 0 var(--cyan), 4px 4px 0 var(--ink); }
+      .wordmark em { text-shadow: 2px 2px 0 var(--cherry), 4px 4px 0 var(--ink); }
+      .wordmark .sub { font-size: 0.6rem; margin-top: 6px; letter-spacing: 0.18em; }
+      .header-meta { display: none; }
+      .sunburst { width: 160px; height: 160px; top: -40px; right: -30px; }
+
+      /* Burger menu */
+      .tab-nav { padding: 0; border-bottom: 4px solid var(--ink); }
+      .burger-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 13px 16px;
+        background: var(--ink);
+        color: var(--canary);
+        border: none;
+        font-family: 'Caprasimo', serif;
+        font-style: italic;
+        font-size: 1.1rem;
+        cursor: pointer;
+        text-align: left;
+      }
+      .burger-ico { font-style: normal; font-size: 1.3rem; }
+      .tab-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        left: 0; right: 0;
+        z-index: 200;
+        background: var(--paper-dark);
+        border-bottom: 4px solid var(--ink);
+        box-shadow: 0 6px 0 var(--ink);
+      }
+      .tab-list.open { display: flex; }
+      .tab-btn {
+        width: 100%;
+        text-align: left;
+        border: none;
+        border-bottom: 2px solid var(--ink);
+        margin: 0;
+        padding: 13px 20px;
+        box-shadow: none;
+        font-size: 1rem;
+      }
+      .tab-btn.active { transform: none; color: var(--canary); }
+
+      /* Schedule */
       .mobile-day-hdr {
         grid-column: 1 / -1;
         font-size: 1rem;
@@ -2117,15 +2173,20 @@
 </header>
 
 <div class="tab-nav">
-  <button class="tab-btn active" id="tab-schedule" onclick="showPage('schedule')">Schedule</button>
-  <button class="tab-btn" id="tab-stem" onclick="showPage('stem')">STEM</button>
-  <button class="tab-btn" id="tab-art" onclick="showPage('art')">Art</button>
-  <button class="tab-btn" id="tab-album" onclick="showPage('album')">Album</button>
-  <button class="tab-btn" id="tab-badges" onclick="showPage('badges')">Badges</button>
-  <button class="tab-btn" id="tab-shopping" onclick="showPage('shopping')">Shopping</button>
-  <button class="tab-btn" id="tab-poster" onclick="showPage('poster')">Poster</button>
-  <button class="tab-btn" id="tab-jobs" onclick="showPage('jobs')">Jobs 💰</button>
-  <button class="tab-btn" id="tab-3dprint" onclick="showPage('3dprint')">3D Print 🖨️</button>
+  <button class="burger-btn" id="burgerBtn" onclick="toggleBurger()">
+    <span class="burger-ico">☰</span> <span id="burgerLabel">Schedule</span>
+  </button>
+  <div class="tab-list" id="tabList">
+    <button class="tab-btn active" id="tab-schedule" onclick="showPage('schedule')">Schedule</button>
+    <button class="tab-btn" id="tab-stem" onclick="showPage('stem')">STEM</button>
+    <button class="tab-btn" id="tab-art" onclick="showPage('art')">Art</button>
+    <button class="tab-btn" id="tab-album" onclick="showPage('album')">Album</button>
+    <button class="tab-btn" id="tab-badges" onclick="showPage('badges')">Badges</button>
+    <button class="tab-btn" id="tab-shopping" onclick="showPage('shopping')">Shopping</button>
+    <button class="tab-btn" id="tab-poster" onclick="showPage('poster')">Poster</button>
+    <button class="tab-btn" id="tab-jobs" onclick="showPage('jobs')">Jobs 💰</button>
+    <button class="tab-btn" id="tab-3dprint" onclick="showPage('3dprint')">3D Print 🖨️</button>
+  </div>
 </div>
 
 <!-- ════════════ SCHEDULE PAGE ════════════ -->
@@ -3111,6 +3172,13 @@ async function loadForecast() {
 }
 
 // Tabs
+function toggleBurger() {
+  document.getElementById('tabList').classList.toggle('open');
+}
+function closeBurgerMenu() {
+  document.getElementById('tabList').classList.remove('open');
+}
+
 function showPage(name) {
   ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint'].forEach(p => {
     const pg = document.getElementById('page-'+p);
@@ -3118,6 +3186,9 @@ function showPage(name) {
     const tb = document.getElementById('tab-'+p);
     if (tb) tb.classList.toggle('active', p===name);
   });
+  const lbl = document.getElementById('burgerLabel');
+  if (lbl) lbl.textContent = document.getElementById('tab-'+name)?.textContent || name;
+  closeBurgerMenu();
   if (name === 'stem' && document.getElementById('stemGrid').children.length === 0) renderStem();
   if (name === 'art' && document.getElementById('artGrid').children.length === 0) renderArt();
   if (name === 'album') renderAlbum();
