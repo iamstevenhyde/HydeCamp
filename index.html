@@ -2544,23 +2544,17 @@ function setSyncStatus(state, msg) {
   el.textContent = msg;
 }
 
-localStorage.setItem = function(key, value) {
-  _lsSet(key, value);
-  if (key.startsWith(PREFIX)) {
-    _sb.from('store').upsert({ key, value, updated_at: new Date().toISOString() })
-      .then(({ error }) => {
-        if (error) setSyncStatus('err', '❌ ' + error.message);
-        else setSyncStatus('ok', '✅ synced');
-      });
-  }
-};
-localStorage.removeItem = function(key) {
-  _lsRemove(key);
-  if (key.startsWith(PREFIX)) {
-    _sb.from('store').delete().eq('key', key)
-      .then(({ error }) => { if (error) setSyncStatus('err', '❌ ' + error.message); });
-  }
-};
+function cloudSet(key, value) {
+  setSyncStatus('', '⏳ saving…');
+  _sb.from('store').upsert({ key, value, updated_at: new Date().toISOString() })
+    .then(({ error }) => {
+      if (error) setSyncStatus('err', '❌ ' + error.message);
+      else setSyncStatus('ok', '✅ synced');
+    });
+}
+function cloudDelete(key) {
+  _sb.from('store').delete().eq('key', key).then(() => {});
+}
 
 async function loadFromCloud() {
   setSyncStatus('', '⏳ loading…');
@@ -2609,15 +2603,20 @@ const readingKey = (wk,kid) => `${PREFIX}reading_${wk}_${kid}`;
 const heatDismissKey = d => `${PREFIX}heatdismiss_${d}`;
 
 function getSaved(wk,d,s) { try { const v = localStorage.getItem(lsKey(wk,d,s)); return v?JSON.parse(v):null; } catch(e){return null;} }
-function setSaved(wk,d,s,data) { try { localStorage.setItem(lsKey(wk,d,s), JSON.stringify(data)); } catch(e){} }
-function removeSaved(wk,d,s) { try { localStorage.removeItem(lsKey(wk,d,s)); } catch(e){} }
+function setSaved(wk,d,s,data) { const v = JSON.stringify(data); try { _lsSet(lsKey(wk,d,s), v); } catch(e){} cloudSet(lsKey(wk,d,s), v); }
+function removeSaved(wk,d,s) { try { _lsRemove(lsKey(wk,d,s)); } catch(e){} cloudDelete(lsKey(wk,d,s)); }
 function getNotes(wk) { try { return localStorage.getItem(notesKey(wk))||''; } catch(e){return '';} }
 function saveNotes() {
   const wk = weekKey(WEEKS[currentWeekIndex]);
-  try { localStorage.setItem(notesKey(wk), document.getElementById('weekNotes').value); } catch(e){}
+  const v = document.getElementById('weekNotes').value;
+  try { _lsSet(notesKey(wk), v); } catch(e){}
+  cloudSet(notesKey(wk), v);
 }
 function getParent(wk,d,s) { try { return localStorage.getItem(parentKey(wk,d,s))||''; } catch(e){return '';} }
-function setParent(wk,d,s,v) { try { v?localStorage.setItem(parentKey(wk,d,s),v):localStorage.removeItem(parentKey(wk,d,s)); } catch(e){} }
+function setParent(wk,d,s,v) {
+  if (v) { try { _lsSet(parentKey(wk,d,s),v); } catch(e){} cloudSet(parentKey(wk,d,s),v); }
+  else   { try { _lsRemove(parentKey(wk,d,s)); } catch(e){} cloudDelete(parentKey(wk,d,s)); }
+}
 
 const PARENT_CYCLE  = ['', 'M', 'S', 'both'];
 const PARENT_LABELS = { '':'+', 'M':'M', 'S':'S', 'both':'M+S' };
@@ -3185,8 +3184,8 @@ function printList(items, title) {
 // Cell-level done toggle
 function toggleCellDone(wk, dayIdx, slotIdx) {
   const k = `${PREFIX}celldone_${wk}_${dayIdx}_${slotIdx}`;
-  if (localStorage.getItem(k) === 'true') localStorage.removeItem(k);
-  else localStorage.setItem(k, 'true');
+  if (localStorage.getItem(k) === 'true') { _lsRemove(k); cloudDelete(k); }
+  else { _lsSet(k, 'true'); cloudSet(k, 'true'); }
   renderGrid();
   updateParentPivot();
 }
@@ -3732,7 +3731,8 @@ function getJobCount(kid, id) {
 function setJobCount(kid, id, val) {
   const key = kid === 'leo' ? JOB_PREFIX_LEO : JOB_PREFIX_LIN;
   const n = Math.max(0, parseInt(val) || 0);
-  localStorage.setItem(key + id, n);
+  _lsSet(key + id, n);
+  cloudSet(key + id, String(n));
   updateJobsTotal();
 }
 function jobsTotal(kid) {
@@ -3833,7 +3833,8 @@ function renderPrint() {
 }
 function togglePrintDone(id, done) {
   const k = `${PREFIX}print_${id}`;
-  if (done) localStorage.setItem(k, 'true'); else localStorage.removeItem(k);
+  if (done) { _lsSet(k, 'true'); cloudSet(k, 'true'); }
+  else { _lsRemove(k); cloudDelete(k); }
   const card = document.querySelector(`.challenge-card[data-print-id="${id}"]`);
   if (card) card.classList.toggle('is-done', done);
 }
