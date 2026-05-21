@@ -1822,6 +1822,67 @@
       color: var(--ink-soft);
       padding-right: 8px;
     }
+    .challenge-card {
+      background: var(--paper-light);
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: 16px 18px;
+    }
+    .challenge-card.is-done {
+      opacity: 0.55;
+      border-color: var(--grass);
+      box-shadow: 4px 4px 0 var(--grass);
+    }
+    .challenge-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .challenge-emoji { font-size: 1.7rem; flex-shrink: 0; }
+    .challenge-meta { flex: 1; }
+    .challenge-title {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .challenge-cat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .challenge-goal {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .challenge-ideas-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .challenge-ideas {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .challenge-ideas li {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.84rem;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 2px;
+    }
   </style>
 </head>
 <body>
@@ -2285,12 +2346,10 @@
 <div id="page-3dprint" style="display:none">
   <div class="stem-top">
     <div class="stem-filter">
-      <button class="filter-btn active" id="pf-all"        onclick="filterPrint('all')">All</button>
-      <button class="filter-btn"        id="pf-functional" onclick="filterPrint('functional')">Functional</button>
-      <button class="filter-btn"        id="pf-toys"       onclick="filterPrint('toys')">Toys &amp; Games</button>
-      <button class="filter-btn"        id="pf-games"      onclick="filterPrint('games')">Board Games</button>
-      <button class="filter-btn"        id="pf-science"    onclick="filterPrint('science')">Science Models</button>
-      <button class="filter-btn"        id="pf-art"        onclick="filterPrint('art')">Art &amp; Display</button>
+      <button class="filter-btn active" id="pf-all"         onclick="filterPrint('all')">All</button>
+      <button class="filter-btn"        id="pf-engineering" onclick="filterPrint('engineering')">Engineering</button>
+      <button class="filter-btn"        id="pf-stem"        onclick="filterPrint('stem')">STEM</button>
+      <button class="filter-btn"        id="pf-creativity"  onclick="filterPrint('creativity')">Creativity</button>
     </div>
     <span class="print-tagline">Bambulab P1S · Boise 2026</span>
   </div>
@@ -3638,59 +3697,52 @@ function renderJobs() {
 
 // ════════════ 3D PRINTER PROJECTS ════════════
 let currentPrintFilter = 'all';
-const DIFF_STARS = n => '★'.repeat(n) + '☆'.repeat(3 - n);
-const PRINT_CAT_EMOJI = { functional:'🔧', toys:'🧸', games:'🎲', science:'🔬', art:'🎨' };
+const PRINT_CAT_COLOR = { engineering:'var(--cherry)', stem:'var(--cyan-dark)', creativity:'var(--grass)' };
 
 function filterPrint(cat) {
   currentPrintFilter = cat;
   document.querySelectorAll('#page-3dprint .filter-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('pf-' + (cat === 'all' ? 'all' : cat)).classList.add('active');
+  document.getElementById('pf-' + cat).classList.add('active');
   renderPrint();
 }
 function renderPrint() {
-  if (typeof PRINTER_PROJECTS === 'undefined') return;
+  if (typeof PRINTER_CHALLENGES === 'undefined') return;
   const grid = document.getElementById('printGrid');
   if (!grid) return;
-  const items = currentPrintFilter === 'all' ? PRINTER_PROJECTS
-    : PRINTER_PROJECTS.filter(p => p.cat === currentPrintFilter);
+  const items = currentPrintFilter === 'all' ? PRINTER_CHALLENGES
+    : PRINTER_CHALLENGES.filter(p => p.cat === currentPrintFilter);
   const isDone = id => localStorage.getItem(`${PREFIX}print_${id}`) === 'true';
   grid.innerHTML = '';
   items.forEach(p => {
     const done = isDone(p.id);
+    const catColor = PRINT_CAT_COLOR[p.cat] || 'var(--ink)';
     const card = document.createElement('div');
-    card.className = 'ac' + (done ? ' is-done' : '');
+    card.className = 'challenge-card' + (done ? ' is-done' : '');
     card.dataset.printId = p.id;
     card.innerHTML = `
-      <div class="ac-header" onclick="this.parentElement.classList.toggle('expanded')">
-        <div class="ico-block cat-technology"><span style="font-size:1.4rem">${p.emoji}</span></div>
-        <div class="meta-block">
-          <div class="title">${p.title}</div>
-          <div class="tags">
-            🕒 ${p.printTime} <span class="dot">·</span>
-            🧵 ${p.filament} <span class="dot">·</span>
-            <span class="difficulty">${DIFF_STARS(p.difficulty)}</span>
-          </div>
+      <div class="challenge-header">
+        <span class="challenge-emoji">${p.emoji}</span>
+        <div class="challenge-meta">
+          <div class="challenge-title">${p.title}</div>
+          <div class="challenge-cat" style="color:${catColor}">${p.cat.charAt(0).toUpperCase()+p.cat.slice(1)}</div>
         </div>
-      </div>
-      <div class="ac-body">
-        <div class="desc">${p.description}</div>
-        <div class="section-label">Where to find the file</div>
-        <p style="font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--cyan-dark);padding:6px 0">${p.source}</p>
-        ${p.tip ? `<div class="tip"><strong>Tip:</strong> ${p.tip}</div>` : ''}
-      </div>
-      <div class="ac-footer" onclick="event.stopPropagation()">
-        <label class="done-toggle">
+        <label class="done-toggle" onclick="event.stopPropagation()">
           <input type="checkbox" ${done ? 'checked' : ''} onchange="togglePrintDone(${p.id}, this.checked)">
-          Mark Printed
+          Done
         </label>
-      </div>`;
+      </div>
+      <div class="challenge-goal">${p.challenge}</div>
+      <div class="challenge-ideas-label">Ideas to print</div>
+      <ul class="challenge-ideas">
+        ${p.ideas.map(i => `<li>${i}</li>`).join('')}
+      </ul>`;
     grid.appendChild(card);
   });
 }
 function togglePrintDone(id, done) {
   const k = `${PREFIX}print_${id}`;
   if (done) localStorage.setItem(k, 'true'); else localStorage.removeItem(k);
-  const card = document.querySelector(`.ac[data-print-id="${id}"]`);
+  const card = document.querySelector(`.challenge-card[data-print-id="${id}"]`);
   if (card) card.classList.toggle('is-done', done);
 }
 
