@@ -1704,20 +1704,25 @@
       text-transform: uppercase;
       margin-bottom: 14px;
     }
+    .jobs-earned-banners {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
     .jobs-earned-banner {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 4px;
       background: var(--canary);
       border: 3px solid var(--ink);
       box-shadow: 5px 5px 0 var(--ink);
-      padding: 12px 20px;
-      margin-bottom: 16px;
-      transform: rotate(-0.3deg);
+      padding: 14px 20px;
     }
-    .jobs-earned-label {
+    .jobs-earned-name {
       font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       font-weight: 700;
@@ -1725,11 +1730,10 @@
     }
     .jobs-earned-amount {
       font-family: 'Caprasimo', serif;
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       color: var(--cherry);
       text-shadow: 2px 2px 0 var(--ink);
       line-height: 1;
-      flex: 1;
     }
     .jobs-reset-btn {
       background: var(--ink);
@@ -1743,6 +1747,8 @@
       text-transform: uppercase;
       cursor: pointer;
       box-shadow: 2px 2px 0 var(--cherry);
+      margin-top: 10px;
+      align-self: flex-end;
     }
     .jobs-reset-btn:hover { background: var(--cherry-dark); }
     .jobs-cat-filter {
@@ -1765,19 +1771,6 @@
       border: 2.5px solid var(--ink);
       box-shadow: 3px 3px 0 var(--ink);
       padding: 12px 14px;
-      cursor: pointer;
-      transition: transform 0.1s, box-shadow 0.1s;
-    }
-    .job-card:hover {
-      transform: translate(-1px,-1px);
-      box-shadow: 4px 4px 0 var(--ink);
-    }
-    .job-card input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      cursor: pointer;
-      accent-color: var(--cherry);
     }
     .job-emoji { font-size: 1.3rem; flex-shrink: 0; }
     .job-label {
@@ -1787,18 +1780,38 @@
       flex: 1;
       color: var(--ink);
     }
-    .job-pay {
-      font-family: 'Caprasimo', serif;
-      font-size: 1.1rem;
-      color: var(--grass);
+    .job-counters {
+      display: flex;
+      gap: 10px;
       flex-shrink: 0;
     }
-    .job-card.is-done {
-      background: var(--grass-light);
-      border-color: var(--grass);
-      box-shadow: 3px 3px 0 var(--grass);
+    .job-counter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
     }
-    .job-card.is-done .job-label { text-decoration: line-through; opacity: 0.6; }
+    .job-kid-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+    .job-counter input[type="number"] {
+      width: 52px;
+      padding: 4px 6px;
+      font-family: 'Caprasimo', serif;
+      font-size: 1.1rem;
+      color: var(--cherry);
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      text-align: center;
+      -moz-appearance: textfield;
+    }
+    .job-counter input[type="number"]::-webkit-inner-spin-button,
+    .job-counter input[type="number"]::-webkit-outer-spin-button { opacity: 1; }
 
     /* ════════════ 3D PRINTER PAGE ════════════ */
     .print-tagline {
@@ -2244,19 +2257,25 @@
 <div id="page-jobs" style="display:none">
   <div class="jobs-header">
     <h2>Summer Jobs 💰</h2>
-    <p class="jobs-sub">Complete a job → earn $1. Check it off below. Total tracked all summer.</p>
-    <div class="jobs-earned-banner">
-      <span class="jobs-earned-label">Total Earned This Summer</span>
-      <span class="jobs-earned-amount" id="jobsTotal">$0.00</span>
-      <button class="jobs-reset-btn" onclick="resetJobs()">Reset</button>
+    <p class="jobs-sub">Complete a job → earn $1 each time. Enter how many times each kid did it.</p>
+    <div class="jobs-earned-banners">
+      <div class="jobs-earned-banner">
+        <span class="jobs-earned-name">Leo</span>
+        <span class="jobs-earned-amount" id="jobsTotalLeo">$0.00</span>
+      </div>
+      <div class="jobs-earned-banner">
+        <span class="jobs-earned-name">Lincoln</span>
+        <span class="jobs-earned-amount" id="jobsTotalLin">$0.00</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+      <button class="jobs-reset-btn" onclick="resetJobs()">Reset All</button>
     </div>
     <div class="jobs-cat-filter">
-      <button class="filter-btn active" id="jf-all"      onclick="filterJobs('all')">All</button>
-      <button class="filter-btn"        id="jf-inside"   onclick="filterJobs('inside')">Cleaning</button>
-      <button class="filter-btn"        id="jf-kitchen"  onclick="filterJobs('kitchen')">Kitchen &amp; Laundry</button>
-      <button class="filter-btn"        id="jf-organize" onclick="filterJobs('organize')">Organization</button>
-      <button class="filter-btn"        id="jf-outside"  onclick="filterJobs('outside')">Yard</button>
-      <button class="filter-btn"        id="jf-car"      onclick="filterJobs('car')">Car</button>
+      <button class="filter-btn active" id="jf-all"     onclick="filterJobs('all')">All</button>
+      <button class="filter-btn"        id="jf-inside"  onclick="filterJobs('inside')">Inside</button>
+      <button class="filter-btn"        id="jf-outside" onclick="filterJobs('outside')">Outside</button>
+      <button class="filter-btn"        id="jf-car"     onclick="filterJobs('car')">Car</button>
     </div>
   </div>
   <div class="jobs-grid" id="jobsGrid"></div>
@@ -3551,34 +3570,43 @@ function shareWeekEmail() {
 // ════════════ END KID/PARENT FEATURES ════════════
 
 // ════════════ SUMMER JOBS ════════════
-const JOB_PREFIX = `${PREFIX}job_`;
+const JOB_PREFIX_LEO = `${PREFIX}job_leo_`;
+const JOB_PREFIX_LIN = `${PREFIX}job_lin_`;
 let currentJobFilter = 'all';
 
-function jobsDone() {
+function getJobCount(kid, id) {
+  const key = kid === 'leo' ? JOB_PREFIX_LEO : JOB_PREFIX_LIN;
+  return parseInt(localStorage.getItem(key + id) || '0', 10);
+}
+function setJobCount(kid, id, val) {
+  const key = kid === 'leo' ? JOB_PREFIX_LEO : JOB_PREFIX_LIN;
+  const n = Math.max(0, parseInt(val) || 0);
+  localStorage.setItem(key + id, n);
+  updateJobsTotal();
+}
+function jobsTotal(kid) {
   if (typeof SUMMER_JOBS === 'undefined') return 0;
-  return SUMMER_JOBS.filter(j => localStorage.getItem(JOB_PREFIX + j.id) === 'true').length;
+  return SUMMER_JOBS.reduce((s, j) => s + getJobCount(kid, j.id), 0);
 }
 function updateJobsTotal() {
-  const el = document.getElementById('jobsTotal');
-  if (el) el.textContent = '$' + jobsDone().toFixed(2);
-}
-function toggleJob(id, checked) {
-  if (checked) localStorage.setItem(JOB_PREFIX + id, 'true');
-  else localStorage.removeItem(JOB_PREFIX + id);
-  updateJobsTotal();
-  const card = document.querySelector(`.job-card[data-job-id="${id}"]`);
-  if (card) card.classList.toggle('is-done', checked);
+  const leo = document.getElementById('jobsTotalLeo');
+  const lin = document.getElementById('jobsTotalLin');
+  if (leo) leo.textContent = '$' + jobsTotal('leo').toFixed(2);
+  if (lin) lin.textContent = '$' + jobsTotal('lin').toFixed(2);
 }
 function resetJobs() {
-  if (!confirm('Reset all job earnings to $0? This cannot be undone.')) return;
+  if (!confirm('Reset all job earnings for both kids? This cannot be undone.')) return;
   if (typeof SUMMER_JOBS === 'undefined') return;
-  SUMMER_JOBS.forEach(j => localStorage.removeItem(JOB_PREFIX + j.id));
+  SUMMER_JOBS.forEach(j => {
+    localStorage.removeItem(JOB_PREFIX_LEO + j.id);
+    localStorage.removeItem(JOB_PREFIX_LIN + j.id);
+  });
   renderJobs();
 }
 function filterJobs(cat) {
   currentJobFilter = cat;
   document.querySelectorAll('#page-jobs .filter-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('jf-' + (cat === 'all' ? 'all' : cat)).classList.add('active');
+  document.getElementById('jf-' + cat).classList.add('active');
   renderJobs();
 }
 function renderJobs() {
@@ -3589,13 +3617,22 @@ function renderJobs() {
   const items = currentJobFilter === 'all' ? SUMMER_JOBS
     : SUMMER_JOBS.filter(j => j.cat === currentJobFilter);
   grid.innerHTML = items.map(j => {
-    const done = localStorage.getItem(JOB_PREFIX + j.id) === 'true';
-    return `<label class="job-card${done ? ' is-done' : ''}" data-job-id="${j.id}">
-      <input type="checkbox" ${done ? 'checked' : ''} onchange="toggleJob(${j.id}, this.checked)">
+    const leo = getJobCount('leo', j.id);
+    const lin = getJobCount('lin', j.id);
+    return `<div class="job-card" data-job-id="${j.id}">
       <span class="job-emoji">${j.emoji}</span>
       <span class="job-label">${j.label}</span>
-      <span class="job-pay">$1</span>
-    </label>`;
+      <div class="job-counters">
+        <div class="job-counter">
+          <span class="job-kid-name">Leo</span>
+          <input type="number" min="0" value="${leo}" oninput="setJobCount('leo',${j.id},this.value)">
+        </div>
+        <div class="job-counter">
+          <span class="job-kid-name">Lincoln</span>
+          <input type="number" min="0" value="${lin}" oninput="setJobCount('lin',${j.id},this.value)">
+        </div>
+      </div>
+    </div>`;
   }).join('');
 }
 
