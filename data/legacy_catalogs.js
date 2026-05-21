@@ -88,9 +88,8 @@ const QUICK_TRIPS = [
   { name:'Old Idaho Penitentiary',            detail:'🏚️ ~$6/person · Historic prison tours · Boise · ~1–2 hrs' },
   { name:'Idaho Botanical Garden',            detail:'🌸 ~$8/person · Themed gardens & pollinator meadow · Boise · ~1–2 hrs' },
   { name:'Jump Time Trampoline Park',         detail:'🤸 ~$15/person · Indoor trampoline park · Boise · ~1–2 hrs' },
-  { name:'Kathryn Albertson Park',            detail:'🦢 Free · Wildlife pond loop, waterfowl & turtles · West Boise · ~1 hr' },
+  { name:'Jump Creek Falls Hike',              detail:'🌊 Free · Short 1-mi hike to a canyon waterfall · Marsing · ~1–2 hrs' },
   { name:'Military Reserve Park Trails',      detail:'🥾 Free · Easy foothills hiking with city views · Boise · ~1–2 hrs' },
-  { name:'Boise Farmers Market',              detail:'🍅 Free to browse · Local produce, crafts & food · Downtown · Sat mornings · ~1 hr' },
   { name:'Boise Depot & Platt Gardens',       detail:'🚂 Free · Historic depot viewpoint + rose garden · Southwest Boise · ~1 hr' },
   { name:'Backyard / Neighborhood Adventure', detail:'🗺️ Free · Scavenger hunt, chalk art, bug hunt, or bike ride · ~1 hr' },
 ];
