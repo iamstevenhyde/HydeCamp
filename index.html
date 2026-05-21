@@ -1378,6 +1378,18 @@
       cursor: pointer;
     }
     .kidmode-btn.on { background: var(--cyan); color: var(--cream); }
+    .sync-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      padding: 4px 8px;
+      border: 2px solid var(--ink);
+      background: var(--paper-dark);
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .sync-badge.ok   { background: #c8f0c8; border-color: #2a7a2a; color: #1a4a1a; }
+    .sync-badge.err  { background: #f8d0d0; border-color: var(--cherry); color: var(--cherry); }
 
     /* Kid mode: simplified UI */
     body.kid-mode .parent-badge,
@@ -2064,6 +2076,7 @@
       <div class="header-tools">
         <button class="boredom-btn" onclick="openBoredom()">I'm bored</button>
         <button class="kidmode-btn" id="kidmodeBtn" onclick="toggleKidMode()">Kid Mode: Off</button>
+        <div class="sync-badge" id="syncBadge" title="Cloud sync status">⏳ connecting…</div>
       </div>
     </div>
   </div>
@@ -2520,20 +2533,37 @@ const _sb = supabase.createClient(
 const _lsSet    = localStorage.setItem.bind(localStorage);
 const _lsRemove = localStorage.removeItem.bind(localStorage);
 
+function setSyncStatus(state, msg) {
+  const el = document.getElementById('syncBadge');
+  if (!el) return;
+  el.className = 'sync-badge' + (state === 'ok' ? ' ok' : state === 'err' ? ' err' : '');
+  el.textContent = msg;
+}
+
 localStorage.setItem = function(key, value) {
   _lsSet(key, value);
-  if (key.startsWith(PREFIX))
-    _sb.from('store').upsert({ key, value, updated_at: new Date().toISOString() });
+  if (key.startsWith(PREFIX)) {
+    _sb.from('store').upsert({ key, value, updated_at: new Date().toISOString() })
+      .then(({ error }) => {
+        if (error) setSyncStatus('err', '❌ ' + error.message);
+        else setSyncStatus('ok', '✅ synced');
+      });
+  }
 };
 localStorage.removeItem = function(key) {
   _lsRemove(key);
-  if (key.startsWith(PREFIX))
-    _sb.from('store').delete().eq('key', key);
+  if (key.startsWith(PREFIX)) {
+    _sb.from('store').delete().eq('key', key)
+      .then(({ error }) => { if (error) setSyncStatus('err', '❌ ' + error.message); });
+  }
 };
 
 async function loadFromCloud() {
-  const { data } = await _sb.from('store').select('key,value');
+  setSyncStatus('', '⏳ loading…');
+  const { data, error } = await _sb.from('store').select('key,value');
+  if (error) { setSyncStatus('err', '❌ ' + error.message); return; }
   if (data) data.forEach(({ key, value }) => _lsSet(key, value));
+  setSyncStatus('ok', '✅ synced');
 }
 
 function subscribeToCloud() {
@@ -2542,8 +2572,12 @@ function subscribeToCloud() {
       if (payload.eventType === 'DELETE') _lsRemove(payload.old.key);
       else if (payload.new?.key) _lsSet(payload.new.key, payload.new.value);
       refreshCurrentPage();
+      setSyncStatus('ok', '✅ synced');
     })
-    .subscribe();
+    .subscribe((status) => {
+      if (status === 'SUBSCRIBED') setSyncStatus('ok', '✅ live');
+      if (status === 'CHANNEL_ERROR') setSyncStatus('err', '❌ realtime error');
+    });
 }
 
 function refreshCurrentPage() {
