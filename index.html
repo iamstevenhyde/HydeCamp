@@ -2418,6 +2418,7 @@
   Cherry · Cyan · Canary · Ink
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./data/legacy_catalogs.js"></script>
 <script src="./data/badges.js"></script>
 <script src="./data/spines.js"></script>
@@ -2510,6 +2511,49 @@ let currentArtFilter = 'all';
 let forecastData = null;
 
 const PREFIX = 'hyde26_';
+
+// ── Supabase cloud sync ──
+const _sb = supabase.createClient(
+  'https://nrwkxvhejemotxfrktbs.supabase.co',
+  'sb_publishable_pL8foXV2Usjix4QbHUD1kg_ANt-eiDC'
+);
+const _lsSet    = localStorage.setItem.bind(localStorage);
+const _lsRemove = localStorage.removeItem.bind(localStorage);
+
+localStorage.setItem = function(key, value) {
+  _lsSet(key, value);
+  if (key.startsWith(PREFIX))
+    _sb.from('store').upsert({ key, value, updated_at: new Date().toISOString() });
+};
+localStorage.removeItem = function(key) {
+  _lsRemove(key);
+  if (key.startsWith(PREFIX))
+    _sb.from('store').delete().eq('key', key);
+};
+
+async function loadFromCloud() {
+  const { data } = await _sb.from('store').select('key,value');
+  if (data) data.forEach(({ key, value }) => _lsSet(key, value));
+}
+
+function subscribeToCloud() {
+  _sb.channel('store-sync')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'store' }, payload => {
+      if (payload.eventType === 'DELETE') _lsRemove(payload.old.key);
+      else if (payload.new?.key) _lsSet(payload.new.key, payload.new.value);
+      refreshCurrentPage();
+    })
+    .subscribe();
+}
+
+function refreshCurrentPage() {
+  const pages = ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint'];
+  for (const p of pages) {
+    const el = document.getElementById('page-' + p);
+    if (el && el.style.display !== 'none') { showPage(p); break; }
+  }
+}
+
 const lsKey = (wk,d,s) => `${PREFIX}cell_${wk}_${d}_${s}`;
 const parentKey = (wk,d,s) => `${PREFIX}parent_${wk}_${d}_${s}`;
 const notesKey = wk => `${PREFIX}notes_${wk}`;
@@ -3748,6 +3792,9 @@ function togglePrintDone(id, done) {
 
 // Boot
 async function boot() {
+  await loadFromCloud();
+  subscribeToCloud();
+
   // Apply kid mode from URL or localStorage before render
   const params = new URLSearchParams(location.search);
   if (params.get('mode') === 'kid') setKidMode(true);
