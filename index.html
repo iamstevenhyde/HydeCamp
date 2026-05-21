@@ -1718,6 +1718,19 @@
       .schedule-grid { grid-template-columns: 60px repeat(5, 1fr); }
       .wordmark { font-size: 3rem; }
     }
+    @media (max-width: 600px) {
+      .mobile-day-hdr {
+        grid-column: 1 / -1;
+        font-size: 1rem;
+        box-shadow: 3px 3px 0 var(--cherry);
+        margin-top: 8px;
+      }
+      .mobile-day-hdr:first-child { margin-top: 0; }
+      .schedule-grid { gap: 4px; }
+      .sc { font-size: 0.78rem; min-height: 44px; }
+      .tl { font-size: 0.68rem; padding: 6px 4px 0 0; }
+      .main-content { padding: 16px 12px 30px; }
+    }
 
     /* ════════════ SUMMER JOBS PAGE ════════════ */
     .jobs-header {
@@ -2716,6 +2729,52 @@ function el(tag, cls, txt) {
   return e;
 }
 
+function buildCell(wDate, dayIdx, slotIdx, wk, today) {
+  const data = getCellData(wDate, dayIdx, slotIdx);
+  const parent = getParent(wk, dayIdx, slotIdx);
+  const dd = dayDate(wDate, dayIdx);
+  const isT = sameDay(dd, today);
+  const cellDoneFlag = localStorage.getItem(`${PREFIX}celldone_${wk}_${dayIdx}_${slotIdx}`) === 'true';
+  const cell = document.createElement('div');
+  cell.className = `sc t-${data.type || 'blank'}${isT ? ' is-today' : ''}${cellDoneFlag ? ' is-done' : ''}`;
+  cell.dataset.parent = parent;
+  cell.dataset.dayidx = dayIdx;
+  cell.dataset.slotidx = slotIdx;
+  cell.onclick = () => openModal(dayIdx, slotIdx, wDate);
+  const iconId = TYPE_ICON_IDS[data.type] || 'ico-blank';
+  const iconSvg = data.type && data.type !== 'blank' ? `<svg class="ico"><use href="#${iconId}"/></svg>` : '';
+  const tagText = TYPE_TAGS[data.type] || '';
+  const cc = document.createElement('div');
+  cc.className = 'cc';
+  cc.innerHTML = `${tagText ? `<div class="ct-tag">${tagText}</div>` : ''}<div class="ci">${iconSvg}<span class="ct">${data.text || '—'}</span></div>`;
+  cell.appendChild(cc);
+  const badge = document.createElement('button');
+  badge.className = `parent-badge ${PARENT_CLASSES[parent]}`;
+  badge.textContent = PARENT_LABELS[parent];
+  badge.id = `pb_${dayIdx}_${slotIdx}`;
+  badge.onclick = (e) => { e.stopPropagation(); toggleParent(dayIdx, slotIdx); };
+  cell.appendChild(badge);
+  const doneBtn = document.createElement('button');
+  doneBtn.className = `cell-done${cellDoneFlag ? ' is-done' : ''}`;
+  doneBtn.textContent = cellDoneFlag ? '✓' : '○';
+  doneBtn.title = 'Mark as done';
+  doneBtn.onclick = (e) => { e.stopPropagation(); toggleCellDone(wk, dayIdx, slotIdx); };
+  cell.appendChild(doneBtn);
+  if (isHeatDay(dd) && (data.type === 'outdoor' || (data.type === 'free' && slotIdx >= 5)) && slotIdx >= 5) {
+    const hf = document.createElement('span');
+    hf.className = 'heat-flag';
+    hf.innerHTML = '<svg class="ico"><use href="#ico-heat"/></svg>SWAP';
+    hf.title = `Forecast ${forecastData[dayKey(dd)]}°F — consider indoor swap. Click to dismiss.`;
+    hf.onclick = (e) => { e.stopPropagation(); localStorage.setItem(heatDismissKey(dayKey(dd)), '1'); renderGrid(); };
+    cell.appendChild(hf);
+  }
+  const eh = document.createElement('span');
+  eh.className = 'eh';
+  eh.textContent = '✎';
+  cell.appendChild(eh);
+  return cell;
+}
+
 function renderGrid() {
   const wDate = WEEKS[currentWeekIndex];
   const wk = weekKey(wDate);
@@ -2723,79 +2782,44 @@ function renderGrid() {
   grid.innerHTML = '';
   const today = new Date();
 
-  grid.appendChild(el('div','gh','Time'));
-  for (let i = 0; i < 5; i++) {
-    const dd = dayDate(wDate, i);
-    const isT = sameDay(dd, today);
-    const h = el('div','gh' + (isT ? ' is-today' : ''));
-    const dateStr = dd.toLocaleDateString('en-US',{ month:'short', day:'numeric' });
-    h.innerHTML = `${DAYS_SHORT[i]}<span class="day-date">${dateStr}</span>`;
-    grid.appendChild(h);
-  }
-
-  for (let slotIdx = 0; slotIdx < HOURS.length; slotIdx++) {
-    const tl = document.createElement('div');
-    tl.className = 'tl';
-    tl.innerHTML = `<span class="num">${HOURS_NUM[slotIdx]}</span>${HOURS_AMPM[slotIdx]}`;
-    grid.appendChild(tl);
+  if (window.innerWidth < 600) {
+    // Mobile: stack each day vertically
+    grid.style.gridTemplateColumns = '56px 1fr';
     for (let dayIdx = 0; dayIdx < 5; dayIdx++) {
-      const data = getCellData(wDate, dayIdx, slotIdx);
-      const parent = getParent(wk, dayIdx, slotIdx);
       const dd = dayDate(wDate, dayIdx);
       const isT = sameDay(dd, today);
-
-      const cellDoneFlag = localStorage.getItem(`${PREFIX}celldone_${wk}_${dayIdx}_${slotIdx}`) === 'true';
-      const cell = document.createElement('div');
-      cell.className = `sc t-${data.type || 'blank'}${isT ? ' is-today' : ''}${cellDoneFlag ? ' is-done' : ''}`;
-      cell.dataset.parent = parent;
-      cell.dataset.dayidx = dayIdx;
-      cell.dataset.slotidx = slotIdx;
-      cell.onclick = () => openModal(dayIdx, slotIdx, wDate);
-
-      const iconId = TYPE_ICON_IDS[data.type] || 'ico-blank';
-      const iconSvg = data.type && data.type !== 'blank'
-        ? `<svg class="ico"><use href="#${iconId}"/></svg>` : '';
-      const tagText = TYPE_TAGS[data.type] || '';
-      const cc = document.createElement('div');
-      cc.className = 'cc';
-      cc.innerHTML = `
-        ${tagText ? `<div class="ct-tag">${tagText}</div>` : ''}
-        <div class="ci">${iconSvg}<span class="ct">${data.text || '—'}</span></div>`;
-      cell.appendChild(cc);
-
-      const badge = document.createElement('button');
-      badge.className = `parent-badge ${PARENT_CLASSES[parent]}`;
-      badge.textContent = PARENT_LABELS[parent];
-      badge.id = `pb_${dayIdx}_${slotIdx}`;
-      badge.onclick = (e) => { e.stopPropagation(); toggleParent(dayIdx, slotIdx); };
-      cell.appendChild(badge);
-
-      const doneBtn = document.createElement('button');
-      doneBtn.className = `cell-done${cellDoneFlag ? ' is-done' : ''}`;
-      doneBtn.textContent = cellDoneFlag ? '✓' : '○';
-      doneBtn.title = 'Mark as done';
-      doneBtn.onclick = (e) => { e.stopPropagation(); toggleCellDone(wk, dayIdx, slotIdx); };
-      cell.appendChild(doneBtn);
-
-      if (isHeatDay(dd) && (data.type === 'outdoor' || (data.type === 'free' && slotIdx >= 5))
-          && slotIdx >= 5) {
-        const hf = document.createElement('span');
-        hf.className = 'heat-flag';
-        hf.innerHTML = '<svg class="ico"><use href="#ico-heat"/></svg>SWAP';
-        hf.title = `Forecast ${forecastData[dayKey(dd)]}°F — consider indoor swap. Click to dismiss.`;
-        hf.onclick = (e) => {
-          e.stopPropagation();
-          localStorage.setItem(heatDismissKey(dayKey(dd)), '1');
-          renderGrid();
-        };
-        cell.appendChild(hf);
+      const dateStr = dd.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const dh = document.createElement('div');
+      dh.className = 'gh mobile-day-hdr' + (isT ? ' is-today' : '');
+      dh.innerHTML = `${DAYS_SHORT[dayIdx]}<span class="day-date">${dateStr}</span>`;
+      grid.appendChild(dh);
+      for (let slotIdx = 0; slotIdx < HOURS.length; slotIdx++) {
+        const tl = document.createElement('div');
+        tl.className = 'tl';
+        tl.innerHTML = `<span class="num">${HOURS_NUM[slotIdx]}</span>${HOURS_AMPM[slotIdx]}`;
+        grid.appendChild(tl);
+        grid.appendChild(buildCell(wDate, dayIdx, slotIdx, wk, today));
       }
-
-      const eh = document.createElement('span');
-      eh.className = 'eh';
-      eh.textContent = '✎';
-      cell.appendChild(eh);
-      grid.appendChild(cell);
+    }
+  } else {
+    // Desktop: horizontal 5-day grid
+    grid.style.gridTemplateColumns = '';
+    grid.appendChild(el('div','gh','Time'));
+    for (let i = 0; i < 5; i++) {
+      const dd = dayDate(wDate, i);
+      const isT = sameDay(dd, today);
+      const h = el('div','gh' + (isT ? ' is-today' : ''));
+      h.innerHTML = `${DAYS_SHORT[i]}<span class="day-date">${dd.toLocaleDateString('en-US',{ month:'short', day:'numeric' })}</span>`;
+      grid.appendChild(h);
+    }
+    for (let slotIdx = 0; slotIdx < HOURS.length; slotIdx++) {
+      const tl = document.createElement('div');
+      tl.className = 'tl';
+      tl.innerHTML = `<span class="num">${HOURS_NUM[slotIdx]}</span>${HOURS_AMPM[slotIdx]}`;
+      grid.appendChild(tl);
+      for (let dayIdx = 0; dayIdx < 5; dayIdx++) {
+        grid.appendChild(buildCell(wDate, dayIdx, slotIdx, wk, today));
+      }
     }
   }
 }
@@ -3892,6 +3916,12 @@ async function boot() {
   renderAll();
 }
 boot();
+
+let _lastMobile = window.innerWidth < 600;
+window.addEventListener('resize', () => {
+  const isMobile = window.innerWidth < 600;
+  if (isMobile !== _lastMobile) { _lastMobile = isMobile; renderGrid(); }
+});
 </script>
 
 <div class="sync-badge" id="syncBadge">⏳ connecting…</div>
