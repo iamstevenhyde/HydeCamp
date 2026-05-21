@@ -79,15 +79,20 @@ const DEFAULT_SCHEDULE = [
 // Boise area field trips — organized by time commitment
 const QUICK_TRIPS = [
   { name:'Idaho State Capitol Tour',          detail:'🏛️ Free · Downtown Boise · Idaho history & government · ~1 hr' },
-  { name:'Ann Morrison / Julia Davis Parks',  detail:'🌳 Free · Splash pad, playgrounds & rose garden · Downtown · ~1–2 hrs' },
+  { name:'Park Visit',                         detail:'🌳 Free · Any local park — swings, splash pad, open grass · ~1–2 hrs' },
   { name:'MK Nature Center',                  detail:'🌿 Free · Wildlife exhibits & nature trails · Near downtown Boise · ~1 hr' },
   { name:'Freak Alley Gallery Walk',          detail:'🎨 Free · Largest outdoor mural collection in Northwest · Downtown Boise · ~1 hr' },
   { name:'Hyde Park + 13th Street Ice Cream', detail:'🍦 Free+ · Stroll historic neighborhood + ice cream at Goody\'s · ~1 hr' },
   { name:'Deer Flat Wildlife Refuge',         detail:'🦆 Free · Bird watching & nature walk · Lake Lowell, Nampa · ~1–2 hrs' },
-  { name:'Boise Public Library Maker Space',  detail:'📚 Free · 3D printers, robotics kits, LEGO wall · Downtown · ~1–2 hrs' },
+  { name:'Library Visit',                      detail:'📚 Free · Browse, read, pick up holds · Any branch · ~1–2 hrs' },
   { name:'Old Idaho Penitentiary',            detail:'🏚️ ~$6/person · Historic prison tours · Boise · ~1–2 hrs' },
   { name:'Idaho Botanical Garden',            detail:'🌸 ~$8/person · Themed gardens & pollinator meadow · Boise · ~1–2 hrs' },
   { name:'Jump Time Trampoline Park',         detail:'🤸 ~$15/person · Indoor trampoline park · Boise · ~1–2 hrs' },
+  { name:'Kathryn Albertson Park',            detail:'🦢 Free · Wildlife pond loop, waterfowl & turtles · West Boise · ~1 hr' },
+  { name:'Military Reserve Park Trails',      detail:'🥾 Free · Easy foothills hiking with city views · Boise · ~1–2 hrs' },
+  { name:'Boise Farmers Market',              detail:'🍅 Free to browse · Local produce, crafts & food · Downtown · Sat mornings · ~1 hr' },
+  { name:'Boise Depot & Platt Gardens',       detail:'🚂 Free · Historic depot viewpoint + rose garden · Southwest Boise · ~1 hr' },
+  { name:'Backyard / Neighborhood Adventure', detail:'🗺️ Free · Scavenger hunt, chalk art, bug hunt, or bike ride · ~1 hr' },
 ];
 
 const HALFDAY_TRIPS = [

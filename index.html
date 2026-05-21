@@ -873,9 +873,7 @@
 
     /* ════════════ FIELD TRIP SECTION (full-width, 3 columns) ════════════ */
     .ft-section {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 24px 48px;
+      margin-top: 16px;
     }
     .ft-section-header {
       display: flex;
@@ -2066,6 +2064,17 @@
         <h3>Week Notes</h3>
         <textarea id="weekNotes" placeholder="Reminders, surprises, plans for this week…" oninput="saveNotes()"></textarea>
       </div>
+
+      <!-- ── FIELD TRIPS — below week notes, matches schedule width ── -->
+      <div class="ft-section" id="ftSection">
+        <div class="ft-section-header">
+          <svg class="h-ico"><use href="#ico-fieldtrip"/></svg>
+          <span>Boise Field Trips</span>
+          <span class="ft-hint">Click any trip to copy its name</span>
+        </div>
+        <div class="ft-columns" id="ftList"></div>
+      </div>
+
     </div>
 
     <div class="sidebar">
@@ -2150,15 +2159,6 @@
     </div>
   </div>
 
-  <!-- ── FIELD TRIPS — full-width below schedule ── -->
-  <div class="ft-section" id="ftSection">
-    <div class="ft-section-header">
-      <svg class="h-ico"><use href="#ico-fieldtrip"/></svg>
-      <span>Boise Field Trips</span>
-      <span class="ft-hint">Click any trip to copy its name</span>
-    </div>
-    <div class="ft-columns" id="ftList"></div>
-  </div>
 
 </div>
 
