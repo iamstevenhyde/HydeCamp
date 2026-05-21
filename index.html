@@ -1395,6 +1395,23 @@
     }
     .sync-badge.ok   { background: #c8f0c8; border-color: #2a7a2a; color: #1a4a1a; }
     .sync-badge.err  { background: #f8d0d0; border-color: var(--cherry); color: var(--cherry); }
+    .push-cloud-btn {
+      position: fixed;
+      bottom: 12px;
+      right: 140px;
+      z-index: 999;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      padding: 5px 10px;
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      white-space: nowrap;
+      box-shadow: 3px 3px 0 var(--cherry);
+      cursor: pointer;
+    }
+    .push-cloud-btn:hover { background: var(--cherry); }
 
     /* Kid mode: simplified UI */
     body.kid-mode .parent-badge,
@@ -2081,7 +2098,6 @@
       <div class="header-tools">
         <button class="boredom-btn" onclick="openBoredom()">I'm bored</button>
         <button class="kidmode-btn" id="kidmodeBtn" onclick="toggleKidMode()">Kid Mode: Off</button>
-        <button class="kidmode-btn" onclick="pushAllToCloud()" title="Upload all local data to cloud">☁️ Push to Cloud</button>
       </div>
     </div>
   </div>
@@ -3879,5 +3895,6 @@ boot();
 </script>
 
 <div class="sync-badge" id="syncBadge">⏳ connecting…</div>
+<button class="push-cloud-btn" onclick="pushAllToCloud()">☁️ Push to Cloud</button>
 </body>
 </html>
