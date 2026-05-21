@@ -52,8 +52,9 @@
       font-size: 16px;
       line-height: 1.45;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
+    html { overflow-x: clip; }
 
     /* ════════════ HEADER ════════════ */
     header {
@@ -1725,6 +1726,11 @@
     }
     @media (max-width: 600px) {
       /* Header */
+      header, .tab-nav, .week-nav, .week-banner, #heatBanner {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
       header { padding: 16px 16px 14px; overflow: visible; }
       .header-grid { grid-template-columns: 1fr; gap: 4px; }
       .wordmark { font-size: clamp(1.9rem, 9vw, 2.6rem); text-shadow: 2px 2px 0 var(--cyan), 4px 4px 0 var(--ink); }
