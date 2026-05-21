@@ -2588,7 +2588,11 @@ function refreshCurrentPage() {
   const pages = ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint'];
   for (const p of pages) {
     const el = document.getElementById('page-' + p);
-    if (el && el.style.display !== 'none') { showPage(p); break; }
+    if (el && el.style.display !== 'none') {
+      if (p === 'schedule') { renderGrid(); updateScreenBar(); }
+      else showPage(p);
+      break;
+    }
   }
 }
 
