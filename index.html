@@ -1774,6 +1774,33 @@
       }
       .tab-btn.active { transform: none; color: var(--canary); }
 
+      /* Week nav */
+      .week-nav { padding: 10px 12px; gap: 8px; }
+      #weekLabel { min-width: 0; font-size: 1rem; }
+      .week-nav button { padding: 6px 10px; font-size: 0.65rem; }
+
+      /* Week banner */
+      .week-banner {
+        grid-template-columns: auto 1fr;
+        padding: 14px 16px;
+        gap: 12px;
+      }
+      .wk-numeral { font-size: 3.8rem; }
+      .wk-title { font-size: 1.5rem; }
+      .wk-kicker { font-size: 0.65rem; letter-spacing: 0.18em; }
+      .wk-of-week {
+        grid-column: 1 / -1;
+        transform: none;
+        min-width: 0;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+      }
+      .wk-of-week .lbl { margin: 0; }
+      .wk-of-week .nm { margin: 0; font-size: 1rem; }
+
       /* Schedule */
       .mobile-day-hdr {
         grid-column: 1 / -1;
