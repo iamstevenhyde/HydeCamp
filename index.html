@@ -2564,9 +2564,15 @@ localStorage.removeItem = function(key) {
 
 async function loadFromCloud() {
   setSyncStatus('', '⏳ loading…');
+  // Test write to verify permissions
+  const testWrite = await _sb.from('store').upsert({ key: '__test__', value: 'ok', updated_at: new Date().toISOString() });
+  if (testWrite.error) {
+    setSyncStatus('err', '❌ write: ' + testWrite.error.message);
+    return;
+  }
   const { data, error } = await _sb.from('store').select('key,value');
-  if (error) { setSyncStatus('err', '❌ ' + error.message); return; }
-  if (data) data.forEach(({ key, value }) => _lsSet(key, value));
+  if (error) { setSyncStatus('err', '❌ read: ' + error.message); return; }
+  if (data) data.forEach(({ key, value }) => { if (key !== '__test__') _lsSet(key, value); });
   setSyncStatus('ok', '✅ synced');
 }
 
