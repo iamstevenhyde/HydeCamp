@@ -1348,6 +1348,44 @@
       .ac-body .tip { background: #f5f5f5 !important; box-shadow: none !important; transform: none !important; }
     }
 
+    /* ── Schedule-only print mode ── */
+    @media print {
+      body.printing-schedule > *:not(#page-schedule) { display: none !important; }
+      body.printing-schedule header,
+      body.printing-schedule .tab-nav,
+      body.printing-schedule .week-nav,
+      body.printing-schedule .screen-bar,
+      body.printing-schedule .week-notes,
+      body.printing-schedule .ft-section,
+      body.printing-schedule .sidebar,
+      body.printing-schedule .parent-pivot { display: none !important; }
+      body.printing-schedule #page-schedule { display: block !important; }
+      body.printing-schedule .week-banner {
+        background: white !important; color: black !important;
+        border: 2px solid black !important; padding: 10px 14px !important;
+      }
+      body.printing-schedule .week-banner::after { display: none; }
+      body.printing-schedule .wk-numeral { font-size: 3rem !important; color: #555 !important; text-shadow: none !important; }
+      body.printing-schedule .wk-of-week { background: white !important; color: black !important; transform: none !important; border: 2px solid black !important; box-shadow: none !important; }
+      body.printing-schedule .main-content { display: block !important; padding: 6px 0 0 !important; }
+      body.printing-schedule .schedule-section { width: 100% !important; }
+      body.printing-schedule .grid-wrapper { padding: 0 !important; }
+      body.printing-schedule .schedule-grid { gap: 3px !important; }
+      body.printing-schedule .gh { background: white !important; color: black !important; border: 1.5px solid black !important; box-shadow: none !important; font-size: 0.7rem !important; }
+      body.printing-schedule .gh .day-date { color: #555 !important; }
+      body.printing-schedule .sc { border: 1px solid #888 !important; box-shadow: none !important; transform: none !important; min-height: 52px !important; background: white !important; }
+      body.printing-schedule .t-fieldtrip, body.printing-schedule .t-free,
+      body.printing-schedule .t-camp, body.printing-schedule .t-trip { background: #eee !important; color: black !important; }
+      body.printing-schedule .t-fieldtrip .ct, body.printing-schedule .t-free .ct,
+      body.printing-schedule .t-camp .ct, body.printing-schedule .t-trip .ct { color: black !important; }
+      body.printing-schedule .ct { font-size: 0.72rem !important; }
+      body.printing-schedule .ct-tag { color: #555 !important; opacity: 1 !important; }
+      body.printing-schedule .tl { font-size: 0.6rem !important; }
+      body.printing-schedule .tl .num { color: #555 !important; }
+      body.printing-schedule .parent-badge, body.printing-schedule .heat-flag,
+      body.printing-schedule .eh, body.printing-schedule .ico { display: none !important; }
+    }
+
     /* ════════════ KID-EXPERIENCE + PARENT-OPS ════════════ */
     .header-tools {
       display: flex;
@@ -2485,7 +2523,7 @@
     </div>
     <button onclick="changeWeek(1)" id="nextBtn">Next →</button>
     <button class="today-btn" onclick="jumpToToday()">Today</button>
-    <button onclick="window.print()">Print</button>
+    <button onclick="printSchedule()">Print</button>
   </div>
 
   <div class="week-banner">
@@ -2658,9 +2696,11 @@
 <div id="page-album" style="display:none">
   <div class="album-header">
     <h2>Summer Album</h2>
+    <button class="photo-btn" onclick="uploadAlbumPhoto()">📸 Upload Photo</button>
     <button class="photo-btn" onclick="exportScrapbook()">📦 Export Scrapbook</button>
     <button class="photo-btn" onclick="checkStorage()">📊 Storage</button>
   </div>
+  <input type="file" id="albumPhotoInput" accept="image/*" capture="environment" style="display:none">
   <div id="albumBody"></div>
 </div>
 
@@ -3702,11 +3742,21 @@ function toggleActivityDone(id, done) {
   if (card) card.classList.toggle('is-done', done);
 }
 
+// Schedule-only print
+function printSchedule() {
+  document.body.classList.add('printing-schedule');
+  window.print();
+  setTimeout(() => document.body.classList.remove('printing-schedule'), 500);
+}
+
 // Photo capture: compress to ~80KB jpg and stash in localStorage
 let pendingPhotoActivityId = null;
 function capturePhoto(activityId) {
   pendingPhotoActivityId = activityId;
   document.getElementById('photoInput').click();
+}
+function uploadAlbumPhoto() {
+  document.getElementById('albumPhotoInput').click();
 }
 function handlePhotoFile(e) {
   const file = e.target.files[0];
@@ -3722,6 +3772,19 @@ function handlePhotoFile(e) {
     }
     pendingPhotoActivityId = null;
     e.target.value = '';
+  });
+}
+function handleAlbumPhotoFile(e) {
+  const files = Array.from(e.target.files);
+  if (!files.length) return;
+  Promise.all(files.map(f => compressPhoto(f))).then(results => {
+    results.forEach(base64 => {
+      const key = `${PREFIX}photo_0_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+      try { localStorage.setItem(key, base64); }
+      catch(err) { alert('Out of storage. Export your scrapbook and clear some photos.'); }
+    });
+    e.target.value = '';
+    renderAlbum();
   });
 }
 function compressPhoto(file) {
@@ -3771,8 +3834,9 @@ function getAllPhotos() {
       const rest = k.slice(prefix.length);
       const parts = rest.split('_');
       const activityId = parseInt(parts[0], 10);
+      // direct album uploads: key is photo_0_ts_rand, activity-linked: photo_id_ts
       const ts = parseInt(parts[1], 10);
-      out.push({ key: k, activityId, ts, data: localStorage.getItem(k) });
+      out.push({ key: k, activityId: isNaN(activityId) ? 0 : activityId, ts, data: localStorage.getItem(k) });
     }
   }
   return out.sort((a, b) => a.ts - b.ts);
@@ -3915,7 +3979,8 @@ function renderAlbum() {
       const allAct = [...ART_ACTIVITIES, ...STEM_ACTIVITIES];
       const act = allAct.find(a => a.id === p.activityId);
       const dateStr = new Date(p.ts).toLocaleDateString('en-US', { month:'short', day:'numeric' });
-      html += `<div class="album-photo"><img src="${p.data}" alt="" onclick="viewPhoto('${p.key}')"><div class="caption">${act ? stripEmoji(act.title) : 'Activity ' + p.activityId}<br>${dateStr}</div></div>`;
+      const caption = p.activityId === 0 ? 'Photo' : (act ? stripEmoji(act.title) : '');
+      html += `<div class="album-photo"><img src="${p.data}" alt="" onclick="viewPhoto('${p.key}')"><div class="caption">${caption}<br>${dateStr}</div></div>`;
     });
     html += '</div></div>';
   }
@@ -4456,9 +4521,11 @@ async function boot() {
   if (params.get('mode') === 'kid') setKidMode(true);
   else setKidMode(localStorage.getItem(`${PREFIX}kidmode`) === 'true');
 
-  // Wire photo input
+  // Wire photo inputs
   const input = document.getElementById('photoInput');
   if (input) input.addEventListener('change', handlePhotoFile);
+  const albumInput = document.getElementById('albumPhotoInput');
+  if (albumInput) { albumInput.multiple = true; albumInput.addEventListener('change', handleAlbumPhotoFile); }
 
   renderFieldTrips();
   jumpToToday();
