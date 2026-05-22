@@ -1850,7 +1850,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       background: var(--canary);
       border: 3px solid var(--ink);
       box-shadow: 5px 5px 0 var(--ink);
@@ -1871,6 +1871,61 @@
       text-shadow: 2px 2px 0 var(--ink);
       line-height: 1;
     }
+    .jobs-stat-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-end;
+      width: 100%;
+      justify-content: center;
+    }
+    .jobs-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .jobs-stat-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .jobs-stat-num {
+      font-family: 'Caprasimo', serif;
+      font-size: 1.8rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .jobs-balance-num {
+      font-family: 'Caprasimo', serif;
+      font-size: 2.4rem;
+      color: var(--cherry);
+      text-shadow: 2px 2px 0 var(--ink);
+      line-height: 1;
+    }
+    .jobs-balance-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .jobs-bal-btn {
+      background: var(--ink);
+      color: var(--canary);
+      border: none;
+      width: 28px;
+      height: 28px;
+      font-size: 1.1rem;
+      font-family: 'Caprasimo', serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 0 var(--cherry);
+      flex-shrink: 0;
+    }
+    .jobs-bal-btn:hover { background: var(--cherry); }
+    .jobs-bal-btn:active { transform: translate(1px,1px); box-shadow: none; }
     .jobs-reset-btn {
       background: var(--ink);
       color: var(--paper);
@@ -2413,9 +2468,9 @@
     <button class="tab-btn" id="tab-badges" onclick="showPage('badges')">Badges</button>
     <button class="tab-btn" id="tab-shopping" onclick="showPage('shopping')">Shopping</button>
     <button class="tab-btn" id="tab-poster" onclick="showPage('poster')">Poster</button>
-    <button class="tab-btn" id="tab-jobs" onclick="showPage('jobs')">Jobs 💰</button>
-    <button class="tab-btn" id="tab-3dprint" onclick="showPage('3dprint')">3D Print 🖨️</button>
-    <button class="tab-btn" id="tab-reading" onclick="showPage('reading')">📚 Reading</button>
+    <button class="tab-btn" id="tab-jobs" onclick="showPage('jobs')">Jobs</button>
+    <button class="tab-btn" id="tab-3dprint" onclick="showPage('3dprint')">3D Print</button>
+    <button class="tab-btn" id="tab-reading" onclick="showPage('reading')">Reading</button>
   </div>
 </div>
 
@@ -2655,11 +2710,37 @@
     <div class="jobs-earned-banners">
       <div class="jobs-earned-banner">
         <span class="jobs-earned-name">Leo</span>
-        <span class="jobs-earned-amount" id="jobsTotalLeo">$0.00</span>
+        <div class="jobs-stat-row">
+          <div class="jobs-stat">
+            <span class="jobs-stat-lbl">Earned</span>
+            <span class="jobs-stat-num" id="jobsTotalLeo">$0</span>
+          </div>
+          <div class="jobs-stat">
+            <span class="jobs-stat-lbl">Balance</span>
+            <div class="jobs-balance-controls">
+              <button class="jobs-bal-btn" onclick="adjustBalance('leo',-1)">−</button>
+              <span class="jobs-balance-num" id="jobsBalanceLeo">$0</span>
+              <button class="jobs-bal-btn" onclick="adjustBalance('leo',1)">+</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="jobs-earned-banner">
         <span class="jobs-earned-name">Lincoln</span>
-        <span class="jobs-earned-amount" id="jobsTotalLin">$0.00</span>
+        <div class="jobs-stat-row">
+          <div class="jobs-stat">
+            <span class="jobs-stat-lbl">Earned</span>
+            <span class="jobs-stat-num" id="jobsTotalLin">$0</span>
+          </div>
+          <div class="jobs-stat">
+            <span class="jobs-stat-lbl">Balance</span>
+            <div class="jobs-balance-controls">
+              <button class="jobs-bal-btn" onclick="adjustBalance('lin',-1)">−</button>
+              <span class="jobs-balance-num" id="jobsBalanceLin">$0</span>
+              <button class="jobs-bal-btn" onclick="adjustBalance('lin',1)">+</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
@@ -4160,11 +4241,27 @@ function jobsTotal(kid) {
   if (typeof SUMMER_JOBS === 'undefined') return 0;
   return SUMMER_JOBS.reduce((s, j) => s + getJobCount(kid, j.id), 0);
 }
+const BAL_KEY = kid => `${PREFIX}jobbal_${kid}`;
+function getBalance(kid) { return parseInt(localStorage.getItem(BAL_KEY(kid)) || '0', 10); }
+function setBalance(kid, val) {
+  const v = String(Math.max(0, val));
+  _lsSet(BAL_KEY(kid), v);
+  cloudSet(BAL_KEY(kid), v);
+}
+function adjustBalance(kid, delta) {
+  setBalance(kid, getBalance(kid) + delta);
+  updateJobsTotal();
+}
 function updateJobsTotal() {
-  const leo = document.getElementById('jobsTotalLeo');
-  const lin = document.getElementById('jobsTotalLin');
-  if (leo) leo.textContent = '$' + jobsTotal('leo').toFixed(2);
-  if (lin) lin.textContent = '$' + jobsTotal('lin').toFixed(2);
+  ['leo','lin'].forEach(kid => {
+    const capKid = kid === 'leo' ? 'Leo' : 'Lin';
+    const earned = jobsTotal(kid);
+    const balance = getBalance(kid);
+    const tEl = document.getElementById(`jobsTotal${capKid}`);
+    const bEl = document.getElementById(`jobsBalance${capKid}`);
+    if (tEl) tEl.textContent = '$' + earned;
+    if (bEl) bEl.textContent = '$' + balance;
+  });
 }
 function resetJobs() {
   if (!confirm('Reset all job earnings for both kids? This cannot be undone.')) return;
