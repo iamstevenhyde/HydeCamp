@@ -2762,6 +2762,10 @@ const PARENT_LABELS = { '':'+', 'M':'M', 'S':'S', 'both':'M+S' };
 const PARENT_CLASSES = { '':'pb-none', 'M':'pb-M', 'S':'pb-S', 'both':'pb-both' };
 
 function applyWeeklyOverrides(wDate, dayIdx, slotIdx, baseData) {
+  // Every Tuesday at 3pm: Global Food Night prep
+  if (dayIdx === 1 && slotIdx === 7) {
+    return { text: 'Plan & shop for Global Food Night', type: 'fieldtrip' };
+  }
   const theme = WEEKLY_THEMES[weekKey(wDate)];
   if (!theme) return baseData;
   if (dayIdx === 1 && slotIdx === 2 && theme.stemId) {
