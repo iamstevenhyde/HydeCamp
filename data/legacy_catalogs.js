@@ -102,6 +102,7 @@ const HALFDAY_TRIPS = [
   { name:'Table Rock Trail',                  detail:'⛰️ Free · 3.4 mi round trip to the mesa · sweeping city views · 2–3 hrs' },
   { name:'Eagle Island State Park',           detail:'💧 Free · Sandy beach + river channels · Eagle · 3–4 hrs · bring tubes' },
   { name:'Wahooz Family Fun Zone',            detail:'🎮 Varies · Mini golf, go-karts, laser tag, arcade · Meridian · 3–4 hrs' },
+  { name:'Golfing',                           detail:'⛳ Varies · 9 or 18 holes · Check local courses for junior rates · 2–4 hrs' },
   { name:'Roaring Springs Water Park',        detail:'🌊 ~$30–35/person · Full waterpark · Meridian · 4–5 hrs' },
   { name:'Lucky Peak State Park',             detail:'💦 Seasonal fee · Swimming beach 10 min east of Boise · 3–4 hrs' },
   { name:'Foothills Learning Center + Gulch', detail:'🦅 Free · Hawk watch platform + Hull\'s Gulch trail system · ~2–3 hrs' },
@@ -1552,6 +1553,7 @@ const SUMMER_JOBS = [
   { id:12, label:'Pick up all trash in garage & outside',cat:'outside', emoji:'🗑️' },
   { id:13, label:'Sweep backyard patios',                cat:'outside', emoji:'🏡' },
   { id:14, label:'Weed backyard flower beds',            cat:'outside', emoji:'🌱' },
+  { id:20, label:'Weed vegetable garden bed',            cat:'outside', emoji:'🥦' },
   { id:15, label:'Sweep out garage',                     cat:'outside', emoji:'🧹' },
   { id:16, label:'Organize garage shoe area',            cat:'outside', emoji:'👟' },
   // Car
