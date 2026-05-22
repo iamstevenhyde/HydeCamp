@@ -92,6 +92,7 @@ const QUICK_TRIPS = [
   { name:'Military Reserve Park Trails',      detail:'🥾 Free · Easy foothills hiking with city views · Boise · ~1–2 hrs' },
   { name:'Boise Depot & Platt Gardens',       detail:'🚂 Free · Historic depot viewpoint + rose garden · Southwest Boise · ~1 hr' },
   { name:'Backyard / Neighborhood Adventure', detail:'🗺️ Free · Scavenger hunt, chalk art, bug hunt, or bike ride · ~1 hr' },
+  { name:'Driving Range',                     detail:'⛳ Varies · Bucket of balls & practice swings · ~1 hr' },
 ];
 
 const HALFDAY_TRIPS = [
