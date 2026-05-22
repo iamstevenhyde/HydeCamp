@@ -1949,6 +1949,202 @@
     .job-counter input[type="number"]::-webkit-inner-spin-button,
     .job-counter input[type="number"]::-webkit-outer-spin-button { opacity: 1; }
 
+    /* ════════════ READING LOG PAGE ════════════ */
+    .reading-header {
+      padding: 22px 24px 0;
+    }
+    .reading-header h2 {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      color: var(--cyan-dark);
+      font-size: 2rem;
+      margin-bottom: 4px;
+    }
+    .reading-totals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .reading-total-card {
+      background: var(--cyan-light);
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 14px 18px;
+    }
+    .reading-total-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .reading-total-stats {
+      display: flex;
+      gap: 18px;
+    }
+    .reading-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .reading-stat-num {
+      font-family: 'Caprasimo', serif;
+      font-size: 2.2rem;
+      color: var(--cyan-dark);
+      text-shadow: 2px 2px 0 var(--ink);
+      line-height: 1;
+    }
+    .reading-stat-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .reading-entry-form {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 10px;
+      align-items: end;
+      margin-bottom: 24px;
+      background: var(--paper-light);
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: 16px 18px;
+    }
+    .reading-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .reading-form-group label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+    .reading-form-group input,
+    .reading-form-group select {
+      border: 2.5px solid var(--ink);
+      background: var(--paper);
+      padding: 8px 10px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      outline: none;
+    }
+    .reading-form-group input:focus,
+    .reading-form-group select:focus {
+      border-color: var(--cyan);
+      box-shadow: 2px 2px 0 var(--cyan);
+    }
+    .reading-submit-btn {
+      background: var(--cyan-dark);
+      color: #fff;
+      border: 2.5px solid var(--ink);
+      padding: 9px 18px;
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+      white-space: nowrap;
+      align-self: end;
+    }
+    .reading-submit-btn:hover { background: var(--cyan); }
+    .reading-submit-btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--ink); }
+    .reading-log-section {
+      padding: 0 24px 40px;
+    }
+    .reading-log-kid {
+      margin-bottom: 28px;
+    }
+    .reading-log-kid-title {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--ink);
+      border-bottom: 3px solid var(--ink);
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .reading-log-kid-title span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-style: normal;
+    }
+    .reading-log-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .reading-log-entry {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 10px;
+      background: var(--paper-light);
+      border: 2px solid var(--ink);
+      padding: 9px 12px;
+    }
+    .reading-entry-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .reading-entry-pages {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--cyan-dark);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .reading-entry-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .reading-del-btn {
+      background: none;
+      border: none;
+      color: var(--ink-soft);
+      cursor: pointer;
+      font-size: 0.75rem;
+      padding: 2px 4px;
+      opacity: 0.5;
+    }
+    .reading-del-btn:hover { opacity: 1; color: var(--cherry); }
+    .reading-empty {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      padding: 10px 0;
+    }
+    @media (max-width: 600px) {
+      .reading-totals { grid-template-columns: 1fr; }
+      .reading-entry-form { grid-template-columns: 1fr; }
+      .reading-log-entry { grid-template-columns: 1fr auto; }
+      .reading-entry-date { display: none; }
+    }
+
     /* ════════════ 3D PRINTER PAGE ════════════ */
     .print-tagline {
       font-family: 'DM Mono', monospace;
@@ -2219,6 +2415,7 @@
     <button class="tab-btn" id="tab-poster" onclick="showPage('poster')">Poster</button>
     <button class="tab-btn" id="tab-jobs" onclick="showPage('jobs')">Jobs 💰</button>
     <button class="tab-btn" id="tab-3dprint" onclick="showPage('3dprint')">3D Print 🖨️</button>
+    <button class="tab-btn" id="tab-reading" onclick="showPage('reading')">📚 Reading</button>
   </div>
 </div>
 
@@ -2497,6 +2694,70 @@
   <div class="stem-grid" id="printGrid"></div>
 </div>
 
+<!-- ════════════ READING LOG PAGE ════════════ -->
+<div id="page-reading" style="display:none">
+  <div class="reading-header">
+    <h2>📚 Reading Log</h2>
+    <p class="jobs-sub">Log books as you finish them — track pages &amp; totals for each kid.</p>
+    <div class="reading-totals">
+      <div class="reading-total-card">
+        <div class="reading-total-name">Leo</div>
+        <div class="reading-total-stats">
+          <div class="reading-stat">
+            <div class="reading-stat-num" id="readTotalBooksLeo">0</div>
+            <div class="reading-stat-lbl">Books</div>
+          </div>
+          <div class="reading-stat">
+            <div class="reading-stat-num" id="readTotalPagesLeo">0</div>
+            <div class="reading-stat-lbl">Pages</div>
+          </div>
+        </div>
+      </div>
+      <div class="reading-total-card">
+        <div class="reading-total-name">Lincoln</div>
+        <div class="reading-total-stats">
+          <div class="reading-stat">
+            <div class="reading-stat-num" id="readTotalBooksLin">0</div>
+            <div class="reading-stat-lbl">Books</div>
+          </div>
+          <div class="reading-stat">
+            <div class="reading-stat-num" id="readTotalPagesLin">0</div>
+            <div class="reading-stat-lbl">Pages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reading-entry-form">
+      <div class="reading-form-group" style="grid-column:1/-1">
+        <label>Book Title</label>
+        <input type="text" id="readTitle" placeholder="e.g. Charlotte's Web">
+      </div>
+      <div class="reading-form-group">
+        <label>Pages Read</label>
+        <input type="number" id="readPages" min="1" placeholder="120">
+      </div>
+      <div class="reading-form-group">
+        <label>Kid</label>
+        <select id="readKid">
+          <option value="leo">Leo</option>
+          <option value="lin">Lincoln</option>
+        </select>
+      </div>
+      <button class="reading-submit-btn" onclick="submitReadingEntry()">+ Log Book</button>
+    </div>
+  </div>
+  <div class="reading-log-section">
+    <div class="reading-log-kid" id="readLogLeo">
+      <div class="reading-log-kid-title">Leo <span>Books read this summer</span></div>
+      <div class="reading-log-list" id="readListLeo"></div>
+    </div>
+    <div class="reading-log-kid" id="readLogLin">
+      <div class="reading-log-kid-title">Lincoln <span>Books read this summer</span></div>
+      <div class="reading-log-list" id="readListLin"></div>
+    </div>
+  </div>
+</div>
+
 <!-- ════════════ BOREDOM MODAL ════════════ -->
 <div class="boredom-modal-overlay" id="boredomOverlay" onclick="if(event.target===this)closeBoredom()">
   <div class="boredom-modal">
@@ -2724,7 +2985,7 @@ function subscribeToCloud() {
 }
 
 function refreshCurrentPage() {
-  const pages = ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint'];
+  const pages = ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint','reading'];
   for (const p of pages) {
     const el = document.getElementById('page-' + p);
     if (el && el.style.display !== 'none') {
@@ -3217,7 +3478,7 @@ function closeBurgerMenu() {
 }
 
 function showPage(name) {
-  ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint'].forEach(p => {
+  ['schedule','stem','art','album','badges','shopping','poster','jobs','3dprint','reading'].forEach(p => {
     const pg = document.getElementById('page-'+p);
     if (pg) pg.style.display = (p===name) ? '' : 'none';
     const tb = document.getElementById('tab-'+p);
@@ -3234,6 +3495,7 @@ function showPage(name) {
   if (name === 'poster') renderPoster();
   if (name === 'jobs') renderJobs();
   if (name === '3dprint') renderPrint();
+  if (name === 'reading') renderReading();
 }
 
 // STEM/Art cards
@@ -4002,6 +4264,74 @@ function togglePrintDone(id, done) {
   const card = document.querySelector(`.challenge-card[data-print-id="${id}"]`);
   if (card) card.classList.toggle('is-done', done);
 }
+
+// ════════════ READING LOG ════════════
+const READ_KEY = kid => `${PREFIX}readlog_${kid}`;
+
+function getReadLog(kid) {
+  try { return JSON.parse(localStorage.getItem(READ_KEY(kid)) || '[]'); } catch(e) { return []; }
+}
+function saveReadLog(kid, entries) {
+  const v = JSON.stringify(entries);
+  _lsSet(READ_KEY(kid), v);
+  cloudSet(READ_KEY(kid), v);
+}
+
+function submitReadingEntry() {
+  const title = document.getElementById('readTitle').value.trim();
+  const pages = parseInt(document.getElementById('readPages').value, 10);
+  const kid   = document.getElementById('readKid').value;
+  if (!title) { document.getElementById('readTitle').focus(); return; }
+  if (!pages || pages < 1) { document.getElementById('readPages').focus(); return; }
+  const entries = getReadLog(kid);
+  entries.unshift({ title, pages, date: new Date().toLocaleDateString('en-US', { month:'short', day:'numeric' }) });
+  saveReadLog(kid, entries);
+  document.getElementById('readTitle').value = '';
+  document.getElementById('readPages').value = '';
+  document.getElementById('readTitle').focus();
+  renderReading();
+}
+
+function deleteReadingEntry(kid, idx) {
+  const entries = getReadLog(kid);
+  entries.splice(idx, 1);
+  saveReadLog(kid, entries);
+  renderReading();
+}
+
+function renderReading() {
+  ['leo','lin'].forEach(kid => {
+    const entries = getReadLog(kid);
+    const books = entries.length;
+    const pages = entries.reduce((s, e) => s + (e.pages || 0), 0);
+    const capKid = kid === 'leo' ? 'Leo' : 'Lin';
+    const booksEl = document.getElementById(`readTotalBooks${capKid}`);
+    const pagesEl = document.getElementById(`readTotalPages${capKid}`);
+    if (booksEl) booksEl.textContent = books;
+    if (pagesEl) pagesEl.textContent = pages;
+    const list = document.getElementById(`readList${capKid}`);
+    if (!list) return;
+    if (entries.length === 0) {
+      list.innerHTML = '<div class="reading-empty">No books logged yet</div>';
+      return;
+    }
+    list.innerHTML = entries.map((e, i) => `
+      <div class="reading-log-entry">
+        <span class="reading-entry-title">${e.title}</span>
+        <span class="reading-entry-pages">${e.pages} pg</span>
+        <span class="reading-entry-date">${e.date || ''}</span>
+        <button class="reading-del-btn" onclick="deleteReadingEntry('${kid}',${i})" title="Remove">✕</button>
+      </div>`).join('');
+  });
+}
+
+// Also handle Enter key on reading form inputs
+document.addEventListener('DOMContentLoaded', () => {
+  ['readTitle','readPages'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') submitReadingEntry(); });
+  });
+});
 
 // Boot
 async function boot() {
