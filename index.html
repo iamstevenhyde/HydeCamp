@@ -3983,6 +3983,24 @@ function checkStorage() {
 }
 
 // Badges
+function maxReadingHoursInAnyWeek() {
+  const weekCounts = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (!k || !k.startsWith(`${PREFIX}cell_`)) continue;
+    try {
+      const v = JSON.parse(localStorage.getItem(k));
+      if (v && v.type === 'reading') {
+        // key format: hyde26_cell_YYYY-MM-DD_d_s
+        const parts = k.replace(PREFIX + 'cell_', '').split('_');
+        const wk = parts[0];
+        weekCounts[wk] = (weekCounts[wk] || 0) + 1;
+      }
+    } catch(e) {}
+  }
+  return Object.values(weekCounts).reduce((max, n) => Math.max(max, n), 0);
+}
+
 function computeUnlockedBadges() {
   if (typeof MERIT_BADGES === 'undefined') return [];
   const allAct = [...ART_ACTIVITIES, ...STEM_ACTIVITIES];
@@ -3998,6 +4016,7 @@ function computeUnlockedBadges() {
       }
       return weeks.size >= b.threshold;
     }
+    if (b.id === 'bookworm') return maxReadingHoursInAnyWeek() >= 3;
     const matched = doneActs.filter(b.match);
     return matched.length >= b.threshold;
   });
@@ -4016,6 +4035,8 @@ function renderBadges() {
         if (k && k.startsWith(`${PREFIX}celldone_`)) weeks.add(k.split('_')[2]);
       }
       progress = weeks.size;
+    } else if (b.id === 'bookworm') {
+      progress = maxReadingHoursInAnyWeek() >= 3 ? 1 : 0;
     } else {
       progress = doneActs.filter(b.match).length;
     }

@@ -71,6 +71,12 @@ const MERIT_BADGES = [
     svg:'<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#1098C7" stroke="#0B1418" stroke-width="3"/><path d="M28 35 Q 50 50 72 35 M28 50 Q 50 65 72 50 M28 65 Q 50 80 72 65" fill="none" stroke="#F4D35E" stroke-width="3" stroke-linecap="round"/><path d="M28 35 Q 50 50 72 35 M28 50 Q 50 65 72 50 M28 65 Q 50 80 72 65" fill="none" stroke="#0B1418" stroke-width="1"/></svg>'
   },
   {
+    id:'bookworm', title:'Bookworm', threshold:1,
+    blurb:'Logged at least 3 hours of reading in a single week. Keep those pages turning.',
+    match: () => false, // Special — computed from schedule reading cells per week.
+    svg:'<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#4A6741" stroke="#0B1418" stroke-width="3"/><rect x="27" y="30" width="30" height="40" rx="2" fill="#F4EDD2" stroke="#0B1418" stroke-width="2"/><rect x="29" y="30" width="5" height="40" fill="#B5D4A2" stroke="#0B1418" stroke-width="1"/><line x1="36" y1="40" x2="53" y2="40" stroke="#0B1418" stroke-width="1.5"/><line x1="36" y1="46" x2="53" y2="46" stroke="#0B1418" stroke-width="1.5"/><line x1="36" y1="52" x2="48" y2="52" stroke="#0B1418" stroke-width="1.5"/><rect x="43" y="33" width="30" height="40" rx="2" fill="#F4D35E" stroke="#0B1418" stroke-width="2"/><rect x="45" y="33" width="5" height="40" fill="#C9A82F" stroke="#0B1418" stroke-width="1"/><line x1="52" y1="43" x2="69" y2="43" stroke="#0B1418" stroke-width="1.5"/><line x1="52" y1="49" x2="69" y2="49" stroke="#0B1418" stroke-width="1.5"/><line x1="52" y1="55" x2="62" y2="55" stroke="#0B1418" stroke-width="1.5"/></svg>'
+  },
+  {
     id:'campveteran', title:'Camp Veteran', threshold:13,
     blurb:'Completed at least one activity in every week of summer. The full thirteen-week ribbon.',
     match: () => false, // Special — earned by week coverage, not category. Computed separately.
