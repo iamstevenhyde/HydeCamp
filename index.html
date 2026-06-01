@@ -1618,29 +1618,40 @@
     .album-week { padding: 16px 22px; border-bottom: 1.5px dashed var(--ink); }
     .album-week h3 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 1.3rem; margin-bottom: 10px; }
     .album-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-    .album-photo { background: var(--cream); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); padding: 6px; position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+    /* Wrap = grid cell: image box on top, caption below (separate tap targets) */
+    .album-photo-wrap { display: flex; flex-direction: column; gap: 0; }
+    .album-photo {
+      background: var(--cream); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+      padding: 6px; position: relative; cursor: pointer;
+      user-select: none; -webkit-user-select: none;
+    }
     .album-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; pointer-events: none; }
-    .album-photo .caption { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 6px 0 0; text-align: center; letter-spacing: 0.05em; }
-    .album-photo .photo-date {
-      display: inline-block; cursor: text; border-bottom: 1px dashed var(--ink-soft);
-      padding: 0 2px; transition: background 0.1s;
-    }
-    .album-photo .photo-date:hover { background: var(--canary); }
-    .album-photo .photo-date-input {
-      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.05em;
-      border: none; border-bottom: 2px solid var(--cherry); background: var(--canary);
-      text-align: center; outline: none; width: 90px; padding: 0 2px;
-    }
     .album-photo.selected { outline: 4px solid var(--cherry); box-shadow: 0 0 0 4px var(--cherry); }
     .album-photo .sel-check {
       display: none; position: absolute; top: 10px; right: 10px;
       width: 26px; height: 26px; border-radius: 50%;
-      background: var(--cherry); border: 2px solid var(--ink);
+      background: white; border: 2px solid var(--ink);
       color: white; font-size: 1rem; align-items: center; justify-content: center;
       font-weight: 900; pointer-events: none;
     }
-    .album-selecting .album-photo .sel-check { display: flex; background: white; }
+    .album-selecting .album-photo .sel-check { display: flex; }
     .album-selecting .album-photo.selected .sel-check { background: var(--cherry); }
+    /* Caption is OUTSIDE .album-photo so taps don't trigger lightbox */
+    .album-caption {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      padding: 5px 2px 0; text-align: center; letter-spacing: 0.05em;
+      line-height: 1.4;
+    }
+    .photo-date {
+      display: inline-block; cursor: text; border-bottom: 1px dashed var(--ink-soft);
+      padding: 0 2px; transition: background 0.1s;
+    }
+    .photo-date:hover { background: var(--canary); }
+    .photo-date-input {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.05em;
+      border: none; border-bottom: 2px solid var(--cherry); background: var(--canary);
+      text-align: center; outline: none; width: 90px; padding: 0 2px;
+    }
     .album-delete-bar {
       display: none; position: sticky; bottom: 0; z-index: 300;
       background: var(--ink); color: var(--canary);
@@ -3916,6 +3927,7 @@ let _albumSelecting = false;
 let _longPressTimer = null;
 
 function attachAlbumHandlers() {
+  // Only attach to the image box (.album-photo), not the caption
   document.querySelectorAll('.album-photo').forEach(el => {
     // Touch: long-press to enter select mode
     el.addEventListener('touchstart', e => {
@@ -3936,7 +3948,7 @@ function attachAlbumHandlers() {
     el.addEventListener('mouseleave', () => { clearTimeout(_longPressTimer); _longPressTimer = null; });
 
     // Click / tap
-    el.addEventListener('click', e => {
+    el.addEventListener('click', () => {
       if (_albumSelecting) {
         el.classList.toggle('selected');
         updateAlbumDeleteBar();
@@ -4029,15 +4041,14 @@ function viewPhoto(key) { openLightbox(key); }
       input.placeholder = 'e.g. Jun 3';
       span.replaceWith(input);
       input.focus(); input.select();
+      let saved = false;
       function save() {
+        if (saved) return; saved = true;
         const val = input.value.trim() || cur;
         localStorage.setItem(`${PREFIX}photodate_${key}`, val);
         cloudSet(`${PREFIX}photodate_${key}`, val);
-        const newSpan = document.createElement('span');
-        newSpan.className = 'photo-date';
-        newSpan.dataset.key = key;
-        newSpan.textContent = val;
-        input.replaceWith(newSpan);
+        // Re-render so photo moves to the correct week
+        renderAlbum();
       }
       input.addEventListener('blur', save);
       input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); input.blur(); } });
@@ -4139,17 +4150,27 @@ function highlightParent(which) {
 }
 
 // Album / scrapbook
+function getPhotoEffectiveDate(p) {
+  const saved = localStorage.getItem(`${PREFIX}photodate_${p.key}`);
+  if (saved) {
+    // Try "Jun 3", "June 3", "Jun 3 2026", etc. — append year if missing
+    const d = new Date(/\d{4}/.test(saved) ? saved : saved + ' 2026');
+    if (!isNaN(d.getTime())) return d;
+  }
+  return new Date(p.ts);
+}
+
 function renderAlbum() {
   const body = document.getElementById('albumBody');
   const photos = getAllPhotos();
   if (!photos.length) {
-    body.innerHTML = '<div class="album-empty">No photos yet. Click 📸 Add Photo on any activity card to start your summer scrapbook.</div>';
+    body.innerHTML = '<div class="album-empty">No photos yet. Tap Upload Photo to add your first shot.</div>';
     return;
   }
   const byWeek = {};
   WEEKS.forEach(w => byWeek[weekKey(w)] = []);
   photos.forEach(p => {
-    const photoDate = new Date(p.ts);
+    const photoDate = getPhotoEffectiveDate(p);
     const weekStart = WEEKS.find(w => {
       const end = new Date(w.getTime() + 7 * 86400000);
       return photoDate >= w && photoDate < end;
@@ -4171,10 +4192,12 @@ function renderAlbum() {
       const savedDate = localStorage.getItem(`${PREFIX}photodate_${p.key}`);
       const dateStr = savedDate || new Date(p.ts).toLocaleDateString('en-US', { month:'short', day:'numeric' });
       const caption = p.activityId === 0 ? 'Photo' : (act ? stripEmoji(act.title) : '');
-      html += `<div class="album-photo" data-key="${p.key}">
-        <div class="sel-check">✓</div>
-        <img src="${p.data}" alt="">
-        <div class="caption">${caption}<br><span class="photo-date" data-key="${p.key}">${dateStr}</span></div>
+      html += `<div class="album-photo-wrap">
+        <div class="album-photo" data-key="${p.key}">
+          <div class="sel-check">✓</div>
+          <img src="${p.data}" alt="">
+        </div>
+        <div class="album-caption">${caption ? caption + '<br>' : ''}<span class="photo-date" data-key="${p.key}">${dateStr}</span></div>
       </div>`;
     });
     html += '</div></div>';
