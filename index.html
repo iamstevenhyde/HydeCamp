@@ -1618,9 +1618,56 @@
     .album-week { padding: 16px 22px; border-bottom: 1.5px dashed var(--ink); }
     .album-week h3 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 1.3rem; margin-bottom: 10px; }
     .album-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-    .album-photo { background: var(--cream); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); padding: 6px; }
-    .album-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .album-photo { background: var(--cream); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); padding: 6px; position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+    .album-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; pointer-events: none; }
     .album-photo .caption { font-family: 'DM Mono', monospace; font-size: 0.7rem; padding: 6px 0 0; text-align: center; letter-spacing: 0.05em; }
+    .album-photo.selected { outline: 4px solid var(--cherry); box-shadow: 0 0 0 4px var(--cherry); }
+    .album-photo .sel-check {
+      display: none; position: absolute; top: 10px; right: 10px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--cherry); border: 2px solid var(--ink);
+      color: white; font-size: 1rem; align-items: center; justify-content: center;
+      font-weight: 900; pointer-events: none;
+    }
+    .album-selecting .album-photo .sel-check { display: flex; background: white; }
+    .album-selecting .album-photo.selected .sel-check { background: var(--cherry); }
+    .album-delete-bar {
+      display: none; position: sticky; bottom: 0; z-index: 300;
+      background: var(--ink); color: var(--canary);
+      padding: 12px 20px; align-items: center; justify-content: space-between;
+      border-top: 3px solid var(--cherry);
+    }
+    .album-delete-bar.visible { display: flex; }
+    .album-delete-bar span { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .album-del-btn {
+      background: var(--cherry); color: white; border: 2px solid var(--canary);
+      padding: 8px 18px; font-family: 'DM Mono', monospace; font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; box-shadow: 3px 3px 0 var(--cherry-dark);
+    }
+    .album-del-btn:hover { background: var(--cherry-dark); }
+    .album-cancel-btn {
+      background: transparent; color: var(--canary); border: 2px solid var(--canary);
+      padding: 8px 14px; font-family: 'DM Mono', monospace; font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+    }
+    /* Lightbox */
+    .photo-lightbox {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(11,20,24,0.92); align-items: center; justify-content: center;
+    }
+    .photo-lightbox.open { display: flex; }
+    .photo-lightbox img {
+      max-width: 92vw; max-height: 88vh; object-fit: contain;
+      border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--cherry);
+    }
+    .lightbox-close {
+      position: absolute; top: 16px; right: 20px;
+      background: var(--canary); border: 3px solid var(--ink); color: var(--ink);
+      font-size: 1.5rem; width: 42px; height: 42px; cursor: pointer;
+      font-family: 'Caprasimo', serif; display: flex; align-items: center; justify-content: center;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
 
     /* Shopping list */
     .shopping-header { padding: 22px 22px 0; }
@@ -2702,6 +2749,19 @@
   </div>
   <input type="file" id="albumPhotoInput" accept="image/*" multiple style="display:none">
   <div id="albumBody"></div>
+  <div class="album-delete-bar" id="albumDeleteBar">
+    <span id="albumSelCount">0 selected</span>
+    <div style="display:flex;gap:8px">
+      <button class="album-cancel-btn" onclick="cancelAlbumSelect()">Cancel</button>
+      <button class="album-del-btn" onclick="deleteSelectedPhotos()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Photo lightbox -->
+<div class="photo-lightbox" id="photoLightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
 </div>
 
 <!-- ════════════ BADGES PAGE ════════════ -->
@@ -3841,19 +3901,104 @@ function getAllPhotos() {
   }
   return out.sort((a, b) => a.ts - b.ts);
 }
-function viewPhoto(key) {
-  const data = localStorage.getItem(key);
-  if (!data) return;
-  if (confirm('Delete this photo?')) {
+// ── Album interaction: lightbox + long-press select ──
+let _albumSelecting = false;
+let _longPressTimer = null;
+
+function attachAlbumHandlers() {
+  document.querySelectorAll('.album-photo').forEach(el => {
+    // Touch: long-press to enter select mode
+    el.addEventListener('touchstart', e => {
+      _longPressTimer = setTimeout(() => {
+        _longPressTimer = null;
+        enterAlbumSelect(el);
+      }, 500);
+    }, { passive: true });
+    el.addEventListener('touchend', () => { clearTimeout(_longPressTimer); _longPressTimer = null; });
+    el.addEventListener('touchmove', () => { clearTimeout(_longPressTimer); _longPressTimer = null; }, { passive: true });
+
+    // Mouse: long-press (desktop fallback)
+    el.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      _longPressTimer = setTimeout(() => { _longPressTimer = null; enterAlbumSelect(el); }, 500);
+    });
+    el.addEventListener('mouseup', () => { clearTimeout(_longPressTimer); _longPressTimer = null; });
+    el.addEventListener('mouseleave', () => { clearTimeout(_longPressTimer); _longPressTimer = null; });
+
+    // Click / tap
+    el.addEventListener('click', e => {
+      if (_albumSelecting) {
+        el.classList.toggle('selected');
+        updateAlbumDeleteBar();
+      } else {
+        openLightbox(el.dataset.key);
+      }
+    });
+  });
+}
+
+function enterAlbumSelect(el) {
+  _albumSelecting = true;
+  document.getElementById('page-album').classList.add('album-selecting');
+  el.classList.add('selected');
+  updateAlbumDeleteBar();
+}
+
+function updateAlbumDeleteBar() {
+  const sel = document.querySelectorAll('.album-photo.selected');
+  const bar = document.getElementById('albumDeleteBar');
+  const cnt = document.getElementById('albumSelCount');
+  if (sel.length > 0) {
+    bar.classList.add('visible');
+    cnt.textContent = sel.length + ' selected';
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+function cancelAlbumSelect() {
+  _albumSelecting = false;
+  document.getElementById('page-album').classList.remove('album-selecting');
+  document.querySelectorAll('.album-photo.selected').forEach(el => el.classList.remove('selected'));
+  document.getElementById('albumDeleteBar').classList.remove('visible');
+}
+
+function deleteSelectedPhotos() {
+  const sel = document.querySelectorAll('.album-photo.selected');
+  if (!sel.length) return;
+  if (!confirm(`Delete ${sel.length} photo${sel.length > 1 ? 's' : ''}?`)) return;
+  sel.forEach(el => {
+    const key = el.dataset.key;
     localStorage.removeItem(key);
-    // Refresh nearest strip
+    cloudDelete(key);
+    // Also refresh activity thumb strips
     document.querySelectorAll('.thumb-strip').forEach(s => {
       const id = parseInt(s.id.replace('thumbs_', ''), 10);
       s.innerHTML = renderThumbs(id);
     });
-    if (document.getElementById('page-album').style.display !== 'none') renderAlbum();
-  }
+  });
+  cancelAlbumSelect();
+  renderAlbum();
 }
+
+// Lightbox
+function openLightbox(key) {
+  const data = localStorage.getItem(key);
+  if (!data) return;
+  document.getElementById('lightboxImg').src = data;
+  document.getElementById('photoLightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('photoLightbox').classList.remove('open');
+  document.getElementById('lightboxImg').src = '';
+  document.body.style.overflow = '';
+}
+// Close lightbox on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// Legacy – kept so activity thumbnail onclick still works
+function viewPhoto(key) { openLightbox(key); }
 
 // Kid mode
 function toggleKidMode() {
@@ -3980,11 +4125,17 @@ function renderAlbum() {
       const act = allAct.find(a => a.id === p.activityId);
       const dateStr = new Date(p.ts).toLocaleDateString('en-US', { month:'short', day:'numeric' });
       const caption = p.activityId === 0 ? 'Photo' : (act ? stripEmoji(act.title) : '');
-      html += `<div class="album-photo"><img src="${p.data}" alt="" onclick="viewPhoto('${p.key}')"><div class="caption">${caption}<br>${dateStr}</div></div>`;
+      const safeKey = p.key.replace(/'/g, "\\'");
+      html += `<div class="album-photo" data-key="${p.key}">
+        <div class="sel-check">✓</div>
+        <img src="${p.data}" alt="">
+        <div class="caption">${caption}<br>${dateStr}</div>
+      </div>`;
     });
     html += '</div></div>';
   }
-  body.innerHTML = html || '<div class="album-empty">No photos yet.</div>';
+  body.innerHTML = html || '<div class="album-empty">No photos yet. Tap Upload Photo to add your first shot.</div>';
+  attachAlbumHandlers();
 }
 function exportScrapbook() {
   const photos = getAllPhotos();
