@@ -1584,7 +1584,7 @@
     /* Badges page */
     .badges-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 18px;
       padding: 22px;
       align-items: start;
@@ -1593,54 +1593,68 @@
       background: var(--paper-light);
       border: 2.5px solid var(--ink);
       box-shadow: 5px 5px 0 var(--ink);
-      padding: 18px 14px 16px;
+      padding: 16px 14px 14px;
       text-align: center;
       transform: rotate(-0.5deg);
     }
     .badge-card:nth-child(even) { transform: rotate(0.6deg); }
-    .badge-card.locked { filter: grayscale(1) opacity(0.5); transform: rotate(0deg); }
-    .badge-card.unlocked-card { border-color: var(--cherry); box-shadow: 5px 5px 0 var(--cherry); }
-    .badge-card svg { width: 80px; height: 80px; display: block; margin: 0 auto 8px; }
-    .badge-card .b-title { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 1.2rem; }
-    .badge-card .b-blurb { font-family: Georgia, serif; font-size: 0.78rem; color: var(--ink-soft); margin: 5px 0 10px; line-height: 1.35; }
-    .badge-card .b-status { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-top: 8px; }
-    .badge-card .b-status.unlocked { color: var(--cherry); font-weight: 700; }
+    /* Badge icon — greyed until either kid earns it */
+    .b-icon { display: block; margin: 0 auto 8px; width: 80px; height: 80px; transition: filter 0.4s; }
+    .b-icon.greyed { filter: grayscale(1) opacity(0.35); }
+    .badge-card .b-title { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 1.15rem; }
+    .badge-card .b-blurb { font-family: Georgia, serif; font-size: 0.76rem; color: var(--ink-soft); margin: 4px 0 10px; line-height: 1.35; }
     .badges-header { padding: 22px 22px 0; }
     .badges-header h2 { font-family: 'Caprasimo', Georgia, serif; font-style: italic; color: var(--cherry); font-size: 2rem; }
-    .badge-progress-bar {
-      height: 8px; background: rgba(11,20,24,0.1); margin-top: 8px;
-      border: 1.5px solid var(--ink);
+    /* Per-kid columns */
+    .badge-kids-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      border-top: 1.5px dashed var(--ink);
+      padding-top: 10px;
+      margin-top: 4px;
     }
-    .badge-progress-bar .fill { height: 100%; background: var(--cherry); }
-    /* Badge checklist */
-    .badge-checklist {
-      text-align: left;
-      margin: 8px 0 4px;
+    .badge-kid-col {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 5px;
-      border-top: 1.5px dashed var(--ink);
-      padding-top: 8px;
+      padding: 8px 6px;
+      border: 1.5px solid var(--line);
+      background: rgba(11,20,24,0.03);
     }
-    .badge-checklist label {
-      display: flex;
-      align-items: flex-start;
-      gap: 7px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.03em;
+    .badge-kid-col.kid-earned {
+      background: var(--canary);
+      border-color: var(--cherry);
+      box-shadow: 2px 2px 0 var(--cherry);
+    }
+    .bk-name {
+      font-family: 'Caprasimo', serif;
+      font-style: italic;
+      font-size: 0.85rem;
       color: var(--ink);
-      cursor: pointer;
-      line-height: 1.35;
+      letter-spacing: 0;
     }
-    .badge-checklist input[type="checkbox"] {
-      flex-shrink: 0;
-      width: 15px; height: 15px;
-      margin-top: 1px;
+    .bk-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+    }
+    .bk-checks input[type="checkbox"] {
+      width: 18px; height: 18px;
       accent-color: var(--cherry);
       cursor: pointer;
     }
-    .badge-checklist label.checked { color: var(--cherry); text-decoration: line-through; opacity: 0.7; }
+    .bk-status {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    .bk-status.earned { color: var(--cherry); font-weight: 700; }
 
     /* Album */
     .album-header { padding: 22px 22px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
@@ -4298,81 +4312,79 @@ function checkStorage() {
 }
 
 // Badges
-const badgeCkKey = (bid, cid) => `${PREFIX}badgeck_${bid}_${cid}`;
+// Badge key: per-kid, per-slot-index (0..threshold-1)
+const badgeCkKey = (bid, kid, i) => `${PREFIX}badgeck_${bid}_${kid}_${i}`;
+const badgeEarnKey = (bid, kid) => `${PREFIX}badgearn_${bid}_${kid}`;
 
-function getBadgeChecked(bid, cid) {
-  return localStorage.getItem(badgeCkKey(bid, cid)) === '1';
+function getBadgeKidCount(b, kid) {
+  let n = 0;
+  for (let i = 0; i < b.threshold; i++) {
+    if (localStorage.getItem(badgeCkKey(b.id, kid, i)) === '1') n++;
+  }
+  return n;
 }
-function setBadgeChecked(bid, cid, val) {
-  const k = badgeCkKey(bid, cid);
-  if (val) { _lsSet(k, '1'); cloudSet(k, '1'); }
-  else      { _lsRemove(k); cloudDelete(k); }
-}
-function toggleBadgeCheck(bid, cid) {
-  const cur = getBadgeChecked(bid, cid);
-  setBadgeChecked(bid, cid, !cur);
+
+function toggleBadgeKidCheck(bid, kid, i, checked) {
+  const k = badgeCkKey(bid, kid, i);
+  if (checked) { _lsSet(k, '1'); cloudSet(k, '1'); }
+  else         { _lsRemove(k); cloudDelete(k); }
   renderBadges();
-}
-
-function getBadgeItems(b) {
-  // Returns array of {id, label} for the checklist
-  if (b.id === 'campveteran') {
-    return Object.entries(WEEKLY_THEMES).map(([wk, t]) => ({ id: 'wk_' + wk, label: `Week ${t.num} · ${t.title}` }));
-  }
-  if (b.id === 'bookworm') {
-    return [{ id: 'reading_week', label: '3+ hours of reading in one week' }];
-  }
-  const allAct = [...(typeof ART_ACTIVITIES !== 'undefined' ? ART_ACTIVITIES : []),
-                  ...(typeof STEM_ACTIVITIES !== 'undefined' ? STEM_ACTIVITIES : [])];
-  return allAct.filter(a => b.match(a)).map(a => ({ id: String(a.id), label: stripEmoji(a.title) }));
 }
 
 function computeUnlockedBadges() {
   if (typeof MERIT_BADGES === 'undefined') return [];
-  return MERIT_BADGES.filter(b => {
-    const items = getBadgeItems(b);
-    const checked = items.filter(it => getBadgeChecked(b.id, it.id)).length;
-    return checked >= b.threshold;
-  });
+  return MERIT_BADGES.filter(b =>
+    ['leo','lin'].some(kid => getBadgeKidCount(b, kid) >= b.threshold)
+  );
 }
 
 function renderBadges() {
   if (typeof MERIT_BADGES === 'undefined') return;
   const grid = document.getElementById('badgesGrid');
+  const KIDS = [{ id:'leo', label:'Leo' }, { id:'lin', label:'Lincoln' }];
+
   grid.innerHTML = MERIT_BADGES.map(b => {
-    const items = getBadgeItems(b);
-    const checkedCount = items.filter(it => getBadgeChecked(b.id, it.id)).length;
-    const unlocked = checkedCount >= b.threshold;
+    const kidData = KIDS.map(k => {
+      const count = getBadgeKidCount(b, k.id);
+      const earned = count >= b.threshold;
+      // Record/clear earn date per kid
+      const earnKey = badgeEarnKey(b.id, k.id);
+      if (earned && !localStorage.getItem(earnKey)) {
+        const today = new Date().toISOString().slice(0,10);
+        _lsSet(earnKey, today); cloudSet(earnKey, today);
+      }
+      if (!earned && localStorage.getItem(earnKey)) {
+        _lsRemove(earnKey); cloudDelete(earnKey);
+      }
+      const earnedDate = localStorage.getItem(earnKey);
+      // Build checkboxes
+      const boxes = Array.from({ length: b.threshold }, (_, i) => {
+        const ck = localStorage.getItem(badgeCkKey(b.id, k.id, i)) === '1';
+        return `<input type="checkbox" title="Activity ${i+1}"
+          ${ck ? 'checked' : ''}
+          onchange="toggleBadgeKidCheck('${b.id}','${k.id}',${i},this.checked)">`;
+      }).join('');
+      return { ...k, count, earned, earnedDate, boxes };
+    });
 
-    // Record earn date
-    const stored = localStorage.getItem(`${PREFIX}badge_${b.id}`);
-    if (unlocked && !stored) {
-      const today = new Date().toISOString().slice(0, 10);
-      localStorage.setItem(`${PREFIX}badge_${b.id}`, today);
-      cloudSet(`${PREFIX}badge_${b.id}`, today);
-    }
-    if (!unlocked && stored) {
-      localStorage.removeItem(`${PREFIX}badge_${b.id}`);
-      cloudDelete(`${PREFIX}badge_${b.id}`);
-    }
-    const earnedDate = localStorage.getItem(`${PREFIX}badge_${b.id}`);
-    const pct = Math.min(100, Math.round(100 * checkedCount / b.threshold));
+    const eitherEarned = kidData.some(k => k.earned);
 
-    const checklistHtml = items.map(it => {
-      const ck = getBadgeChecked(b.id, it.id);
-      return `<label class="${ck ? 'checked' : ''}">
-        <input type="checkbox" ${ck ? 'checked' : ''} onchange="toggleBadgeCheck('${b.id}','${it.id}')">
-        ${it.label}
-      </label>`;
-    }).join('');
+    const kidsHtml = kidData.map(k =>
+      `<div class="badge-kid-col${k.earned ? ' kid-earned' : ''}">
+        <div class="bk-name">${k.label}</div>
+        <div class="bk-checks">${k.boxes}</div>
+        <div class="bk-status${k.earned ? ' earned' : ''}">${k.earned ? `✦ earned` : `${k.count} / ${b.threshold}`}</div>
+      </div>`
+    ).join('');
 
-    return `<div class="badge-card${unlocked ? ' unlocked-card' : ' locked'}">
-      ${b.svg}
+    // Wrap SVG in a span we can grey out
+    const iconHtml = b.svg.replace('<svg ', `<svg class="b-icon${eitherEarned ? '' : ' greyed'}" `);
+
+    return `<div class="badge-card">
+      ${iconHtml}
       <div class="b-title">${b.title}</div>
       <div class="b-blurb">${b.blurb}</div>
-      <div class="badge-checklist">${checklistHtml}</div>
-      <div class="b-status ${unlocked ? 'unlocked' : ''}">${unlocked ? `✦ Earned ${earnedDate || 'today'}` : `${checkedCount} of ${b.threshold} completed`}</div>
-      <div class="badge-progress-bar"><div class="fill" style="width:${pct}%"></div></div>
+      <div class="badge-kids-row">${kidsHtml}</div>
     </div>`;
   }).join('');
 }
