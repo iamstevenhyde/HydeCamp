@@ -3887,51 +3887,73 @@ function uploadAlbumPhoto() {
 function handlePhotoFile(e) {
   const file = e.target.files[0];
   if (!file || !pendingPhotoActivityId) return;
-  compressPhoto(file).then(base64 => {
-    const key = `${PREFIX}photo_${pendingPhotoActivityId}_${Date.now()}`;
-    try {
-      localStorage.setItem(key, base64);
-      const strip = document.getElementById(`thumbs_${pendingPhotoActivityId}`);
-      if (strip) strip.innerHTML = renderThumbs(pendingPhotoActivityId);
-    } catch (err) {
-      alert('Out of storage. Export your scrapbook from the Album tab and clear some photos.');
-    }
-    pendingPhotoActivityId = null;
-    e.target.value = '';
-  });
+  const actId = pendingPhotoActivityId;
+  pendingPhotoActivityId = null;
+  e.target.value = '';
+  const key = `${PREFIX}photo_${actId}_${Date.now()}`;
+  compressPhoto(file).then(({ base64, blob }) =>
+    savePhotoKey(key, base64, blob).then(() => {
+      const strip = document.getElementById(`thumbs_${actId}`);
+      if (strip) strip.innerHTML = renderThumbs(actId);
+    })
+  );
 }
 function handleAlbumPhotoFile(e) {
   const files = Array.from(e.target.files);
   if (!files.length) return;
-  Promise.all(files.map(f => compressPhoto(f))).then(results => {
-    results.forEach(base64 => {
-      const key = `${PREFIX}photo_0_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
-      try { localStorage.setItem(key, base64); }
-      catch(err) { alert('Out of storage. Export your scrapbook and clear some photos.'); }
-    });
-    e.target.value = '';
+  e.target.value = '';
+  setSyncStatus('', '⏳ uploading…');
+  Promise.all(files.map(f => {
+    const key = `${PREFIX}photo_0_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+    return compressPhoto(f).then(({ base64, blob }) => savePhotoKey(key, base64, blob));
+  })).then(() => {
+    setSyncStatus('ok', '✅ uploaded');
+    renderAlbum();
+  }).catch(err => {
+    setSyncStatus('err', '❌ upload failed');
     renderAlbum();
   });
 }
+
+// Compress → returns { base64, blob }
 function compressPhoto(file) {
   return new Promise(resolve => {
     const reader = new FileReader();
     reader.onload = ev => {
       const img = new Image();
       img.onload = () => {
-        const MAX = 800;
+        const MAX = 1200;
         const scale = Math.min(MAX / img.width, MAX / img.height, 1);
-        const w = Math.round(img.width * scale);
-        const h = Math.round(img.height * scale);
         const canvas = document.createElement('canvas');
-        canvas.width = w; canvas.height = h;
-        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-        resolve(canvas.toDataURL('image/jpeg', 0.7));
+        canvas.width  = Math.round(img.width  * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        const base64 = canvas.toDataURL('image/jpeg', 0.82);
+        canvas.toBlob(blob => resolve({ base64, blob }), 'image/jpeg', 0.82);
       };
       img.src = ev.target.result;
     };
     reader.readAsDataURL(file);
   });
+}
+
+// Upload blob to Supabase Storage; fall back to base64 in localStorage
+async function savePhotoKey(key, base64, blob) {
+  const storagePath = key.replace(/[^a-zA-Z0-9_\-\.]/g, '_');
+  try {
+    const { error } = await _sb.storage.from('photos').upload(storagePath, blob, {
+      contentType: 'image/jpeg', upsert: true
+    });
+    if (error) throw error;
+    const { data: urlData } = _sb.storage.from('photos').getPublicUrl(storagePath);
+    _lsSet(key, urlData.publicUrl); // tiny URL instead of huge base64
+  } catch (err) {
+    // Bucket may not exist yet — fall back to localStorage base64
+    try { _lsSet(key, base64); }
+    catch (storErr) {
+      alert('Storage full and Supabase upload failed. Please create a public "photos" bucket in your Supabase project under Storage.');
+    }
+  }
 }
 function renderThumbs(activityId) {
   const photos = getPhotosForActivity(activityId);
