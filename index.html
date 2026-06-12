@@ -3937,21 +3937,28 @@ function compressPhoto(file) {
   });
 }
 
-// Upload blob to Supabase Storage; fall back to base64 in localStorage
+// Upload blob to Supabase Storage; sync URL to cloud store; fall back if needed
 async function savePhotoKey(key, base64, blob) {
-  const storagePath = key.replace(/[^a-zA-Z0-9_\-\.]/g, '_');
+  // Simple unique filename — avoid path issues with special chars
+  const filename = `${Date.now()}_${Math.random().toString(36).slice(2,8)}.jpg`;
   try {
-    const { error } = await _sb.storage.from('photos').upload(storagePath, blob, {
+    const { error } = await _sb.storage.from('photos').upload(filename, blob, {
       contentType: 'image/jpeg', upsert: true
     });
     if (error) throw error;
-    const { data: urlData } = _sb.storage.from('photos').getPublicUrl(storagePath);
-    _lsSet(key, urlData.publicUrl); // tiny URL instead of huge base64
+    const { data: urlData } = _sb.storage.from('photos').getPublicUrl(filename);
+    const url = urlData.publicUrl;
+    // Store URL (tiny ~100 bytes) in both localStorage and Supabase store table
+    try { _lsSet(key, url); } catch(e) { /* localStorage still full — cloud-only */ }
+    cloudSet(key, url);
   } catch (err) {
-    // Bucket may not exist yet — fall back to localStorage base64
-    try { _lsSet(key, base64); }
-    catch (storErr) {
-      alert('Storage full and Supabase upload failed. Please create a public "photos" bucket in your Supabase project under Storage.');
+    console.error('Supabase Storage error:', err);
+    setSyncStatus('err', '❌ Photo upload: ' + (err.message || err));
+    // Fallback: save base64 to Supabase DB so other devices can still see it
+    cloudSet(key, base64);
+    try { _lsSet(key, base64); } catch(storErr) {
+      // localStorage full; photo is saved in Supabase DB and will load on next visit
+      setSyncStatus('ok', '✅ Photo saved to cloud');
     }
   }
 }
